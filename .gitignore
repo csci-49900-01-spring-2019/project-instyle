@@ -1,5 +1,7 @@
 .idea/
+.DS_Store
 Frontend/client/.gitignore
 Frontend/client/README.md
+
 
 
