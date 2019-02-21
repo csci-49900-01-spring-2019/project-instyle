@@ -2,5 +2,3 @@
 .DS_Store
 Frontend/client/README.md
 node_modules/
-Frontend/client/.gitignore
-.gitignore
