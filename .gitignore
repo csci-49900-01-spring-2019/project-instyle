@@ -2,3 +2,5 @@
 .DS_Store
 Frontend/client/README.md
 node_modules/
+Backend/package-lock.json
+Frontend/client/package-lock.json
