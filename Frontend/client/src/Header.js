@@ -24,7 +24,7 @@ class Header extends Component{
         return(
           <div className="header">
               {this.renderContent()}
-                <img src={logo} alt="_Logo"/>
+                <img src={logo} alt="InStyle"/>
               {/*<p className="logo">LOGO</p>*/}
               <br />
               {/*<p className="header"></p>*/}
