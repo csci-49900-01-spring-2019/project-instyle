@@ -24,7 +24,7 @@ class Header extends Component{
         return(
           <div className="header">
               {this.renderContent()}
-                <img src={logo} alt="InStyle"/>
+                <NavLink to = "/"><img src={logo} alt="InStyle"/></NavLink>
 
               <br />
 
