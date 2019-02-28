@@ -110,7 +110,6 @@ class Login extends Component{
                     <br/>
                     <div>
                         <button id="signIn" onClick={this.handleSignIn} disabled ={false}>Sign In</button>
-                        <button id="register" onClick={this.handleRegister} disabled ={false}>Register</button>
                         <button id="signOut" onClick={this.handleSignOut} disabled ={true}>Sign Out</button>
                     </div>
                     <br/>

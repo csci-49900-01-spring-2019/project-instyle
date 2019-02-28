@@ -12,6 +12,9 @@ img{
     top: 0px;
 }
 
+li{
+    list-style-type: none;
+}
 .authButton{
     background-color: white;
     color: black;

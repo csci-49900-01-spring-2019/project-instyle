@@ -17,7 +17,7 @@ class Header extends Component{
 
     renderContent(){
         //make switch statement for logout
-       return <p><a className="authButton"><NavLink to = "/login">SignUp/SignIn</NavLink></a></p>
+       return <ul><li><a className="authButton"><NavLink to = "/login">SignIn</NavLink></a></li><li><a className="authButton"><NavLink to = "/register">SignUp</NavLink></a></li></ul>
     }
 
     render(){
@@ -25,9 +25,9 @@ class Header extends Component{
           <div className="header">
               {this.renderContent()}
                 <img src={logo} alt="InStyle"/>
-              {/*<p className="logo">LOGO</p>*/}
+
               <br />
-              {/*<p className="header"></p>*/}
+
 
 
           </div>
