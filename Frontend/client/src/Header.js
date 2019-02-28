@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {NavLink} from "react-router-dom";
 import "./Styles/Header.css";
+import logo from './assets/Logo.png';
 
 class Header extends Component{
     constructor(props){
@@ -16,15 +17,15 @@ class Header extends Component{
 
     renderContent(){
         //make switch statement for logout
-       return <li><a className="authButton"><NavLink to = "/login">SignUp/SignIn</NavLink></a></li>
+       return <p><a className="authButton"><NavLink to = "/login">SignUp/SignIn</NavLink></a></p>
     }
 
     render(){
         return(
           <div className="header">
               {this.renderContent()}
-
-              <p className="logo">LOGO</p>
+                <img src={logo} alt="InStyle"/>
+              {/*<p className="logo">LOGO</p>*/}
               <br />
               {/*<p className="header"></p>*/}
 

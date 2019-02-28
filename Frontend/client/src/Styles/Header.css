@@ -1,13 +1,15 @@
 .header {
     overflow: hidden;
-    background-color: #000000;
-    padding: 20px 10px;
+    background-color: rgb(178, 211, 238);
+    padding: 0px 10px;
 }
 
-.logo{
-    font-size: 25px;
-    font-weight: bold;
-    color: white;
+img{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    position: relative;
+    top: 0px;
 }
 
 .authButton{
