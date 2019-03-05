@@ -14,7 +14,7 @@ class Signup extends Component{
                     </div>
                     <div className="submission">
                         <label for="password">Password</label>
-                        <input className="inputRegister" id="password" type="text"/>
+                        <input className="inputRegister" id="password" type="password"/>
                     </div>
                     <br/>
                      <div className="registerButton">
