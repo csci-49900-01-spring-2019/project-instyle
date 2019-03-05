@@ -38,11 +38,11 @@ label {
 }
 
 .inputRegister:focus{
-    border-color: rgb(178, 211, 238);
-    background-color: rgb(178, 211, 238);
+    border-color: rgb(146, 199, 243);
+    /*background-color: rgb(178, 211, 238);*/
     color: maroon;
     outline: none;
-    box-shadow: 0px 10px 20px -8px rgba(71, 171, 253, 0.7);
+    box-shadow: 0px 10px 20px -8px rgba(71, 171, 253, 0.4);
 }
 
 .message{
