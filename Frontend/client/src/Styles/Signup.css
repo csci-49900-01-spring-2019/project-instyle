@@ -1,10 +1,15 @@
 .registerForm {
     max-width: 400px;
     margin: 2rem auto;
-    border: 5px solid rgb(178, 211, 238);
+    border: 5px solid rgb(194, 194, 194);
     padding: 2rem;
-    background-color: rgb(156, 156, 156);
-    
+    background-color: rgb(194, 194, 194);
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0, .9);
+}
+
+body{
+    background-color: rgb(228, 228, 228);
+    margin: 0px;
 }
 
 .submission {
@@ -21,7 +26,7 @@ label {
     padding-bottom: 5px; 
 }
 
-.password{
+.inputRegister{
     width: 380px;
     height: 20px;
     font-size: 15px;
@@ -32,7 +37,7 @@ label {
     transition: all .3s ease-in-out;
 }
 
-.password:focus{
+.inputRegister:focus{
     border-color: rgb(178, 211, 238);
     background-color: rgb(178, 211, 238);
     color: maroon;
@@ -40,26 +45,9 @@ label {
     box-shadow: 0px 10px 20px -8px rgba(71, 171, 253, 0.7);
 }
 
-.email{
-    width: 380px;
-    height: 20px;
-    font-size: 15px;
-    padding: 4px 0px;
-    border-color: transparent;
-    border-radius: 5px;
-    box-shadow: 0 10px 20px -8px rgba(0, 0, 0, .7);
-    transition: all .3s ease-in-out;  
-}
-
-.email:focus{
-    border-color: rgb(178, 211, 238);
-    background-color: rgb(178, 211, 238);
-    box-shadow: 0px 10px 20px -8px rgba(71, 171, 253, 0.7);
-    outline: none;
-}
-
 .message{
-    display:none;
+    background-color:rgb(194, 194, 194);
+    border:none;
     color: red;
 }
 

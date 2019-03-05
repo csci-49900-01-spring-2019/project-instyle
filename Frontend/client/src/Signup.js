@@ -10,11 +10,11 @@ class Signup extends Component{
                 <form className="registerForm">
                     <div className="submission">
                         <label for="email">Email</label>
-                        <input className="email" id="email" type="text"/>
+                        <input className="inputRegister" id="email" type="text"/>
                     </div>
                     <div className="submission">
                         <label for="password">Password</label>
-                        <input className="password" id="password" type="text"/>
+                        <input className="inputRegister" id="password" type="text"/>
                     </div>
                     <br/>
                      <div className="registerButton">
