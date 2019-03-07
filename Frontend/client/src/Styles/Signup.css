@@ -1,0 +1,103 @@
+.registerForm {
+    max-width: 400px;
+    margin: 2rem auto;
+    border: 5px solid rgb(194, 194, 194);
+    padding: 2rem;
+    background-color: rgb(194, 194, 194);
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0, .9);
+}
+
+body{
+    background-color: rgb(228, 228, 228);
+    margin: 0px;
+}
+
+.submission {
+padding: 10px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    font-family:'Roboto Slab',Georgia,"Times New Roman",serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: maroon;
+    padding-bottom: 5px; 
+}
+
+.inputRegister{
+    width: 380px;
+    height: 20px;
+    font-size: 15px;
+    padding: 4px 0px;
+    border-color: transparent;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0, .7);
+    transition: all .3s ease-in-out;
+}
+
+.inputRegister:focus{
+    border-color: rgb(146, 199, 243);
+    /*background-color: rgb(178, 211, 238);*/
+    color: maroon;
+    outline: none;
+    box-shadow: 0px 10px 20px -8px rgba(71, 171, 253, 0.4);
+}
+
+.message{
+    background-color:rgb(194, 194, 194);
+    border:none;
+    color: red;
+}
+
+.registerButton{
+    padding: 10px;
+}
+.submitButton {
+    border-radius: 5px;
+    background-color: rgb(178, 211, 238);       
+    border: none;
+    color: maroon;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    width: 100px;
+    transition: all 0.5;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: "Open Sans",Arial, Helvetica, sans-serif;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0, .7);
+  }
+  
+.submitButton {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  
+  
+.submitButton:after {
+      content: '»';
+      position: absolute;
+      opacity: 0;  
+      top: 10px;
+      right: -2px;
+      transition: 0.5s;
+    }
+  
+  
+  
+.submitButton:hover{
+      color: maroon;
+      padding-right: 15px;
+      padding-left: 1px;
+  }
+  
+.submitButton:hover:after {
+    opacity: 1;
+    right: 10px;
+  }
