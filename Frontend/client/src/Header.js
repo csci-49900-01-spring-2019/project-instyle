@@ -28,8 +28,6 @@ class Header extends Component{
 
               <br />
 
-
-
           </div>
         );
     }
