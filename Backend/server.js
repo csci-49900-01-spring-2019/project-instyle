@@ -1,6 +1,7 @@
 const express = require('express');
 var bodyParser = require('body-parser');
 var firebase = require("firebase");
+var jwt = require('jsonwebtoken');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -33,9 +34,12 @@ app.post('/auth', urlencodedParser, function (req, res) {
    // Prepare output in JSON format
    const promise = firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password)
 	.then(function(firebaseUser) {
+		var jwtToken = jwt.sign({
+			uid: firebaseUser.user.uid
+		}, 'secret', { expiresIn: '1h' });
 		response = {
 			isAuth: true,
-			uid: firebaseUser.user.uid
+			token: jwtToken
 		};
 		res.end(JSON.stringify(response));
 	})
@@ -46,6 +50,23 @@ app.post('/auth', urlencodedParser, function (req, res) {
 		};
 		res.end(JSON.stringify(response));
 		});
+})
+
+app.post('/test', urlencodedParser, function (req, res) {
+	console.log(req.body);
+	jwt.verify(req.body.token, 'secret', function(err, decoded) {
+		if(err != null){
+			response = {
+				message: 'failed'
+			};
+		}
+		else{
+			response = {
+				message: 'successful'
+			};
+		}
+		res.end(JSON.stringify(response));
+	});
 })
 
 app.post('/register', urlencodedParser, function (req, res) {
