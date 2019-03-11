@@ -17,7 +17,7 @@ class Header extends Component{
 
     renderContent(){
         //make switch statement for logout
-       return <ul><li><a className="authButton"><NavLink to = "/login">SignIn</NavLink></a></li><li><a className="authButton"><NavLink to = "/register">SignUp</NavLink></a></li></ul>
+       return <ul><li><a className="authButton" href = "/login">SignIn</a></li><li><a className="authButton" href = "/register">SignUp</a></li></ul>
     }
 
     render(){
@@ -27,8 +27,6 @@ class Header extends Component{
                 <NavLink to = "/"><img src={logo} alt="InStyle"/></NavLink>
 
               <br />
-
-
 
           </div>
         );
