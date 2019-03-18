@@ -62,24 +62,47 @@ class Login extends Component{
 
 	render(){
 		return(
-			<div>
-				<form className="signUpForm">
-					<div>
-						<input name="email" type="text"  value={this.state.email} placeholder="Email" onChange={this.handleChange.bind(this)}/>
-					</div>
-					<div>
-						<input name="password" autoComplete="new-password" type="password" value={this.state.password} placeholder="Password" onChange={this.handleChange.bind(this)}/>
-					</div>
-					<br/>
-					<div>
-						<button id="signIn" onClick={this.handleSubmit.bind(this)} >Sign In</button>
-						<button id="signOut" onClick={this.handleSignOut.bind(this)} >Sign Out</button>
-					</div>
-					<br/>
-					<div>
-						<input id="message" readOnly={true} value={this.state.message}  size="30"/>
-					</div>
-				</form>
+			<div className="loginForm">
+				<h5 className="signin-header" ><strong>Log-In</strong></h5>
+				<div className="signin-body">
+					<form className="signin-form">
+					
+						<div className="input-form">
+							<input className="form-control" id="email-form" name="email" type="email"  value={this.state.email} onChange={this.handleChange.bind(this)}/>
+							<label for="email-form" className="lable-control"> E-mail </label>
+						</div>
+
+						<div className="input-form">
+							<input className="form-control" id="password-form" name="password" autoComplete="new-password" type="password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
+							<label for="password-form" className="lable-control"> Password </label>
+						</div>
+						<div>
+							<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.message}  size="30"/>
+						</div>
+						<br/>
+						<button className="signin-button" type="submit" id="signIn" onClick={this.handleSubmit.bind(this)} >Sign In</button>
+						{/*<button id="signOut" onClick={this.handleSignOut.bind(this)} >Sign Out</button>*/}
+
+						<p>
+							<div>
+								<a className="forget-password" href="">Forget Password?</a>
+							</div>
+							Not a member? 
+							<a href="/register">  Register</a>
+						</p>
+			
+
+
+
+
+
+
+
+
+
+
+					</form>
+				</div>
 			</div>
 		);
 	}
