@@ -10,6 +10,10 @@ class Signup extends Component{
             uid:'',
             email:"",
             password:"",
+            verifyPassword:"",
+            firstName:"",
+            lastName:"",
+            userName:"",
             isAuth:false,
             message:""
         }
@@ -27,7 +31,12 @@ class Signup extends Component{
         console.log("Signing Up")
         axios.post("/register",{
             email:this.state.email,
-            password:this.state.password
+            password:this.state.password,
+            verifyPassword:this.state.verifyPassword,
+            firstName:this.state.firstName,
+            lastName:this.state.lastName,
+            userName:this.state.userName,
+
         })
             .then(response => {
                 console.log(response);
@@ -36,7 +45,7 @@ class Signup extends Component{
                         {
                             isAuth: response.data.isAuth,
                             uid: response.data.uid,
-                            message: "Welcome " + this.state.email
+                            message: "Welcome " + this.state.firstName
                         }
                     )
                 } else {
@@ -48,6 +57,9 @@ class Signup extends Component{
                         }
                     )
                 }
+                console.log("firstname: ", this.state.firstName)
+                console.log("lastname: ", this.state.lastName)
+                console.log("userName: ", this.state.userName)
                 console.log("isAuth: ", this.state.isAuth)
                 console.log("uid: ", this.state.uid)
             }).catch(function (error) {
@@ -59,12 +71,28 @@ class Signup extends Component{
             <div>
                 <form className="registerForm">
                     <div className="submission">
+                        <label htmlFor="firstname">First Name</label>
+                        <input className="inputRegister" name="firstName" type="text" value={this.state.firstName} placeholder="First Name" onChange={this.handleChange.bind(this)}/>
+                    </div>
+                    <div className="submission">
+                        <label htmlFor="lastname">Last Name</label>
+                        <input className="inputRegister"  name="lastName" type="text" value={this.state.lastName} placeholder="Last Name" onChange={this.handleChange.bind(this)}/>
+                    </div>
+                    <div className="submission">
+                        <label htmlFor="username">User Name</label>
+                        <input className="inputRegister"  name="userName" type="text" value={this.state.userName} placeholder="User Name" onChange={this.handleChange.bind(this)}/>
+                    </div>
+                    <div className="submission">
                         <label htmlFor="email">Email</label>
                         <input className="inputRegister" autoComplete="username email" name="email" type="text" value={this.state.email} placeholder="Email" onChange={this.handleChange.bind(this)}/>
                     </div>
                     <div className="submission">
                         <label htmlFor="password">Password</label>
                         <input className="inputRegister" autoComplete="new-password" name="password" type="password" value={this.state.password} placeholder="Password" onChange={this.handleChange.bind(this)}/>
+                    </div>
+                    <div className="submission">
+                        <label htmlFor="verifypassword">Verify Password</label>
+                        <input className="inputRegister" name="verifyPassword" autoComplete="new-password" type="password" value={this.state.verifyPassword} placeholder="Password" onChange={this.handleChange.bind(this)}/>
                     </div>
                     <br/>
                      <div className="registerButton">
