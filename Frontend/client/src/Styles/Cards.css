@@ -1,0 +1,10 @@
+.Cards{
+    background: #fff;
+    padding: 2rem;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: -1px 2px 34px -13px rgba(0,0,0,0.75);
+    text-align: left;
+    overflow: hidden;
+    border:grey solid 2px;
+}
