@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import "./Styles/Cards.css"
 import  shoes from "./assets/shoes.png"
-import Input from "reactstrap/es/Input";
 
 class Cards extends Component {
     render(){
@@ -12,7 +11,7 @@ class Cards extends Component {
                 <form>
                     <div>
                         <label>Price: </label>
-                        <Input type="text"/>
+
                     </div>
                 </form>
                 <button>BUY</button>
