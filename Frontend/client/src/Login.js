@@ -10,7 +10,8 @@ class Login extends Component{
 			email:"",
 			password:"",
 			isAuth:false,
-			message:""
+			message:"",
+
 		}
 
 
@@ -37,6 +38,7 @@ class Login extends Component{
 							isAuth: response.data.isAuth,
 							uid: response.data.uid,
 							message: "Welcome " + this.state.email
+
 						}
 					)
 				} else {

@@ -11,9 +11,9 @@ class Signup extends Component{
             email:"",
             password:"",
             verifyPassword:"",
-            firstName:"",
-            lastName:"",
-            userName:"",
+            first_name:"",
+            last_name:"",
+            user_name:"",
             isAuth:false,
             message:""
         }
@@ -32,10 +32,9 @@ class Signup extends Component{
         axios.post("/register",{
             email:this.state.email,
             password:this.state.password,
-            verifyPassword:this.state.verifyPassword,
-            firstName:this.state.firstName,
-            lastName:this.state.lastName,
-            userName:this.state.userName,
+            first_name:this.state.first_name,
+            last_name:this.state.last_name,
+            user_name:this.state.user_name,
 
         })
             .then(response => {
@@ -45,7 +44,7 @@ class Signup extends Component{
                         {
                             isAuth: response.data.isAuth,
                             uid: response.data.uid,
-                            message: "Welcome " + this.state.firstName
+                            message: "Welcome " + this.state.first_name
                         }
                     )
                 } else {
@@ -57,9 +56,9 @@ class Signup extends Component{
                         }
                     )
                 }
-                console.log("firstname: ", this.state.firstName)
-                console.log("lastname: ", this.state.lastName)
-                console.log("userName: ", this.state.userName)
+                console.log("firstname: ", this.state.first_name)
+                console.log("lastname: ", this.state.last_name)
+                console.log("userName: ", this.state.user_name)
                 console.log("isAuth: ", this.state.isAuth)
                 console.log("uid: ", this.state.uid)
             }).catch(function (error) {
