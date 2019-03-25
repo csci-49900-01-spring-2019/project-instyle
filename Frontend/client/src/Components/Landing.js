@@ -1,8 +1,8 @@
 //Frontend/client/src/App.js
 import React, { Component } from "react";
 
-import "./Styles/Landing.css"
-import "./Styles/Header.css"
+import "../Styles/Landing.css"
+import "../Styles/Header.css"
 
 
 import Cards from "./Cards.js"
