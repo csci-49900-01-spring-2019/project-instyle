@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Styles/Signup.css"
+import "../Styles/Signup.css"
 import axios from "axios";
 
 

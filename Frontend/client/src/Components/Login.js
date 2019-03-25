@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Styles/Login.css"
+import "../Styles/Login.css"
 import axios from "axios";
 
 class Login extends Component{

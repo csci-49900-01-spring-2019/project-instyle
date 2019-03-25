@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./Styles/Sidebar.css"
+import "../Styles/Sidebar.css"
 
 class SideBar extends Component {
     constructor(props){
