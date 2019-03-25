@@ -32,10 +32,9 @@ class Signup extends Component{
         axios.post("/register",{
             email:this.state.email,
             password:this.state.password,
-            first_name:this.state.first_name,
-            last_name:this.state.last_name,
             user_name:this.state.user_name,
-
+            first_name:this.state.first_name,
+            last_name:this.state.last_name
         })
             .then(response => {
                 console.log(response);
@@ -56,6 +55,8 @@ class Signup extends Component{
                         }
                     )
                 }
+                console.log("username: ", this.state.user_name)
+                console.log("email: ", this.state.email)
                 console.log("firstname: ", this.state.first_name)
                 console.log("lastname: ", this.state.last_name)
                 console.log("userName: ", this.state.user_name)
@@ -67,23 +68,23 @@ class Signup extends Component{
     }
    render(){
         return(
-            <div className="registerForm">
+   <div className="registerForm">
             <h5 className="register-header" ><strong>Register</strong></h5>
             <div className="register-body">
                 <form className="register-form">
                 
                     <div className="input-form-name">
-                        <input className="form-control-name" name="firstName" type="text" value={this.state.firstName}  onChange={this.handleChange.bind(this)}/>
+                        <input className="form-control-name" name="first_name" type="text" value={this.state.first_name}  onChange={this.handleChange.bind(this)}/>
                         <label className="lable-control" htmlFor="firstname">First Name</label>
                     </div>
 
                     <div className="input-form-name" id="name">
-                        <input className="form-control-name"  name="lastName" type="text" value={this.state.lastName}  onChange={this.handleChange.bind(this)}/>
+                        <input className="form-control-name"  name="last_name" type="text" value={this.state.last_name}  onChange={this.handleChange.bind(this)}/>
                         <label className="lable-control" htmlFor="lastname">Last Name</label>
                     </div>
 
                     <div className="input-form">
-                        <input className="form-control"  name="userName" type="text" value={this.state.userName}  onChange={this.handleChange.bind(this)}/>
+                        <input className="form-control"  name="user_name" type="text" value={this.state.user_name}  onChange={this.handleChange.bind(this)}/>
                         <label className="lable-control" htmlFor="username">User Name</label>
                     </div>
 
