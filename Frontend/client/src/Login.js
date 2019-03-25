@@ -11,10 +11,8 @@ class Login extends Component{
 			password:"",
 			isAuth:false,
 			message:"",
-
+			token:""
 		}
-
-
 	}
 	handleChange(evt){
 		this.setState({[evt.target.name]:evt.target.value});
@@ -36,6 +34,7 @@ class Login extends Component{
 					this.setState(
 						{
 							isAuth: response.data.isAuth,
+							token:response.data.token,
 							uid: response.data.uid,
 							message: "Welcome " + this.state.email
 
@@ -52,6 +51,7 @@ class Login extends Component{
 				}
 				console.log("isAuth: ", this.state.isAuth)
 				console.log("uid: ", this.state.uid)
+				console.log("token: ", this.state.token)
 			}).catch(function (error) {
 			console.log("Authorization failed: "+ error.message);
 		})

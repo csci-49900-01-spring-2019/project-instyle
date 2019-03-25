@@ -51,6 +51,7 @@
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 12px;
+    margin-left: 50%;
 }
 
 .searchinput{
@@ -73,14 +74,14 @@
     font-size: 30px;
 }
 
-.sidebar{
-    height: 100%;
-    width: 160px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color:aliceblue;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
+/*.sidebar{*/
+    /*height: 100%;*/
+    /*width: 160px;*/
+    /*position: fixed;*/
+    /*z-index: 1;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*background-color:aliceblue;*/
+    /*overflow-x: hidden;*/
+    /*padding-top: 20px;*/
+/*}*/

@@ -32,10 +32,9 @@ class Signup extends Component{
         axios.post("/register",{
             email:this.state.email,
             password:this.state.password,
-            first_name:this.state.first_name,
-            last_name:this.state.last_name,
             user_name:this.state.user_name,
-
+            first_name:this.state.first_name,
+            last_name:this.state.last_name
         })
             .then(response => {
                 console.log(response);
@@ -56,6 +55,8 @@ class Signup extends Component{
                         }
                     )
                 }
+                console.log("username: ", this.state.user_name)
+                console.log("email: ", this.state.email)
                 console.log("firstname: ", this.state.first_name)
                 console.log("lastname: ", this.state.last_name)
                 console.log("userName: ", this.state.user_name)
@@ -71,15 +72,15 @@ class Signup extends Component{
                 <form className="registerForm">
                     <div className="submission">
                         <label htmlFor="firstname">First Name</label>
-                        <input className="inputRegister" name="firstName" type="text" value={this.state.firstName} placeholder="First Name" onChange={this.handleChange.bind(this)}/>
+                        <input className="inputRegister" name="first_name" type="text" value={this.state.first_name} placeholder="First Name" onChange={this.handleChange.bind(this)}/>
                     </div>
                     <div className="submission">
                         <label htmlFor="lastname">Last Name</label>
-                        <input className="inputRegister"  name="lastName" type="text" value={this.state.lastName} placeholder="Last Name" onChange={this.handleChange.bind(this)}/>
+                        <input className="inputRegister"  name="last_name" type="text" value={this.state.last_name} placeholder="Last Name" onChange={this.handleChange.bind(this)}/>
                     </div>
                     <div className="submission">
                         <label htmlFor="username">User Name</label>
-                        <input className="inputRegister"  name="userName" type="text" value={this.state.userName} placeholder="User Name" onChange={this.handleChange.bind(this)}/>
+                        <input className="inputRegister"  name="user_name" type="text" value={this.state.user_name} placeholder="User Name" onChange={this.handleChange.bind(this)}/>
                     </div>
                     <div className="submission">
                         <label htmlFor="email">Email</label>

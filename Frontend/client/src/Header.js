@@ -17,7 +17,7 @@ class Header extends Component{
 
     renderContent(){
         //make switch statement for logout
-       return <ul><li><a className="authButton" href = "/login">SignIn</a></li><li><a className="authButton" href = "/register">SignUp</a></li></ul>
+       return <ul><li><a className="authButton" href = "/login">Login</a></li><li><a className="authButton" href = "/register">SignUp</a></li></ul>
     }
 
     render(){
