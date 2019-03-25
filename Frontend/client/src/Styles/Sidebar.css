@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+
 .sidebar{
     position: fixed;
     width: 200px;
@@ -17,8 +19,9 @@
 .sidebar ul li{
     list-style: none;
     padding: 15px 10px;
-    /*border-bottom: 1px solid rgba(100,100,100,0.3);*/
-
+    border-bottom: 1px solid rgba(100,100,100,0.3);
+    font-family: 'Satisfy', cursive;
+    font-size: large;
 }
 
 .sidebar ul{
@@ -44,6 +47,8 @@
     margin: 35px;
     color: darkslategray;
     text-align: center;
+    font-family: 'Satisfy', cursive;
+    font-size: x-large;
 }
 
 .eachLi:hover{
