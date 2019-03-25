@@ -68,42 +68,50 @@ class Signup extends Component{
     }
    render(){
         return(
-            <div>
-                <form className="registerForm">
-                    <div className="submission">
-                        <label htmlFor="firstname">First Name</label>
-                        <input className="inputRegister" name="first_name" type="text" value={this.state.first_name} placeholder="First Name" onChange={this.handleChange.bind(this)}/>
+   <div className="registerForm">
+            <h5 className="register-header" ><strong>Register</strong></h5>
+            <div className="register-body">
+                <form className="register-form">
+                
+                    <div className="input-form-name">
+                        <input className="form-control-name" name="first_name" type="text" value={this.state.first_name}  onChange={this.handleChange.bind(this)}/>
+                        <label className="lable-control" htmlFor="firstname">First Name</label>
                     </div>
-                    <div className="submission">
-                        <label htmlFor="lastname">Last Name</label>
-                        <input className="inputRegister"  name="last_name" type="text" value={this.state.last_name} placeholder="Last Name" onChange={this.handleChange.bind(this)}/>
+
+                    <div className="input-form-name" id="name">
+                        <input className="form-control-name"  name="last_name" type="text" value={this.state.last_name}  onChange={this.handleChange.bind(this)}/>
+                        <label className="lable-control" htmlFor="lastname">Last Name</label>
                     </div>
-                    <div className="submission">
-                        <label htmlFor="username">User Name</label>
-                        <input className="inputRegister"  name="user_name" type="text" value={this.state.user_name} placeholder="User Name" onChange={this.handleChange.bind(this)}/>
+
+                    <div className="input-form">
+                        <input className="form-control"  name="user_name" type="text" value={this.state.user_name}  onChange={this.handleChange.bind(this)}/>
+                        <label className="lable-control" htmlFor="username">User Name</label>
                     </div>
-                    <div className="submission">
-                        <label htmlFor="email">Email</label>
-                        <input className="inputRegister" autoComplete="username email" name="email" type="text" value={this.state.email} placeholder="Email" onChange={this.handleChange.bind(this)}/>
+
+                    <div className="input-form">
+                        <input className="form-control" autoComplete="username email" name="email" type="text" value={this.state.email}  onChange={this.handleChange.bind(this)}/>
+                        <label className="lable-control" htmlFor="email">Email</label>
                     </div>
-                    <div className="submission">
-                        <label htmlFor="password">Password</label>
-                        <input className="inputRegister" autoComplete="new-password" name="password" type="password" value={this.state.password} placeholder="Password" onChange={this.handleChange.bind(this)}/>
+
+                    <div className="input-form">
+                        <input className="form-control" autoComplete="new-password" name="password" type="password" value={this.state.password}  onChange={this.handleChange.bind(this)}/>
+                        <label className="lable-control" htmlFor="password">Password</label>
                     </div>
-                    <div className="submission">
-                        <label htmlFor="verifypassword">Verify Password</label>
-                        <input className="inputRegister" name="verifyPassword" autoComplete="new-password" type="password" value={this.state.verifyPassword} placeholder="Password" onChange={this.handleChange.bind(this)}/>
+
+                    <div className="input-form">
+                        <input className="form-control" name="verifyPassword" autoComplete="new-password" type="password" value={this.state.verifyPassword}  onChange={this.handleChange.bind(this)}/>
+                        <label className="lable-control" htmlFor="verifypassword">Verify Password</label>
                     </div>
-                    <br/>
-                     <div className="registerButton">
-                        <button className="submitButton" onClick={this.handleSubmit.bind(this)}>Register</button>
-                    </div>
-                    <br/>
+
                     <div>
-                        <input className="message" type="text" readOnly={true} value={this.state.message} size="30"/>
+                        <input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.message}  size="30"/>
                     </div>
+                    <br/>
+                    <button className="register-button" type="submit" id="signIn" onClick={this.handleSubmit.bind(this)} >Register</button>
+                    {/*<button id="signOut" onClick={this.handleSignOut.bind(this)} >Sign Out</button>*/}
                 </form>
             </div>
+        </div> 
         );
     }
 }

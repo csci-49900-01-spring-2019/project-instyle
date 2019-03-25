@@ -71,12 +71,12 @@ class Login extends Component{
 					
 						<div className="input-form">
 							<input className="form-control" id="email-form" name="email" type="email"  value={this.state.email} onChange={this.handleChange.bind(this)}/>
-							<label for="email-form" className="lable-control"> E-mail </label>
+							<label htmlFor="email-form" className="lable-control"> E-mail </label>
 						</div>
 
 						<div className="input-form">
 							<input className="form-control" id="password-form" name="password" autoComplete="new-password" type="password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
-							<label for="password-form" className="lable-control"> Password </label>
+							<label htmlFor="password-form" className="lable-control"> Password </label>
 						</div>
 						<div>
 							<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.message}  size="30"/>
@@ -92,17 +92,6 @@ class Login extends Component{
 							Not a member? 
 							<a href="/register">  Register</a>
 						</p>
-			
-
-
-
-
-
-
-
-
-
-
 					</form>
 				</div>
 			</div>
