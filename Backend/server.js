@@ -149,11 +149,24 @@ app.post('/addPosting', urlencodedParser, function (req, res) {
 			res.end(JSON.stringify(response));
 		}
 		else{
+			var sss = req.body.size;
 			var data = {
 				uid: decoded.uid,
 				product_name: req.body.product_name,
 				price: req.body.price,
-				description: req.body.description
+				size: req.body.size,
+				brand: req.body.brand,
+				gender: req.body.gender,
+				category: req.body.category,
+				description: req.body.description,
+				tags: 
+				{
+					['name_' + req.body.product_name]: true,
+					['size_' + req.body.size]: true,
+					['brand_' + req.body.brand]: true,
+					['gender_' + req.body.gender]: true,
+					['category_' + req.body.category]: true
+				}
 			};
 			db.collection('posting').doc().set(data).then(function(){
 				response = {
@@ -181,7 +194,29 @@ app.post('/searchPosting', urlencodedParser, function (req, res) {
 			res.end(JSON.stringify(response));
 		}
 		else{
-			db.collection('posting').where('product_name','==',req.body.product_name).get().then(snapshot => {
+			var ref = db.collection('posting');
+			
+			const p_name = req.body.product_name;
+			const p_gender = req.body.gender;
+			const p_brand = req.body.brand;
+			const p_category = req.body.category;
+			if(p_name!= null)
+			{
+				ref = ref.where('tags.name_' + p_name,'==',true);
+			}
+			if(p_gender != null)
+			{
+				ref = ref.where('tags.gender_' + p_gender,'==',true);
+			}
+			if(p_brand != null)
+			{
+				ref = ref.where('tags.brand_' + p_brand,'==',true);
+			}
+			if(p_category != null)
+			{
+				ref = ref.where('tags.category_' + p_category,'==',true);
+			}
+			ref.get().then(snapshot => {
 				if (snapshot.empty) {
 					response = {
 						success: false,
