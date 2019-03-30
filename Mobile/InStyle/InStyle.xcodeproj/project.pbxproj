@@ -58,6 +58,7 @@
 				15AB43F022494DB400C633B3 /* View */,
 				15AB43EF22494DAA00C633B3 /* Controller */,
 				15AB43E322494CEF00C633B3 /* Assets.xcassets */,
+				15AB43E822494CEF00C633B3 /* Info.plist */,
 				15AB43F122494DBA00C633B3 /* Supporting Files */,
 			);
 			path = InStyle;
@@ -73,8 +74,8 @@
 		15AB43EF22494DAA00C633B3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				15AB43E022494CEF00C633B3 /* Main.storyboard */,
-				15AB43E522494CEF00C633B3 /* LaunchScreen.storyboard */,
+				15AB43DC22494CEF00C633B3 /* AppDelegate.swift */,
+				15AB43DE22494CEF00C633B3 /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -82,8 +83,8 @@
 		15AB43F022494DB400C633B3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				15AB43DC22494CEF00C633B3 /* AppDelegate.swift */,
-				15AB43DE22494CEF00C633B3 /* ViewController.swift */,
+				15AB43E022494CEF00C633B3 /* Main.storyboard */,
+				15AB43E522494CEF00C633B3 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -91,7 +92,6 @@
 		15AB43F122494DBA00C633B3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				15AB43E822494CEF00C633B3 /* Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
