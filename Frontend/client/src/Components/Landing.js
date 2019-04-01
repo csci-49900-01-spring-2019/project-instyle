@@ -1,5 +1,6 @@
 //Frontend/client/src/App.js
 import React, { Component } from "react";
+import {NavLink} from "react-router-dom";
 
 import "../Styles/Landing.css"
 import "../Styles/Header.css"
@@ -8,7 +9,11 @@ import "../Styles/Header.css"
 import Cards from "./Cards.js"
 import Sidebar from "./Sidebar.js"
 
+
 class Landing extends Component {
+    constructor(props){
+        super(props)
+    }
 
     render() {
         return (
@@ -20,9 +25,17 @@ class Landing extends Component {
                 </div>
 
                 {/*<Cards/>*/}
+                {/*<Cards/>*/}
+                {/*<Cards/>*/}
+                {/*<Cards/>*/}
+                {/*<Cards/>*/}
+                {/*<Cards/>*/}
+                {/*<Cards/>*/}
+                {/*<Cards/>*/}
+
 
                 <div>
-                     <button className="postButton" >POST</button>
+                     <NavLink to = "/addItem" className="postButton" >POST</NavLink>
                 </div>
 
             </div>

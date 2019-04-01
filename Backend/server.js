@@ -149,11 +149,24 @@ app.post('/addPosting', urlencodedParser, function (req, res) {
 			res.end(JSON.stringify(response));
 		}
 		else{
+			var sss = req.body.size;
 			var data = {
 				uid: decoded.uid,
 				product_name: req.body.product_name,
 				price: req.body.price,
-				description: req.body.description
+				size: req.body.size,
+				brand: req.body.brand,
+				gender: req.body.gender,
+				category: req.body.category,
+				description: req.body.description,
+				tags:
+					{
+						['name_' + req.body.product_name]: true,
+						['size_' + req.body.size]: true,
+						['brand_' + req.body.brand]: true,
+						['gender_' + req.body.gender]: true,
+						['category_' + req.body.category]: true
+					}
 			};
 			db.collection('posting').doc().set(data).then(function(){
 				response = {
@@ -170,7 +183,6 @@ app.post('/addPosting', urlencodedParser, function (req, res) {
 		}
 	});
 })
-
 app.post('/searchPosting', urlencodedParser, function (req, res) {
 	jwt.verify(req.body.token, 'secret', function(err, decoded) {
 		if(err != null){

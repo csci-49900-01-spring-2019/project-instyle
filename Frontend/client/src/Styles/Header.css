@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+
 .header {
     overflow: hidden;
     background-color: #6bc7e9;
@@ -30,6 +32,7 @@ li{
     cursor: pointer;
     float: right;
     border-radius: 12px;
+    font-family: 'Satisfy', cursive;
 
 }
 

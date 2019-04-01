@@ -48,6 +48,14 @@
     color: darkslategray;
     text-align: center;
     font-family: 'Satisfy', cursive;
+    font-size: 29px;
+}
+
+.gender{
+    margin: 35px;
+    color: darkslategray;
+    text-align: center;
+    font-family: 'Satisfy', cursive;
     font-size: x-large;
 }
 
@@ -55,5 +63,14 @@
     background-color: #6bc7e9;
     padding: 0px;
 
+}
+
+.wrappingCategories{
+    margin-left: 30px;
+    /*text-align: right!important;*/
+}
+
+.genderLi{
+    font-size: 29px !important;
 }
 

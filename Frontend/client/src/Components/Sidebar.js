@@ -27,26 +27,53 @@ class SideBar extends Component {
                      <span className="eachSpan"></span>
                  </div>
                  <div className="classCat">
-                    <h3 className="categories">Categories</h3>
+                     <h3 className="categories">Categories</h3>
                  </div>
-                 <ul >
-                     <div className="eachLi">
-                         <li><a  href="/tshirts">T-Shirts</a></li>
+                 <ul>
+                     <div>
+                        <div className="eachLi">
+                            <li className="genderLi"><a  href="/male">Male</a></li>
+                        </div>
+                         <ul className="wrappingCategories">
+                             <div className="eachLi">
+                                 <li><a  href="/male/tshirts">T-Shirts</a></li>
+                             </div>
+                             <div className="eachLi">
+                                 <li><a  href="/male/shirts">Shirts</a></li>
+                             </div>
+                             <div className="eachLi">
+                                 <li><a  href="/male/pants">Pants</a></li>
+                             </div>
+                             <div className="eachLi">
+                                 <li><a  href="/male/shoes">Shoes</a></li>
+                             </div>
+                         </ul>
                      </div>
-                     <div className="eachLi">
-                         <li><a  href="/shirts">Shirts</a></li>
-                     </div>
-                     <div className="eachLi">
-                         <li><a  href="/pants">Pants</a></li>
-                     </div>
-                     <div className="eachLi">
-                         <li><a  href="/shoes">Shoes</a></li>
-                     </div>
-                 </ul>
+                     </ul>
+                     <ul>
+                         <div>
+                         <div className="eachLi">
+                            <li className="genderLi"><a  href="/female">Female</a></li>
+                         </div>
+                         <ul className="wrappingCategories">
+                             <div className="eachLi">
+                                 <li><a  href="/female/tshirts">T-Shirts</a></li>
+                             </div>
+                             <div className="eachLi">
+                                 <li><a  href="/female/shirts">Shirts</a></li>
+                             </div>
+                             <div className="eachLi">
+                                 <li><a  href="/female/pants">Pants</a></li>
+                             </div>
+                             <div className="eachLi">
+                                 <li><a  href="/female/shoes">Shoes</a></li>
+                             </div>
+                         </ul>
+                         </div>
+                     </ul>
              </div>
           </div>
         );
-
     }
 }
 
