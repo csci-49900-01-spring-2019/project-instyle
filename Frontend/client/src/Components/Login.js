@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../Styles/Login.css"
 import axios from "axios";
+import {connect} from 'react-redux';
 
 class Login extends Component{
 	constructor(props){
@@ -11,7 +12,7 @@ class Login extends Component{
 			password:"",
 			isAuth:false,
 			message:"",
-			token:""
+			// token:""
 		}
 	}
 	handleChange(evt){
@@ -34,7 +35,7 @@ class Login extends Component{
 					this.setState(
 						{
 							isAuth: response.data.isAuth,
-							token:response.data.token,
+							token:this.props.token,
 							uid: response.data.uid,
 							message: "Welcome " + this.state.email
 
@@ -51,7 +52,7 @@ class Login extends Component{
 				}
 				console.log("isAuth: ", this.state.isAuth)
 				console.log("uid: ", this.state.uid)
-				console.log("token: ", this.state.token)
+				 console.log("token: ", this.props.token)
 			}).catch(function (error) {
 			console.log("Authorization failed: "+ error.message);
 		})
@@ -63,6 +64,7 @@ class Login extends Component{
 	}
 
 	render(){
+
 		return(
 			<div className="loginForm">
 				<h5 className="signin-header" ><strong>Log-In</strong></h5>
@@ -99,4 +101,9 @@ class Login extends Component{
 	}
 }
 
-export default Login;
+const mapStateToProps = (state) =>{
+	return {
+		token: state.token
+	}
+}
+export default connect(mapStateToProps)(Login);
