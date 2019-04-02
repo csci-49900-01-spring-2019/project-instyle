@@ -24,8 +24,8 @@ class Landing extends Component {
                     <button className="searchbutton">Search</button>
                 </div>
 
-                {/*<Cards/>*/}
-                {/*<Cards/>*/}
+                <Cards/>
+                <Cards/>
                 {/*<Cards/>*/}
                 {/*<Cards/>*/}
                 {/*<Cards/>*/}

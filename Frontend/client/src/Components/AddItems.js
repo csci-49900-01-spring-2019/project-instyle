@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 
+
 import axios from "axios";
 import {connect} from 'react-redux';
 
+
+import "../Styles/AddItems.css";
+import shirts from "../assets/shirts.jpg";
 
 
 class AddItems extends Component{
@@ -48,38 +52,38 @@ class AddItems extends Component{
 
     render(){
         return(
-            <div>
-                <form>
-                    <div>
-                        <label htmlFor="product_name">Product Name</label>
-                        <input name="product_name" type="text" value={this.state.product_name}  onChange={this.handleChange.bind(this)}/>
+            <div className="Wrapper">
+                <form className="formWrapper">
+                    <div className="allDIvs">
+                        <label className="allLabels" htmlFor="product_name">Product Name:</label>
+                        <input className="allInputs" name="product_name" type="text" value={this.state.product_name}  onChange={this.handleChange.bind(this)}/>
                     </div>
-                    <div>
-                        <label htmlFor="price">Price</label>
-                        <input name="price" type="text" value={this.state.price}  onChange={this.handleChange.bind(this)}/>
+                    <div className="allDIvs">
+                        <label className="allLabels" htmlFor="price">Price:</label>
+                        <input className="allInputs" name="price" type="text" value={this.state.price}  onChange={this.handleChange.bind(this)}/>
                     </div>
-                    <div>
-                        <label htmlFor="size">Size</label>
-                        <input name="size" type="text" value={this.state.size}  onChange={this.handleChange.bind(this)}/>
+                    <div className="allDIvs">
+                        <label className="allLabels" htmlFor="size">Size:</label>
+                        <input className="allInputs" name="size" type="text" value={this.state.size}  onChange={this.handleChange.bind(this)}/>
                     </div>
-                    <div>
-                        <label htmlFor="brand">Brand</label>
-                        <input name="brand" type="text" value={this.state.brand}  onChange={this.handleChange.bind(this)}/>
+                    <div className="allDIvs">
+                        <label className="allLabels" htmlFor="brand">Brand:</label>
+                        <input className="allInputs" name="brand" type="text" value={this.state.brand}  onChange={this.handleChange.bind(this)}/>
                     </div>
-                    <div>
-                        <label htmlFor="gender">Gender</label>
-                        <input name="gender" type="text" value={this.state.gender}  onChange={this.handleChange.bind(this)}/>
+                    <div className="allDIvs">
+                        <label className="allLabels" htmlFor="gender">Gender:</label>
+                        <input className="allInputs" name="gender" type="text" value={this.state.gender}  onChange={this.handleChange.bind(this)}/>
                     </div>
-                    <div>
-                        <label htmlFor="category">Category</label>
-                        <input name="category" type="text" value={this.state.category}  onChange={this.handleChange.bind(this)}/>
+                    <div className="allDIvs">
+                        <label className="allLabels" htmlFor="category">Category:</label>
+                        <input className="allInputs" name="category" type="text" value={this.state.category}  onChange={this.handleChange.bind(this)}/>
                     </div>
-                    <div>
-                        <label htmlFor="description">Description</label>
-                        <input name="description" type="text" value={this.state.description}  onChange={this.handleChange.bind(this)}/>
+                    <div className="allDIvs">
+                        <label className="allLabels" htmlFor="description">Description:</label>
+                        <input className="allInputs" name="description" type="text" value={this.state.description}  onChange={this.handleChange.bind(this)}/>
                     </div>
-                    <div>
-                        <button onSubmit={this.handleSubmit.bind(this) }>ADD</button>
+                    <div className="allDIvs">
+                        <button className="submitButton" onSubmit={this.handleSubmit.bind(this) }>ADD</button>
                     </div>
                 </form>
             </div>

@@ -11,13 +11,17 @@
 /*}*/
 
 .cardsRows{
-    display: inline-block;
+    display: inline-flex;
     background-color: #fff;
     border: grey solid 2px;
     width: 33%;
     padding: 2rem;
     margin: 10px;
     box-shadow: -1px 2px 34px -13px rgba(0,0,0,0.75);
+}
+
+.cardsCols{
+    display: grid;
 }
 
 .priceInput{

@@ -1,0 +1,49 @@
+.Wrapper{
+    background-image: url("../assets/clothings.jpg");
+    /*filter: blur(2px);*/
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 10%;
+
+}
+
+.formWrapper{
+    /*background-color: peachpuff;*/
+    /*text-align: right;*/
+    background-color:#E6DEDB ;
+    color: snow;
+    text-align: right;
+    width: 350px;
+    height: 100%;
+    margin: 0 auto;
+    /*border: 5px solid;*/
+    /*border-color:E6DEDB ;*/
+    padding: 70px;
+
+}
+
+.eachDiv{
+    margin-bottom: 10px;
+}
+
+.allLabels{
+    font-family: Snell Roundhand, cursive;
+    color:black;
+}
+
+.allInputs{
+    margin-bottom: 10px;
+}
+
+.submitButton{
+    font-family: Snell Roundhand, cursive;
+    padding: 16px 32px;
+    left: 2px;
+    background-color: beige;
+    margin-left: 15ch;
+}
+

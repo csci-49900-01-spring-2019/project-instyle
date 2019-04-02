@@ -107,7 +107,7 @@ class Signup extends Component{
                         <input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.message}  size="30"/>
                     </div>
                     <br/>
-                    <button className="register-button" type="submit" id="signIn" onClick={this.handleSubmit.bind(this)} >Register</button>
+                    <button className="register-button" type="submit" id="signIn" onClick={this.handleSubmit.bind(this)} on>Register</button>
                     {/*<button id="signOut" onClick={this.handleSignOut.bind(this)} >Sign Out</button>*/}
                 </form>
             </div>
