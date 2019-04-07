@@ -115,7 +115,7 @@
         <!--Log In-->
         <scene sceneID="eMM-gF-TIN">
             <objects>
-                <viewController title="Log In" id="M0g-9m-UAd" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginView" title="Log In" id="M0g-9m-UAd" customClass="LoginViewController" customModule="InStyle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iYq-oD-cYv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -145,6 +145,9 @@
                                         <state key="normal" title="Log In">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginPressed:" destination="M0g-9m-UAd" eventType="touchUpInside" id="k1U-mP-jig"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -165,6 +168,10 @@
                         <viewLayoutGuide key="safeArea" id="30h-Sl-C50"/>
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="qqh-jl-N2y"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="r2R-mB-fea" id="nBb-aN-Yfg"/>
+                        <outlet property="passwordTextField" destination="HQ9-7Y-pTY" id="00V-lv-4cW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQj-eI-8gW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -173,7 +180,7 @@
         <!--Register-->
         <scene sceneID="fDc-rT-Ll5">
             <objects>
-                <viewController title="Register" id="OWl-3p-i0C" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registerView" title="Register" id="OWl-3p-i0C" customClass="RegisterViewController" customModule="InStyle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tGG-vj-kp8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -182,7 +189,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="redraw" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aVm-qV-j2f">
-                                <rect key="frame" x="12" y="83" width="350" height="298"/>
+                                <rect key="frame" x="12.5" y="83" width="350" height="298"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T7N-Xh-lmu">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
@@ -221,6 +228,9 @@
                                         <state key="normal" title="Register">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="registerPressed:" destination="OWl-3p-i0C" eventType="touchUpInside" id="rqs-xF-vqB"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -241,6 +251,13 @@
                         <viewLayoutGuide key="safeArea" id="UUc-9g-LnB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="ghO-EB-AFE"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="0DZ-F6-Ri7" id="Pgx-Js-I9K"/>
+                        <outlet property="firstNameTextField" destination="T7N-Xh-lmu" id="Nvo-X0-hFZ"/>
+                        <outlet property="lastNameTextField" destination="SHW-My-Ge8" id="MkH-X8-dnq"/>
+                        <outlet property="passwordTextField" destination="ea7-El-oXK" id="eRb-h2-gTU"/>
+                        <outlet property="usernameTextField" destination="ivm-7n-sY9" id="hvm-XY-WnE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ju0-dG-Fxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
