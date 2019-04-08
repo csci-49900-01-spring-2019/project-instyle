@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import "../Styles/Login.css"
+import {NavLink} from "react-router-dom";
 import axios from "axios";
+import {connect} from 'react-redux';
+import {getToken} from '../actions/authAction'
 
 class Login extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			uid:'',
+ 			uid:'',
 			email:"",
 			password:"",
 			isAuth:false,
 			message:"",
-			token:""
+			// token:""
 		}
 	}
 	handleChange(evt){
@@ -31,6 +34,7 @@ class Login extends Component{
 			.then(response => {
 				console.log(response);
 				if(response.data.isAuth) {
+					this.props.getToken(response.data);
 					this.setState(
 						{
 							isAuth: response.data.isAuth,
@@ -51,7 +55,7 @@ class Login extends Component{
 				}
 				console.log("isAuth: ", this.state.isAuth)
 				console.log("uid: ", this.state.uid)
-				console.log("token: ", this.state.token)
+				 console.log("token: ", this.props.token)
 			}).catch(function (error) {
 			console.log("Authorization failed: "+ error.message);
 		})
@@ -63,6 +67,7 @@ class Login extends Component{
 	}
 
 	render(){
+
 		return(
 			<div className="loginForm">
 				<h5 className="signin-header" ><strong>Log-In</strong></h5>
@@ -82,7 +87,7 @@ class Login extends Component{
 							<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.message}  size="30"/>
 						</div>
 						<br/>
-						<button className="signin-button" type="submit" id="signIn" onClick={this.handleSubmit.bind(this)} >Sign In</button>
+						<button className="signin-button" type="submit" id="signIn" onClick={this.handleSubmit.bind(this)}><NavLink to="/">Sign In</NavLink></button>
 						{/*<button id="signOut" onClick={this.handleSignOut.bind(this)} >Sign Out</button>*/}
 
 						<p>
@@ -99,4 +104,9 @@ class Login extends Component{
 	}
 }
 
-export default Login;
+const mapStateToProps = (state) =>{
+	return {
+		token: state.auth.token
+	}
+}
+export default connect(mapStateToProps,{getToken})(Login);

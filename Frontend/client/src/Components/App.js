@@ -5,6 +5,7 @@ import Header from './Header';
 import Login from "./Login";
 import Landing from "./Landing";
 import Signup from "./Signup";
+import AddItems from "./AddItems";
 
 class App extends Component {
     render(){
@@ -15,6 +16,8 @@ class App extends Component {
                     <Route exact path="/" component = {Landing} />
                     <Route exact path="/login" component = {Login} />
                     <Route exact path="/register" component = {Signup} />
+                    <Route exact path="/addItem" component = {AddItems} />
+
 
                 </div>
             </Router>
