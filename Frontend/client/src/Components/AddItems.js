@@ -109,7 +109,7 @@ class AddItems extends Component{
                         <input className="allInputs" name="description" type="text" value={this.state.description}  onChange={this.handleChange.bind(this)}/>
                     </div>
                     <div className="allDIvs">
-                        <button className="submitButton" type="submit" onClick={this.reset.bind(this)}>ADD</button>
+                        <button className="submitButton" type="submit">ADD</button>
                     </div>
                 </form>
             </div>
