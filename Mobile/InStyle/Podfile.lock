@@ -112,6 +112,7 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
   - SVProgressHUD (2.2.5)
+  - SwiftKeychainWrapper (3.2.0)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
@@ -122,6 +123,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - SVProgressHUD
+  - SwiftKeychainWrapper
   - SwiftyJSON
 
 SPEC REPOS:
@@ -145,6 +147,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SVProgressHUD
+    - SwiftKeychainWrapper
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -167,8 +170,9 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 22a597abfd5ebc6545abec463db7a974574ffe2f
+PODFILE CHECKSUM: a66b680af222b6bf3d57ce5dd22ae409bace1bed
 
 COCOAPODS: 1.6.1

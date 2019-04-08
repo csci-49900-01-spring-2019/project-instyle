@@ -14,5 +14,6 @@ target 'InStyle' do
   pod 'SwiftyJSON'
   pod 'Alamofire'
   pod 'SVProgressHUD'
-
+  pod 'SwiftKeychainWrapper'
+  
 end
