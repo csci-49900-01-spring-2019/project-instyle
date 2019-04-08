@@ -1,3 +1,4 @@
+const functions = require('firebase-functions');
 const express = require('express');
 var bodyParser = require('body-parser');
 var firebase = require("firebase");
@@ -161,11 +162,8 @@ app.post('/addPosting', urlencodedParser, function (req, res) {
 				description: req.body.description,
 				tags: 
 				{
-					['name_' + req.body.product_name]: true,
-					['size_' + req.body.size]: true,
-					['brand_' + req.body.brand]: true,
-					['gender_' + req.body.gender]: true,
-					['category_' + req.body.category]: true
+					['name_' + req.body.product_name.toLowerCase()]: true,
+					['brand_' + req.body.brand.toLowerCase()]: true
 				}
 			};
 			db.collection('posting').doc().set(data).then(function(){
@@ -196,25 +194,50 @@ app.post('/searchPosting', urlencodedParser, function (req, res) {
 		else{
 			var ref = db.collection('posting');
 			
+			const p_uid = req.body.uid;
 			const p_name = req.body.product_name;
 			const p_gender = req.body.gender;
+			const p_size = req.body.size;
 			const p_brand = req.body.brand;
 			const p_category = req.body.category;
+			const p_price_ceiling = req.body.price_ceiling;
+			const p_price_floor = req.body.price_floor;
+			const p_result_limit = req.body.result_limit;
+			if(p_uid != null)
+			{
+				ref = ref.where('uid','==',p_uid);
+			}
 			if(p_name!= null)
 			{
-				ref = ref.where('tags.name_' + p_name,'==',true);
+				ref = ref.where('tags.name_' + p_name.toLowerCase(),'==',true);
 			}
 			if(p_gender != null)
 			{
-				ref = ref.where('tags.gender_' + p_gender,'==',true);
+				ref = ref.where('gender','==',p_gender);
+			}
+			if(p_size != null)
+			{
+				ref = ref.where('size','==',p_size);
 			}
 			if(p_brand != null)
 			{
-				ref = ref.where('tags.brand_' + p_brand,'==',true);
+				ref = ref.where('tags.brand_' + p_brand.toLowerCase(),'==',true);
 			}
 			if(p_category != null)
 			{
-				ref = ref.where('tags.category_' + p_category,'==',true);
+				ref = ref.where('category','==',p_category);
+			}
+			if(p_price_ceiling != null)
+			{
+				ref = ref.where('price','<=',p_price_ceiling);
+			}
+			if(p_price_floor != null)
+			{
+				ref = ref.where('price','>=',p_price_floor);
+			}
+			if(p_result_limit != null)
+			{
+				ref = ref.limit(parseInt(p_result_limit,10));
 			}
 			ref.get().then(snapshot => {
 				if (snapshot.empty) {
@@ -247,4 +270,4 @@ app.post('/searchPosting', urlencodedParser, function (req, res) {
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-module.exports = app;
+exports.app = functions.https.onRequest(app);
