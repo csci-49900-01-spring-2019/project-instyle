@@ -6,9 +6,11 @@
     "axios": "^0.18.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
+    "react-redux": "^6.0.1",
     "react-scripts": "^2.1.5",
     "react-sidebar": "^3.0.2",
-    "reactstrap": "^7.1.0"
+    "reactstrap": "^7.1.0",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -16,7 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000/",
+  "proxy": "https://instyle-5f93a.firebaseapp.com/",
   "eslintConfig": {
     "extends": "react-app"
   },

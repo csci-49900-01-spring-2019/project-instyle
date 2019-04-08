@@ -1,5 +1,6 @@
 //Frontend/client/src/App.js
 import React, { Component } from "react";
+import {NavLink} from "react-router-dom";
 
 import "../Styles/Landing.css"
 import "../Styles/Header.css"
@@ -8,26 +9,53 @@ import "../Styles/Header.css"
 import Cards from "./Cards.js"
 import Sidebar from "./Sidebar.js"
 
+import {connect} from 'react-redux';
+
+
 class Landing extends Component {
+    constructor(props){
+        super(props)
+        this.state={
+            // token:this.props.token
+        }
+    }
 
     render() {
+        // console.log(this.state.token)
         return (
-            <div>
+            <div className="landingWrapper">
                 <Sidebar/>
                 <div className="search">
                     <input className="searchinput" name="search" type="text" />
                     <button className="searchbutton">Search</button>
                 </div>
 
+                <Cards/>
+                <Cards/>
+                <Cards/>
+                {/*<Cards/>*/}
+                {/*<Cards/>*/}
+                {/*<Cards/>*/}
+                {/*<Cards/>*/}
                 {/*<Cards/>*/}
 
-                <div>
-                     <button className="postButton" >POST</button>
-                </div>
+                {this.props.token ?
+                    <div>
+                        <NavLink to="/addItem" className="postButton">POST</NavLink>
+                    </div>
+                :
+                    <div>
+                        <NavLink to="/register" className="postButton">POST</NavLink>
+                    </div>
+                }
 
             </div>
         );
     }
 }
-
-export default Landing;
+const mapStateToProps = (state) => {
+   return {
+       token:state.auth.token
+   }
+}
+export default connect(mapStateToProps)(Landing);

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../Styles/Signup.css"
 import axios from "axios";
+import {NavLink} from "react-router-dom";
 
 
 class Signup extends Component{
@@ -133,7 +134,7 @@ class Signup extends Component{
                     </div>
                     { this.state.showError && (<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.passwordMessage} size="30"/>) }
                     <br/>
-                    <button className="register-button" type="submit" id="signIn" disabled={this.state.stopButton} onClick={this.handleSubmit.bind(this)}  >Register</button>
+                    <button className="register-button" type="submit" id="signIn" disabled={this.state.stopButton} onClick={this.handleSubmit.bind(this)}><NavLink to="/login">Register</NavLink></button>
                     {/*<button id="signOut" onClick={this.handleSignOut.bind(this)} >Sign Out</button>*/}
                 </form>
             </div>
