@@ -16,7 +16,10 @@ class Signup extends Component{
             last_name:"",
             user_name:"",
             isAuth:false,
-            message:""
+            message:"",
+            passwordMessage:"Password doesn't match",
+            showError:false,
+            stopButton:true
         }
        // this.handleChange = this.handleChange.bind(this);
         //this.handleSubmit = this.handleSubmit.bind(this);
@@ -67,6 +70,28 @@ class Signup extends Component{
             console.log("Authorization failed: "+ error.message);
         })
     }
+    
+    passwordVerify(evt){
+        evt.preventDefault()
+        if(this.state.password !== this.state.verifyPassword)
+        {
+            this.setState({
+                showError: true,
+                stopButton: true
+
+            }); 
+        }  
+        else
+        {
+            this.setState({
+                stopButton: false,
+                showError: false
+            
+            });
+        }
+    }
+
+
    render(){
         return(
    <div className="registerForm">
@@ -100,15 +125,16 @@ class Signup extends Component{
                     </div>
 
                     <div className="input-form">
-                        <input className="form-control" name="verifyPassword" autoComplete="new-password" type="password" value={this.state.verifyPassword}  onChange={this.handleChange.bind(this)}/>
+                        <input className="form-control" name="verifyPassword" autoComplete="new-password" type="password" value={this.state.verifyPassword}  onChange={this.handleChange.bind(this)} onKeyUp={this.passwordVerify.bind(this)}/>
                         <label className="lable-control" htmlFor="verifypassword">Verify Password</label>
                     </div>
 
                     <div>
                         <input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.message}  size="30"/>
                     </div>
+                    { this.state.showError && (<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.passwordMessage} size="30"/>) }
                     <br/>
-                    <button className="register-button" type="submit" id="signIn" onClick={this.handleSubmit.bind(this)}><NavLink to="/login">Register</NavLink></button>
+                    <button className="register-button" type="submit" id="signIn" disabled={this.state.stopButton} onClick={this.handleSubmit.bind(this)}><NavLink to="/login">Register</NavLink></button>
                     {/*<button id="signOut" onClick={this.handleSignOut.bind(this)} >Sign Out</button>*/}
                 </form>
             </div>
