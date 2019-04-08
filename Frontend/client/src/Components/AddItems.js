@@ -74,6 +74,7 @@ class AddItems extends Component{
             console.log("No token")
         }
         evt.preventDefault();
+        this.reset(evt);
     }
 
     render(){
