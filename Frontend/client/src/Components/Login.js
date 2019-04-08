@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import "../Styles/Login.css"
+import {NavLink} from "react-router-dom";
 import axios from "axios";
 import {connect} from 'react-redux';
+import {getToken} from '../actions/authAction'
 
 class Login extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			uid:'',
+ 			uid:'',
 			email:"",
 			password:"",
 			isAuth:false,
@@ -32,10 +34,11 @@ class Login extends Component{
 			.then(response => {
 				console.log(response);
 				if(response.data.isAuth) {
+					this.props.getToken(response.data);
 					this.setState(
 						{
 							isAuth: response.data.isAuth,
-							token:this.props.token,
+							token:response.data.token,
 							uid: response.data.uid,
 							message: "Welcome " + this.state.email
 
@@ -84,7 +87,7 @@ class Login extends Component{
 							<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.message}  size="30"/>
 						</div>
 						<br/>
-						<button className="signin-button" type="submit" id="signIn" onClick={this.handleSubmit.bind(this)} >Sign In</button>
+						<button className="signin-button" type="submit" id="signIn" onClick={this.handleSubmit.bind(this)}><NavLink to="/">Sign In</NavLink></button>
 						{/*<button id="signOut" onClick={this.handleSignOut.bind(this)} >Sign Out</button>*/}
 
 						<p>
@@ -103,7 +106,7 @@ class Login extends Component{
 
 const mapStateToProps = (state) =>{
 	return {
-		token: state.token
+		token: state.auth.token
 	}
 }
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps,{getToken})(Login);

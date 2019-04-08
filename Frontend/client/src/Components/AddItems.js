@@ -2,11 +2,13 @@ import React, { Component } from "react";
 
 
 import axios from "axios";
-import {connect} from 'react-redux';
+
 
 
 import "../Styles/AddItems.css";
-import shirts from "../assets/shirts.jpg";
+// import shirts from "../assets/shirts.jpg";
+import {connect} from "react-redux";
+import {getToken} from "../actions/authAction";
 
 
 class AddItems extends Component{
@@ -19,41 +21,65 @@ class AddItems extends Component{
             brand:"",
             gender:"",
             category:"",
-            description:""
+            description:"",
+            token:""
         }
     }
     handleChange(evt){
         this.setState({[evt.target.name]:evt.target.value});
     }
 
-    handleSubmit(evt){
-        evt.preventDefault();
-        axios.post("/addPosting",{
-            product_name:this.state.product_name,
-            price:this.state.price,
-            size:this.state.size,
-            brand:this.state.brand,
-            gender:this.state.gender,
-            category:this.state.category,
-            description:this.state.description
-
+    reset(evt){
+        this.setState({
+            product_name:"",
+            price:"",
+            size:"",
+            brand:"",
+            gender:"",
+            category:"",
+            description:""
         })
-            .then(response => {
-                console.log(response)
-                console.log("product_name: ", this.state.product_name)
-                console.log("price: ", this.state.price)
-                console.log("size: ", this.state.size)
-                console.log("brand: ", this.state.brand)
-                console.log("gender: ", this.state.gender)
-                console.log("category: ", this.state.category)
-                console.log("description: ", this.state.description)
+    }
+    handleSubmit(evt) {
+
+        if (this.props.token != null) {
+            axios.post("/addPosting", {
+                token:this.props.token,
+                product_name: this.state.product_name,
+                price: this.state.price,
+                size: this.state.size,
+                brand: this.state.brand,
+                gender: this.state.gender,
+                category: this.state.category,
+                description: this.state.description
+
             })
+        //         .then(response => {
+        //             console.log(response)
+        //             console.log("token:",this.props.token )
+        //             console.log("product_name: ", this.state.product_name)
+        //             console.log("price: ", this.state.price)
+        //             console.log("size: ", this.state.size)
+        //             console.log("brand: ", this.state.brand)
+        //             console.log("gender: ", this.state.gender)
+        //             console.log("category: ", this.state.category)
+        //             console.log("description: ", this.state.description)
+        //         })
+                .catch(function (error) {
+                    console.log("no token: "+ error.message);
+                })
+        }
+
+        else{
+            console.log("No token")
+        }
+        evt.preventDefault();
     }
 
     render(){
         return(
             <div className="Wrapper">
-                <form className="formWrapper">
+                <form className="formWrapper" onSubmit={this.handleSubmit.bind(this)}>
                     <div className="allDIvs">
                         <label className="allLabels" htmlFor="product_name">Product Name:</label>
                         <input className="allInputs" name="product_name" type="text" value={this.state.product_name}  onChange={this.handleChange.bind(this)}/>
@@ -83,7 +109,7 @@ class AddItems extends Component{
                         <input className="allInputs" name="description" type="text" value={this.state.description}  onChange={this.handleChange.bind(this)}/>
                     </div>
                     <div className="allDIvs">
-                        <button className="submitButton" onSubmit={this.handleSubmit.bind(this) }>ADD</button>
+                        <button className="submitButton" type="submit" onClick={this.reset.bind(this)}>ADD</button>
                     </div>
                 </form>
             </div>
@@ -91,4 +117,9 @@ class AddItems extends Component{
     }
 }
 
-export default AddItems;
+const mapStateToProps = (state) =>{
+    return {
+        token: state.auth.token
+    }
+}
+export default connect(mapStateToProps,{getToken})(AddItems);

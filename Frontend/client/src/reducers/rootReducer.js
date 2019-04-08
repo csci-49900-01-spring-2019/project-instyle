@@ -1,9 +1,8 @@
-const initState = {
-    token: "jkjdsj9439ejwk"
-}
+import authReducer from './authReducer'
+import {combineReducers} from 'redux'
 
-const rootReducer = (state=initState ,action) =>{
-    return state;
-}
+const rootReducer = combineReducers({
+    auth: authReducer
+})
 
-export default rootReducer;
+export default rootReducer

@@ -6,7 +6,7 @@ class SideBar extends Component {
     constructor(props){
         super(props)
         this.state = {
-             isActive: false
+             isActive: "false"
         }
         this.toggleSidebar = this.toggleSidebar.bind(this)
     }

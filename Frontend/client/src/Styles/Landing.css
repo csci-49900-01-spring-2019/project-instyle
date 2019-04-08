@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Satisfy');
 
-.search{
-    text-align: center;
-    padding-top: 50px ;
-
+.landingWrapper{
+    /*right: 20%;*/
+    margin-left: 300px;
 }
+
+.search{
+    /*text-align: center;*/
+    padding-top: 50px ;
+    margin-left:30%;
+}
+
+/*#active{*/
+    /*float*/
+/*}*/
 
 .searchbutton{
     background-color: white;
@@ -55,7 +64,7 @@
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 12px;
-    margin-left: 50%;
+    margin-left: 40%;
     font-family: 'Satisfy', cursive;
 }
 

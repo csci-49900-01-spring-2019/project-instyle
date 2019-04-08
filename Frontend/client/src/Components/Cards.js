@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import "../Styles/Cards.css"
 import  shoes from "../assets/shoes.png"
+import SideBar from "./Sidebar";
+
 
 class Cards extends Component {
     constructor(props){
@@ -11,7 +13,8 @@ class Cards extends Component {
     }
     render(){
         return (
-            <div className="cardsRows">
+            <div className="cardsRows" >
+                {/*<SideBar isActive={this.state.isActive}/>*/}
                 <div className="cardsCols">
                     <img src={shoes}/>
                     <form>
@@ -26,5 +29,6 @@ class Cards extends Component {
         );
     }
 }
+
 
 export default Cards;
