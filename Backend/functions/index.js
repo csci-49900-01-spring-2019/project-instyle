@@ -27,11 +27,6 @@ var config = {
 firebase.initializeApp(config);
 var db = firebase.firestore();
 
-// create a GET route
-app.get('*', (req, res) => {
-    res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
-});
-
 app.post('/auth', urlencodedParser, function (req, res) {
    // Prepare output in JSON format
    const promise = firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password)
@@ -108,36 +103,48 @@ app.post('/register', urlencodedParser, function (req, res) {
    }
 })
 
-app.post('/getUserInfo', urlencodedParser, function (req, res) {
-	jwt.verify(req.body.token, 'secret', function(err, decoded) {
-		if(err != null){
-			response = {
-				success: false,
-				message: err.message
-			};
-			res.end(JSON.stringify(response));
-		}
-		else{
-			db.collection('users').doc(decoded.uid).get().then(doc => {
-				if (!doc.exists) {
-					response = {
-						success: false,
-						message: 'missing user info'
-					};
-				} else {
-					response = {
-						success: true,
-						uid: doc.id,
-						email: doc.data().email,
-						user_name: doc.data().user_name,
-						first_name: doc.data().first_name,
-						last_name: doc.data().last_name
-					};
-				}
+app.get('/userInfo', function (req, res) {
+	let token = req.headers['x-access-token'] || req.headers['authorization'];
+	if (token.startsWith('Bearer ')) {
+		token = token.slice(7, token.length);
+	}
+	if(token){
+		jwt.verify(token, 'secret', function(err, decoded) {
+			if(err != null){
+				response = {
+					success: false,
+					message: err.message
+				};
 				res.end(JSON.stringify(response));
-			})
-		}
-	});
+			}
+			else{
+				db.collection('users').doc(decoded.uid).get().then(doc => {
+					if (!doc.exists) {
+						response = {
+							success: false,
+							message: 'missing user info'
+						};
+					} else {
+						response = {
+							success: true,
+							uid: doc.id,
+							email: doc.data().email,
+							user_name: doc.data().user_name,
+							first_name: doc.data().first_name,
+							last_name: doc.data().last_name
+						};
+					}
+					res.end(JSON.stringify(response));
+				})
+			}
+		});
+	} else {
+		response = {
+			success: false,
+			message: 'missing token'
+		};
+		res.end(JSON.stringify(response));
+	}
 })
 
 app.post('/addPosting', urlencodedParser, function (req, res) {
@@ -182,89 +189,159 @@ app.post('/addPosting', urlencodedParser, function (req, res) {
 	});
 })
 
-app.post('/searchPosting', urlencodedParser, function (req, res) {
-	jwt.verify(req.body.token, 'secret', function(err, decoded) {
-		if(err != null){
-			response = {
-				success: false,
-				message: err.message
-			};
-			res.end(JSON.stringify(response));
-		}
-		else{
-			var ref = db.collection('posting');
-			
-			const p_uid = req.body.uid;
-			const p_name = req.body.product_name;
-			const p_gender = req.body.gender;
-			const p_size = req.body.size;
-			const p_brand = req.body.brand;
-			const p_category = req.body.category;
-			const p_price_ceiling = req.body.price_ceiling;
-			const p_price_floor = req.body.price_floor;
-			const p_result_limit = req.body.result_limit;
-			if(p_uid != null)
-			{
-				ref = ref.where('uid','==',p_uid);
-			}
-			if(p_name!= null)
-			{
-				ref = ref.where('tags.name_' + p_name.toLowerCase(),'==',true);
-			}
-			if(p_gender != null)
-			{
-				ref = ref.where('gender','==',p_gender);
-			}
-			if(p_size != null)
-			{
-				ref = ref.where('size','==',p_size);
-			}
-			if(p_brand != null)
-			{
-				ref = ref.where('tags.brand_' + p_brand.toLowerCase(),'==',true);
-			}
-			if(p_category != null)
-			{
-				ref = ref.where('category','==',p_category);
-			}
-			if(p_price_ceiling != null)
-			{
-				ref = ref.where('price','<=',p_price_ceiling);
-			}
-			if(p_price_floor != null)
-			{
-				ref = ref.where('price','>=',p_price_floor);
-			}
-			if(p_result_limit != null)
-			{
-				ref = ref.limit(parseInt(p_result_limit,10));
-			}
-			ref.get().then(snapshot => {
-				if (snapshot.empty) {
-					response = {
-						success: false,
-						message: 'no info found'
-					};
-				} else {
-					result = [];
-					snapshot.forEach(doc => {
-					  result.push(doc.data());
-					});
-					response = {
-						success: true,
-						data: result
-					};
-				}
-				res.end(JSON.stringify(response));
-			}).catch(function(error) {
+app.get('/posting',  function (req, res) {
+	let token = req.headers['x-access-token'] || req.headers['authorization'];
+	if (token.startsWith('Bearer ')) {
+		token = token.slice(7, token.length);
+	}
+	if(token){
+		jwt.verify(token, 'secret', function(err, decoded) {
+			if(err != null){
 				response = {
 					success: false,
-					message: error.message
+					message: err.message
 				};
 				res.end(JSON.stringify(response));
-			});
-		}
-	});
+			}
+			else{
+				var ref = db.collection('posting');
+				
+				const p_uid = req.query.uid;
+				const p_name = req.query.product_name;
+				const p_gender = req.query.gender;
+				const p_size = req.query.size;
+				const p_brand = req.query.brand;
+				const p_category = req.query.category;
+				const p_price_ceiling = req.query.price_ceiling;
+				const p_price_floor = req.query.price_floor;
+				const p_result_limit = req.query.result_limit;
+				if(p_uid != null)
+				{
+					ref = ref.where('uid','==',p_uid);
+				}
+				if(p_name!= null)
+				{
+					ref = ref.where('tags.name_' + p_name.toLowerCase(),'==',true);
+				}
+				if(p_gender != null)
+				{
+					ref = ref.where('gender','==',p_gender);
+				}
+				if(p_size != null)
+				{
+					ref = ref.where('size','==',p_size);
+				}
+				if(p_brand != null)
+				{
+					ref = ref.where('tags.brand_' + p_brand.toLowerCase(),'==',true);
+				}
+				if(p_category != null)
+				{
+					ref = ref.where('category','==',p_category);
+				}
+				if(p_price_ceiling != null)
+				{
+					ref = ref.where('price','<=',p_price_ceiling);
+				}
+				if(p_price_floor != null)
+				{
+					ref = ref.where('price','>=',p_price_floor);
+				}
+				if(p_result_limit != null)
+				{
+					ref = ref.limit(parseInt(p_result_limit,10));
+				}
+				ref.get().then(snapshot => {
+					if (snapshot.empty) {
+						response = {
+							success: false,
+							message: 'no info found'
+						};
+					} else {
+						result = [];
+						snapshot.forEach(doc => {
+							var data = doc.data();
+							console.log(doc.id);
+							data['id'] = doc.id;
+							result.push(data);
+						});
+						response = {
+							success: true,
+							data: result
+						};
+					}
+					res.end(JSON.stringify(response));
+				}).catch(function(error) {
+					response = {
+						success: false,
+						message: error.message
+					};
+					res.end(JSON.stringify(response));
+				});
+			}
+		});
+	} else {
+		response = {
+			success: false,
+			message: 'missing token'
+		};
+		res.end(JSON.stringify(response));
+	}
+})
+
+app.get('/listing',  function (req, res) {
+	let token = req.headers['x-access-token'] || req.headers['authorization'];
+	if (token.startsWith('Bearer ')) {
+		token = token.slice(7, token.length);
+	}
+	if(token){
+		jwt.verify(token, 'secret', function(err, decoded) {
+			if(err != null){
+				response = {
+					success: false,
+					message: err.message
+				};
+				res.end(JSON.stringify(response));
+			}
+			else{
+				let id = req.query.id;
+				if(id)
+				{
+					db.collection('posting').doc(id).get().then(function(doc) {
+						if (!doc.exists) {
+							response = {
+								success: false,
+								message: 'no info found'
+							};
+						} else {
+							response = {
+								success: true,
+								data: doc.data()
+							};
+						}
+						res.end(JSON.stringify(response));
+					}).catch(function(error) {
+						response = {
+							success: false,
+							message: error.message
+						};
+					});
+				} else{
+					response = {
+						success: false,
+						message: 'missing parameter id'
+					};
+					res.end(JSON.stringify(response));
+				}
+			}
+		});
+	} else {
+		response = {
+			success: false,
+			message: 'missing token'
+		};
+		res.end(JSON.stringify(response));
+	}
 })
 
 // console.log that your server is up and running
