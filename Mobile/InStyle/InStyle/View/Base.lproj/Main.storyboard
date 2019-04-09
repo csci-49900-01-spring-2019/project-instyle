@@ -178,58 +178,58 @@
             </objects>
             <point key="canvasLocation" x="-88" y="490"/>
         </scene>
-        <!--Item 2-->
+        <!--inStyle-->
         <scene sceneID="jYP-gn-F9i">
             <objects>
                 <viewController id="y14-Pg-rUC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vGj-9w-xCl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="eQF-g9-vkR"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="kdr-b2-IHb"/>
+                    <tabBarItem key="tabBarItem" title="inStyle" image="addsymbol" id="kdr-b2-IHb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5e-mT-ACj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2087" y="607"/>
+            <point key="canvasLocation" x="1974" y="144"/>
         </scene>
-        <!--Item 1-->
+        <!--Home-->
         <scene sceneID="hb1-Iu-JD4">
             <objects>
                 <viewController id="ol6-Fd-n2t" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2DE-qc-18s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.27450980390000002" green="0.33725490200000002" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="g5z-du-32e"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="D53-KW-h5K"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="D53-KW-h5K"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pwD-0z-BNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2236" y="-443"/>
+            <point key="canvasLocation" x="1974" y="-710"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="2pT-Pj-uzD">
             <objects>
                 <viewController id="1ee-na-zz0" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="weL-KF-cvp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.78039215689999997" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="4vg-sG-xcH"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="V5W-yO-Jo4"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="user" id="V5W-yO-Jo4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmF-v5-7Bw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3133" y="48"/>
+            <point key="canvasLocation" x="1974" y="1100"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="hvy-dw-Xkr">
             <objects>
-                <tabBarController id="9Ld-9K-CvI" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Ld-9K-CvI" customClass="MainTabBarController" customModule="InStyle" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="swn-xY-Wea">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -243,7 +243,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ev7-10-3Z9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="906" y="58"/>
+            <point key="canvasLocation" x="977" y="56"/>
         </scene>
         <!--Register-->
         <scene sceneID="fDc-rT-Ll5">
@@ -334,10 +334,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addsymbol" width="30" height="30"/>
         <image name="background1" width="213" height="378.5"/>
+        <image name="home" width="30" height="30"/>
         <image name="logo" width="341" height="341"/>
+        <image name="user" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NOE-LW-u8w"/>
+        <segue reference="MQ9-il-Wor"/>
     </inferredMetricsTieBreakers>
 </document>

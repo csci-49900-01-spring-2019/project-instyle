@@ -10,6 +10,7 @@
 		150AC9A9225A383C00CDBEAC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150AC9A8225A383C00CDBEAC /* LoginViewController.swift */; };
 		150AC9AB225A388000CDBEAC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150AC9AA225A388000CDBEAC /* RegisterViewController.swift */; };
 		150AC9AD225A4CA400CDBEAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 150AC9AC225A4CA400CDBEAC /* GoogleService-Info.plist */; };
+		154F41EA225D0FA40086C3B6 /* MainTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154F41E9225D0FA40086C3B6 /* MainTabBarControllerViewController.swift */; };
 		15AB43DD22494CEF00C633B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB43DC22494CEF00C633B3 /* AppDelegate.swift */; };
 		15AB43DF22494CEF00C633B3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB43DE22494CEF00C633B3 /* WelcomeViewController.swift */; };
 		15AB43E222494CEF00C633B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15AB43E022494CEF00C633B3 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		150AC9A8225A383C00CDBEAC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		150AC9AA225A388000CDBEAC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		150AC9AC225A4CA400CDBEAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		154F41E9225D0FA40086C3B6 /* MainTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerViewController.swift; sourceTree = "<group>"; };
 		15AB43D922494CEF00C633B3 /* InStyle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InStyle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15AB43DC22494CEF00C633B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15AB43DE22494CEF00C633B3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				15AB43DE22494CEF00C633B3 /* WelcomeViewController.swift */,
 				150AC9A8225A383C00CDBEAC /* LoginViewController.swift */,
 				150AC9AA225A388000CDBEAC /* RegisterViewController.swift */,
+				154F41E9225D0FA40086C3B6 /* MainTabBarControllerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -118,7 +121,6 @@
 				0926DF3681FCC3D8AFC550A2 /* Pods-InStyle.debug.xcconfig */,
 				6E17BA182EFA292C649B374D /* Pods-InStyle.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -276,6 +278,7 @@
 			files = (
 				150AC9A9225A383C00CDBEAC /* LoginViewController.swift in Sources */,
 				15AB43DF22494CEF00C633B3 /* WelcomeViewController.swift in Sources */,
+				154F41EA225D0FA40086C3B6 /* MainTabBarControllerViewController.swift in Sources */,
 				15AB43DD22494CEF00C633B3 /* AppDelegate.swift in Sources */,
 				150AC9AB225A388000CDBEAC /* RegisterViewController.swift in Sources */,
 			);
