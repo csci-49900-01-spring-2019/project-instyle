@@ -18,6 +18,7 @@ class Header extends Component{
 
     renderContent() {
         //make switch statement for logout
+        console.log(this.props.isAuth)
         switch (this.props.isAuth) {
             case true:
                 return <ul>

@@ -37,7 +37,7 @@ class Login extends Component{
 					this.props.getToken(response.data);
 					this.setState(
 						{
-							isAuth: response.data.isAuth,
+							isAuth: response.data.success,
 							token:response.data.token,
 							uid: response.data.uid,
 							message: "Welcome " + this.state.email
@@ -47,13 +47,13 @@ class Login extends Component{
 				} else {
 					this.setState(
 						{
-							isAuth: response.data.isAuth,
+							isAuth: response.data.success,
 							uid: null,
 							message: response.data.message
 						}
 					)
 				}
-				console.log("isAuth: ", this.state.isAuth)
+				console.log("isAuth: ", response.data.isAuth)
 				console.log("uid: ", this.state.uid)
 				 console.log("token: ", this.props.token)
 			}).catch(function (error) {
