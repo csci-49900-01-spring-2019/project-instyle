@@ -13,7 +13,9 @@ target 'InStyle' do
   pod 'Firebase/Storage'
   pod 'SwiftyJSON'
   pod 'Alamofire'
+  pod 'AlamofireImage'
   pod 'SVProgressHUD'
   pod 'SwiftKeychainWrapper'
+  
   
 end
