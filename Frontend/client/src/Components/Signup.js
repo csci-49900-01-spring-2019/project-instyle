@@ -50,6 +50,7 @@ class Signup extends Component{
                             message: "Welcome " + this.state.first_name
                         }
                     )
+                    this.props.history.push('/login')
                 } else {
                     this.setState(
                         {

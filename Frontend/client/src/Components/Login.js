@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../Styles/Login.css"
-import {NavLink} from "react-router-dom";
+import {NavLink,Redirect} from "react-router-dom";
 import axios from "axios";
 import {connect} from 'react-redux';
 import {getToken} from '../actions/authAction'
@@ -44,6 +44,7 @@ class Login extends Component{
 
 						}
 					)
+					this.props.history.push('/')
 				} else {
 					this.setState(
 						{
@@ -53,13 +54,13 @@ class Login extends Component{
 						}
 					)
 				}
-				console.log("isAuth: ", response.data.isAuth)
+				console.log("isAuth: ", response.data.success)
 				console.log("uid: ", this.state.uid)
 				 console.log("token: ", this.props.token)
 			}).catch(function (error) {
 			console.log("Authorization failed: "+ error.message);
 		})
-
+		// return <Redirect to="/" />
 	}
 
 	handleSignOut(){
@@ -87,7 +88,7 @@ class Login extends Component{
 							<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.message}  size="30"/>
 						</div>
 						<br/>
-						<button className="signin-button" type="submit" id="signIn" onClick={this.handleSubmit.bind(this)}><NavLink to="/">Sign In</NavLink></button>
+						<button className="signin-button" type="submit" id="signIn" onClick={this.handleSubmit.bind(this)}>Sign In</button>
 						{/*<button id="signOut" onClick={this.handleSignOut.bind(this)} >Sign Out</button>*/}
 
 						<p>
