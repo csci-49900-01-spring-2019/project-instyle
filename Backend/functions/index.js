@@ -173,9 +173,10 @@ app.post('/addPosting', urlencodedParser, function (req, res) {
 					['brand_' + req.body.brand.toLowerCase()]: true
 				}
 			};
-			db.collection('posting').doc().set(data).then(function(){
+			db.collection('posting').add(data).then(function(docRef){
 				response = {
-					success: true
+					success: true,
+					id: docRef.id
 				};
 				res.end(JSON.stringify(response));
 			}).catch(function(error) {
