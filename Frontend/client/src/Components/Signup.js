@@ -42,10 +42,10 @@ class Signup extends Component{
         })
             .then(response => {
                 console.log(response);
-                if(response.data.isAuth) {
+                if(response.data.success) {
                     this.setState(
                         {
-                            isAuth: response.data.isAuth,
+                            isAuth: response.data.success,
                             uid: response.data.uid,
                             message: "Welcome " + this.state.first_name
                         }
@@ -54,7 +54,7 @@ class Signup extends Component{
                 } else {
                     this.setState(
                         {
-                            isAuth: response.data.isAuth,
+                            isAuth: response.data.success,
                             uid: null,
                             message: response.data.message
                         }
@@ -135,7 +135,7 @@ class Signup extends Component{
                     </div>
                     { this.state.showError && (<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.passwordMessage} size="30"/>) }
                     <br/>
-                    <button className="register-button" type="submit" id="signIn" disabled={this.state.stopButton} onClick={this.handleSubmit.bind(this)}><NavLink to="/login">Register</NavLink></button>
+                    <button className="register-button" type="submit" id="signIn" disabled={this.state.stopButton} onClick={this.handleSubmit.bind(this)}>Register</button>
                     {/*<button id="signOut" onClick={this.handleSignOut.bind(this)} >Sign Out</button>*/}
                 </form>
             </div>
