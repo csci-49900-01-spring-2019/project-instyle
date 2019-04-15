@@ -24,6 +24,13 @@
 
 .cardsCols{
     display: grid;
+    position: center;
+    cursor: pointer;
+}
+
+.cardsRows:hover{
+    background-color: white;
+    border:#718c00 solid 3px;
 }
 
 .priceInput{
@@ -34,5 +41,9 @@
 
 .priceLabel{
 
+}
+
+.image{
+   margin-bottom: 9px;
 }
 

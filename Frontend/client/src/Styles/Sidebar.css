@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Satisfy');
 
 .sidebar{
-    position: fixed;
+    position: absolute;
     width: 200px;
-    height: 100%;
+    height: 1100px;
     background-color: seashell;
     left: -200px;
     transition: all 500ms linear;
