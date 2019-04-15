@@ -45,15 +45,17 @@ class RegisterViewController: UIViewController {
                     else {
                         let token = AuthTokenResult!.token
                         let saveSuccessful: Bool = KeychainWrapper.standard.set(token, forKey: "accessToken")
-                        print("Save was successful: \(saveSuccessful)")
+                        //print("Save was successful: \(saveSuccessful)")
                         let db = Firestore.firestore()
                         db.collection("users").document(AuthDataResult!.user.uid).setData([
                             "email": self.email.text!,
                             "first_name": self.firstName.text!,
                             "last_name": self.lastName.text!,
                             "user_name": self.userName.text!,
-                            "uid": AuthDataResult!.user.uid
+                            "uid": AuthDataResult!.user.uid,
+                            "products": []
                             ])
+                        
                     }
                 })
                 

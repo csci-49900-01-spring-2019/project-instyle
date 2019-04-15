@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
                     else {
                         let token = AuthTokenResult!.token
                         let saveSuccessful: Bool = KeychainWrapper.standard.set(token, forKey: "accessToken")
-                        print("Save was successful: \(saveSuccessful)")
+                        print("Save Token was successful: \(saveSuccessful)")
 //                        let retrievedToken: String? = KeychainWrapper.standard.string(forKey: "accessToken")
 //                        print("Retrieved Token: \(retrievedToken!)")
                     }
