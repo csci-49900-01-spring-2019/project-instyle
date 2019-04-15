@@ -54,9 +54,9 @@ class Login extends Component{
 						}
 					)
 				}
-				console.log("isAuth: ", response.data.success)
-				console.log("uid: ", this.state.uid)
-				 console.log("token: ", this.props.token)
+				// console.log("isAuth: ", response.data.success)
+				// console.log("uid: ", this.state.uid)
+				//  console.log("token: ", this.props.token)
 			}).catch(function (error) {
 			console.log("Authorization failed: "+ error.message);
 		})

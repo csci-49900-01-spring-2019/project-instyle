@@ -13,12 +13,6 @@ import {connect} from 'react-redux';
 
 
 class Landing extends Component {
-    constructor(props){
-        super(props)
-        this.state={
-            // token:this.props.token
-        }
-    }
 
     render() {
         // console.log(this.state.token)
@@ -31,13 +25,7 @@ class Landing extends Component {
                 </div>
 
                 <Cards/>
-                <Cards/>
-                <Cards/>
-                {/*<Cards/>*/}
-                {/*<Cards/>*/}
-                {/*<Cards/>*/}
-                {/*<Cards/>*/}
-                {/*<Cards/>*/}
+
 
                 {this.props.token ?
                     <div>

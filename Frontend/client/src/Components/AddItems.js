@@ -22,7 +22,8 @@ class AddItems extends Component{
             gender:"",
             category:"",
             description:"",
-            token:""
+            token:"",
+            selectedFile:null
         }
     }
     handleChange(evt){
@@ -37,7 +38,9 @@ class AddItems extends Component{
             brand:"",
             gender:"",
             category:"",
-            description:""
+            description:"",
+            id:""
+
         })
     }
     handleSubmit(evt) {
@@ -54,9 +57,13 @@ class AddItems extends Component{
                 description: this.state.description
 
             })
-        //         .then(response => {
-        //             console.log(response)
-        //             console.log("token:",this.props.token )
+                .then(response => {
+                    console.log(response)
+                    this.setState({
+                        id:response.data.id
+                    });
+                    // this.props.setIdInApp(response.data.id);
+                     console.log("id:",this.state.id)
         //             console.log("product_name: ", this.state.product_name)
         //             console.log("price: ", this.state.price)
         //             console.log("size: ", this.state.size)
@@ -64,7 +71,7 @@ class AddItems extends Component{
         //             console.log("gender: ", this.state.gender)
         //             console.log("category: ", this.state.category)
         //             console.log("description: ", this.state.description)
-        //         })
+                })
                 .catch(function (error) {
                     console.log("no token: "+ error.message);
                 })
@@ -77,6 +84,17 @@ class AddItems extends Component{
         this.reset(evt);
     }
 
+    fileSelectorHandler = evt =>{
+        // console.log(evt.target.files[0]);
+        this.setState({
+            selectedFile: evt.target.files[0]
+        })
+    }
+
+    fileUploadHandle = () => {
+        // axios.post("")
+    }
+
     render(){
         return(
             <div className="Wrapper">
@@ -87,7 +105,7 @@ class AddItems extends Component{
                     </div>
                     <div className="allDIvs">
                         <label className="allLabels" htmlFor="price">Price:</label>
-                        <input className="allInputs" name="price" type="text" value={this.state.price}  onChange={this.handleChange.bind(this)}/>
+                        <input className="allInputs" name="price" type="number" value={this.state.price}  onChange={this.handleChange.bind(this)}/>
                     </div>
                     <div className="allDIvs">
                         <label className="allLabels" htmlFor="size">Size:</label>
@@ -108,6 +126,11 @@ class AddItems extends Component{
                     <div className="allDIvs">
                         <label className="allLabels" htmlFor="description">Description:</label>
                         <input className="allInputs" name="description" type="text" value={this.state.description}  onChange={this.handleChange.bind(this)}/>
+                    </div>
+                    <div className="allDIvs">
+                        <label className="allLabels" htmlFor="description">Image:</label>
+                        <input className="allInputs" type="file" onChange={this.fileSelectorHandler}/>
+                        <button onClick={this.fileUploadHandle}>Upload</button>
                     </div>
                     <div className="allDIvs">
                         <button className="submitButton" type="submit">ADD</button>

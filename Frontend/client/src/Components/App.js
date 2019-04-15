@@ -8,6 +8,7 @@ import Signup from "./Signup";
 import AddItems from "./AddItems";
 
 class App extends Component {
+
     render(){
         return(
             <Router>
@@ -16,9 +17,7 @@ class App extends Component {
                     <Route exact path="/" component = {Landing} />
                     <Route exact path="/login" component = {Login} />
                     <Route exact path="/register" component = {Signup} />
-                    <Route exact path="/addItem" component = {AddItems} />
-
-
+                    <Route exact path="/addItem" component = {AddItems} />} />
                 </div>
             </Router>
         );
