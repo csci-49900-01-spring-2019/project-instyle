@@ -12,7 +12,7 @@ import Alamofire
 import AlamofireImage
 
 
-class HomeTableViewController: UITableViewController {
+class HomeTableViewController: UITableViewController, PostTableCellDelegate {
 
  
     @IBOutlet var homeTableView: UITableView!
@@ -53,12 +53,26 @@ class HomeTableViewController: UITableViewController {
                                 let productName = data["product_name"] as? String
                                 let productPrice = data["price"] as? String
                                 let productImageUrl = data["imageUrl"] as? String
+                                let productDescription = data["description"] as? String
+                                let productBrand = data["brand"] as? String
+                                let productCategory = data["category"] as? String
+                                let productGender = data["gender"] as? String
+                                let productSize = data["size"] as? String
+                                let productSold = data["sold"] as? Bool
+                                let productPid = data["pid"] as? String
                                 
                                 let p = Post(username: self.username,
                                              product: productName,
                                              price: productPrice,
-                                             imageUrl: productImageUrl)
-                            
+                                             imageUrl: productImageUrl,
+                                             description: productDescription,
+                                             brand: productBrand,
+                                             category: productCategory,
+                                             gender: productGender,
+                                             size: productSize,
+                                             sold: productSold,
+                                             pid: productPid)
+                                
                                 self.postArray.append(p)
                                
                             }
@@ -100,10 +114,18 @@ class HomeTableViewController: UITableViewController {
         
         let post = postArray[indexPath.row]
 
-        cell.price.text = post.price
-        cell.username.text = post.username
-        cell.product.text = post.product
         cell.profileImage.image = UIImage(named: "user")
+        cell.username.text = post.username
+        cell.price.text = post.price
+        cell.product.text = post.product
+        cell.brand = post.brand!
+        cell.category = post.category!
+        cell.pid = post.pid!
+        cell.gender = post.gender!
+        cell.size = post.size!
+        cell.sold = post.sold!
+        cell.productDescription = post.description!
+        
         
         if post.imageUrl == nil || post.imageUrl == "" {
             cell.productImage.image = UIImage(named: "defaultProductImage")
@@ -116,12 +138,30 @@ class HomeTableViewController: UITableViewController {
                 if let image = response.result.value {
                     cell.productImage.image = image
                 }
+                else {
+                    cell.productImage.image = UIImage(named: "defaultProductImage")
+                }
             }
         }
         
+        cell.delegate = self
         return cell
     }
 
+    func buyButtonPressed(username: String,
+                          product: String,
+                          productImage: UIImage,
+                          price: String,
+                          pid: String,
+                          sold: Bool,
+                          description: String,
+                          brand: String,
+                          category: String,
+                          gender: String,
+                          size: String) {
+        print(product, pid, description)
+        
+    }
   
     func configureTableView() {
         homeTableView.rowHeight = UITableView.automaticDimension

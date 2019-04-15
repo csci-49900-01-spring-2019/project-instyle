@@ -14,11 +14,36 @@ class Post {
     var product: String?
     var price: String?
     var imageUrl: String?
+    var description: String?
+    var brand: String?
+    var category: String?
+    var gender: String?
+    var size: String?
+    var sold: Bool?
+    var pid: String?
     
-    init(username: String?, product: String?, price: String?, imageUrl: String?) {
+    init(username: String?,
+         product: String?,
+         price: String?,
+         imageUrl: String?,
+         description: String?,
+         brand: String?,
+         category: String?,
+         gender: String?,
+         size: String?,
+         sold: Bool?,
+         pid: String?) {
+        
         self.username = username
         self.product = product
         self.price = "$ \(price!)"
         self.imageUrl = imageUrl
+        self.description = description
+        self.brand = brand
+        self.category = category
+        self.gender = gender
+        self.size = size
+        self.sold = sold
+        self.pid = pid
     }
 }
