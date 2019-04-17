@@ -147,7 +147,23 @@ class HomeTableViewController: UITableViewController, PostTableCellDelegate {
         cell.delegate = self
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showProductDetails", sender: indexPath)
+        
+        
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showProductDetails" {
+            let VC = segue.destination as! ProductDetailViewController
+            let indexPath = sender as! IndexPath
+            let post = postArray[indexPath.row]
+            VC.product = post.product!
+            
+        }
+    }
+    
     func buyButtonPressed(username: String,
                           product: String,
                           productImage: UIImage,

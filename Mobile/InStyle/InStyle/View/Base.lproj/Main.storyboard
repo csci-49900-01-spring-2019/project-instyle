@@ -227,11 +227,31 @@
                     </navigationItem>
                     <connections>
                         <outlet property="homeTableView" destination="e5Y-jK-iQl" id="YRk-za-rEF"/>
+                        <segue destination="AIA-u2-Rta" kind="show" identifier="showProductDetails" id="fnd-Vm-wDk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cxb-Mh-4Aq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2984.8000000000002" y="-626.53673163418296"/>
+        </scene>
+        <!--Product-->
+        <scene sceneID="VcU-TI-LQb">
+            <objects>
+                <viewController storyboardIdentifier="ProductDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AIA-u2-Rta" customClass="ProductDetailViewController" customModule="InStyle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YQw-Ab-fDk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2Vg-or-JE7"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Product" id="fpG-ed-TpL"/>
+                    <connections>
+                        <outlet property="navbar" destination="fpG-ed-TpL" id="FkZ-xT-Fux"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dCT-kS-48D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4032.8000000000002" y="-627.4362818590705"/>
         </scene>
         <!--Register-->
         <scene sceneID="fDc-rT-Ll5">

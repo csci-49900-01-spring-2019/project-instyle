@@ -14,6 +14,7 @@
 		1550BF37225FBC0C0067F1A9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1550BF36225FBC0C0067F1A9 /* Post.swift */; };
 		1550BF3B225FC9F40067F1A9 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1550BF39225FC9F40067F1A9 /* PostTableViewCell.swift */; };
 		1550BF3C225FC9F40067F1A9 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1550BF3A225FC9F40067F1A9 /* PostTableViewCell.xib */; };
+		1550BF422266D6960067F1A9 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1550BF412266D6960067F1A9 /* ProductDetailViewController.swift */; };
 		1596E333225FAFBF006E0825 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1596E332225FAFBF006E0825 /* HomeTableViewController.swift */; };
 		15AB43DD22494CEF00C633B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB43DC22494CEF00C633B3 /* AppDelegate.swift */; };
 		15AB43DF22494CEF00C633B3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB43DE22494CEF00C633B3 /* WelcomeViewController.swift */; };
@@ -33,6 +34,7 @@
 		1550BF36225FBC0C0067F1A9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1550BF39225FC9F40067F1A9 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		1550BF3A225FC9F40067F1A9 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		1550BF412266D6960067F1A9 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		1596E332225FAFBF006E0825 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		15AB43D922494CEF00C633B3 /* InStyle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InStyle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15AB43DC22494CEF00C633B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				154F41E9225D0FA40086C3B6 /* MainTabBarController.swift */,
 				15D1CFB9225D329700EEFACE /* ProfileViewController.swift */,
 				1596E332225FAFBF006E0825 /* HomeTableViewController.swift */,
+				1550BF412266D6960067F1A9 /* ProductDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				154F41EA225D0FA40086C3B6 /* MainTabBarController.swift in Sources */,
 				1596E333225FAFBF006E0825 /* HomeTableViewController.swift in Sources */,
 				15AB43DD22494CEF00C633B3 /* AppDelegate.swift in Sources */,
+				1550BF422266D6960067F1A9 /* ProductDetailViewController.swift in Sources */,
 				150AC9AB225A388000CDBEAC /* RegisterViewController.swift in Sources */,
 				1550BF3B225FC9F40067F1A9 /* PostTableViewCell.swift in Sources */,
 			);
