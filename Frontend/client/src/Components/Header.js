@@ -16,13 +16,16 @@ class Header extends Component{
     //     //get axios request here
     // }
 
+    handleProfile = () =>{
+        this.props.history.push('/profile')
+    }
     renderContent() {
         //make switch statement for logout
         console.log(this.props.isAuth)
         switch (this.props.isAuth) {
             case true:
                 return <ul>
-                        <li><a className="authButton" href="/profile">Profile</a></li>
+                        <li className="authButton" onClick={this.handleProfile}>Profile</li>
                         <li><a className="authButton" href="/logout">Logout</a></li>
                     </ul>
             default:
@@ -37,7 +40,7 @@ class Header extends Component{
         return(
           <div className="header">
               {this.renderContent()}
-                <NavLink to = "/"><img src={logo} alt="InStyle"/></NavLink>
+              <NavLink to = "/"><img src={logo} alt="InStyle"/></NavLink>
 
               <br />
 

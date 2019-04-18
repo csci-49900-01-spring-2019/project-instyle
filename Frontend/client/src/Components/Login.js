@@ -32,7 +32,7 @@ class Login extends Component{
 			password:this.state.password
 		})
 			.then(response => {
-				console.log(response);
+				console.log("in login:",response);
 				if(response.data.isAuth) {
 					this.props.getToken(response.data);
 					this.setState(
@@ -56,7 +56,7 @@ class Login extends Component{
 				}
 				// console.log("isAuth: ", response.data.success)
 				// console.log("uid: ", this.state.uid)
-				//  console.log("token: ", this.props.token)
+				  console.log("token: ", this.props.token)
 			}).catch(function (error) {
 			console.log("Authorization failed: "+ error.message);
 		})
@@ -91,13 +91,13 @@ class Login extends Component{
 						<button className="signin-button" type="submit" id="signIn" onClick={this.handleSubmit.bind(this)}>Sign In</button>
 						{/*<button id="signOut" onClick={this.handleSignOut.bind(this)} >Sign Out</button>*/}
 
-						<p>
+						<div>
 							<div>
 								<a className="forget-password" href="">Forget Password?</a>
 							</div>
 							Not a member? 
 							<a href="/register">  Register</a>
-						</p>
+						</div>
 					</form>
 				</div>
 			</div>
