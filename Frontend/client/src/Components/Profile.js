@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../Styles/Profile.css"
 import axios from "axios";
 import {NavLink} from "react-router-dom";
+
 import {connect} from 'react-redux'
 
 
@@ -13,7 +14,7 @@ class Profile extends Component{
             email:"",
             first_name:"",
 			last_name:"",
-			token:""
+			token:this.props.token
         }
 
 	}
@@ -26,30 +27,22 @@ class Profile extends Component{
 	}
     
     fetchUserInfo= () => {
-		// this.setState({
-		// 	token:this.props.token
-		// })
-		console.log("In profile userInfo")
 
 		if(this.props.token !== null){
 			console.log("Inside if statement")
 			axios.get('/userInfo',{
-				params:{
-					token:this.props.token
-				}
-				
-			
+				headers: { Authorization: `Bearer ${this.state.token}`,}
 			})
 			.then(response => {
-				// this.setState{(
-				// 	email: response.data.email,
-				// 	fir
 
-				// )}
-				console.log(response);
+				this.setState({
+					first_name:response.data.first_name,
+					last_name:response.data.last_name,
+					email: response.data.email
+				})
 			})
 		}
-		console.log("out of userInfo")
+
 	}
 
 	// fetchBuyingItems = () =>{
@@ -72,17 +65,6 @@ class Profile extends Component{
 				<input className="User-email" id="email" disabled={true} readOnly={true} value={this.state.email} size="30"/>
 			</div>
 
-
-
-
-
-
-
-
-
-
-
-
         );
     }
 }
@@ -92,5 +74,5 @@ const mapStateToProps = (state) =>{
 		token: state.auth.token
 	}
 }
-export default connect(mapStateToProps) (Profile);
+export default connect(mapStateToProps)(Profile);
 

@@ -9,13 +9,69 @@ class Cards extends Component {
     constructor(props){
         super(props)
         this.state = {
-            // price: 50,
-            // product_name:"",
+            image:"",
+            price: "",
+            product_name:"",
+            brand:"",
+            category:"",
+            description:"",
+            gender:"",
+            size:"",
+            uid:"",
             data:[]
         }
     }
 
-    componentDidMount() {
+    // getDetail
+    getAllItem = () =>{
+        return this.state.data.slice(0,9).map((obj) => {
+          this.setState({
+                image:obj.image,
+                brand: obj.brand,
+                price: obj.price,
+                category:obj.category,
+                gender: obj.gender,
+                product_name: obj.product_name,
+                size: obj.size,
+                uid:obj.uid
+            })
+            return <div className="cardsRows">
+                <ul>
+                    <img className="image" src={this.state.image}/>
+                    <li>Product Name: <a href="/product">{this.state.product_name}</a></li>
+                    <li>Brand: {this.state.brand}</li>
+                    <li>Price: ${this.state.price} </li>
+                    <NavLink to="/product">See More</NavLink>
+                </ul>
+        </div>
+        })
+    }
+
+
+    seeMore = () =>{
+
+    }
+
+    getItems = () => {
+        console.log("get Items")
+        return this.state.data.slice(0,9).map((obj, index) => {
+            return <div className="cardsRows">
+                <ul>
+                    {/*<img src={shoes}/>*/}
+                    <img className="image" src={obj.imageUrl}/>
+                    {/*<span></span>*/}
+                    <li>Product Name: <a href="/product">{obj.product_name}</a></li>
+                    <li>Brand: {obj.brand}</li>
+                    <li>Price: ${obj.price} </li>
+                    <div onClick={this.seeMore}>See More</div>
+                    {/*<NavLink to="/product">See More</NavLink>*/}
+                    {/*<a href="/product">{obj.product_name}</a>*/}
+                </ul>
+            </div>
+            })
+        }
+
+        componentDidMount() {
        // console.log("In Cards")
 
         axios.get("/posting")
@@ -37,6 +93,9 @@ class Cards extends Component {
 
     }
 
+    getID = ()=>{
+
+    }
 
     render(){
         const allItems = this.state.data.slice(0,9).map((obj) => {
@@ -47,6 +106,7 @@ class Cards extends Component {
                 <li>Product Name: <a href="/product">{obj.product_name}</a></li>
                 <li>Brand: {obj.brand}</li>
                 <li>Price: ${obj.price} </li>
+                <NavLink to="/product" onClick={this.getID()}>See More</NavLink>
                 {/*<a href="/product">{obj.product_name}</a>*/}
             </ul></div>
         });
@@ -54,7 +114,7 @@ class Cards extends Component {
             <div>
                 <div className="cardsCols" >
                     <form className="cardForm">
-                        <div>{allItems}</div>
+                        <div>{this.getItems()}</div>
                     </form>
                 </div>
             </div>
@@ -63,3 +123,4 @@ class Cards extends Component {
 }
 
 export default Cards;
+
