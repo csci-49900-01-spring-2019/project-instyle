@@ -158,8 +158,18 @@ class HomeTableViewController: UITableViewController, PostTableCellDelegate {
         if segue.identifier == "showProductDetails" {
             let VC = segue.destination as! ProductDetailViewController
             let indexPath = sender as! IndexPath
+            
             let post = postArray[indexPath.row]
-            VC.product = post.product!
+            
+            VC.productUsername = post.username!
+            VC.productName = post.product!
+            VC.productDescription = post.description!
+            VC.productImageUrl = post.imageUrl!
+            VC.productPrice = post.price!
+            VC.productBrand = post.brand!
+            VC.productGender = post.gender!
+            VC.productSize = post.size!
+            
             
         }
     }

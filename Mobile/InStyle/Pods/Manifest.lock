@@ -113,9 +113,14 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
+  - PryntTrimmerView (3.0.0)
+  - SteviaLayout (4.4.4)
   - SVProgressHUD (2.2.5)
   - SwiftKeychainWrapper (3.2.0)
   - SwiftyJSON (4.3.0)
+  - YPImagePicker (3.5.3):
+    - PryntTrimmerView (~> 3.0.0)
+    - SteviaLayout (~> 4.4.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -128,6 +133,7 @@ DEPENDENCIES:
   - SVProgressHUD
   - SwiftKeychainWrapper
   - SwiftyJSON
+  - YPImagePicker
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -150,9 +156,12 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - PryntTrimmerView
+    - SteviaLayout
     - SVProgressHUD
     - SwiftKeychainWrapper
     - SwiftyJSON
+    - YPImagePicker
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -174,10 +183,13 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  PryntTrimmerView: 53ac64053c7ce63cb3e27f54090f52da0734891d
+  SteviaLayout: 523469269059f2c6da02820bb2ff28a5fe0780aa
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  YPImagePicker: 5dd3814b47b1208e9c8cc8f6ef77fe90db3723b6
 
-PODFILE CHECKSUM: 40a76a81a8f611e92728901b9030b9fd819d3d33
+PODFILE CHECKSUM: 8b278ae39a44179158e67a19d50bddaf194e8e84
 
 COCOAPODS: 1.6.1

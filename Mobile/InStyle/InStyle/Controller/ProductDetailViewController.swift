@@ -7,17 +7,57 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class ProductDetailViewController: UIViewController {
     
     @IBOutlet var navbar: UINavigationItem!
     
-    var product = ""
+    @IBOutlet var username: UILabel!
+    @IBOutlet var product: UILabel!
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var price: UILabel!
+    @IBOutlet var brand: UILabel!
+    @IBOutlet var gender: UILabel!
+    @IBOutlet var size: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var buyButton: UIButton!
+    @IBOutlet var profileImage: UIImageView!
+    
+    var productUsername = ""
+    var productName = ""
+    var productDescription = ""
+    var productPrice = ""
+    var productBrand = ""
+    var productGender = ""
+    var productSize = ""
+    var productImageUrl = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navbar.title = product
+        navbar.title = productName
+        profileImage.image = UIImage(named: "user")
+        username.text = productUsername
+        product.text = productName
+        price.text = productPrice
+        brand.text = "Brand: \(productBrand)"
+        gender.text = "Gender: \(productGender)"
+        size.text = "Size: \(productSize)"
+        descriptionLabel.text = productDescription
+        
+        Alamofire.request(productImageUrl).responseImage {
+            (response) in
+            debugPrint(response)
+            if let image = response.result.value {
+                self.imageView.image = image
+            }
+            else {
+                self.imageView.image = UIImage(named: "defaultProductImage")
+            }
+        }
         
     }
     

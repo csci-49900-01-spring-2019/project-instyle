@@ -16,6 +16,6 @@ target 'InStyle' do
   pod 'AlamofireImage'
   pod 'SVProgressHUD'
   pod 'SwiftKeychainWrapper'
-  
+  pod 'YPImagePicker'
   
 end
