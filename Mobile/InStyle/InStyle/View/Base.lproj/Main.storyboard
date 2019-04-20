@@ -196,21 +196,56 @@
             </objects>
             <point key="canvasLocation" x="1090" y="88"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Post View Controller-->
         <scene sceneID="yQg-Ju-YNm">
             <objects>
-                <viewController id="OG8-ad-9Ih" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddPostViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OG8-ad-9Ih" customClass="AddPostViewController" customModule="InStyle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gTh-ao-FZZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foZ-oB-opH">
+                                <rect key="frame" x="155" y="538" width="65" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="bWM-HK-4fl"/>
+                                    <constraint firstAttribute="width" constant="65" id="w9k-Ys-lIu"/>
+                                </constraints>
+                                <state key="normal" image="shutterButton"/>
+                                <connections>
+                                    <action selector="shutterTapped:" destination="OG8-ad-9Ih" eventType="touchUpInside" id="IcL-sG-oUn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="foZ-oB-opH" firstAttribute="centerX" secondItem="gTh-ao-FZZ" secondAttribute="centerX" id="U3o-xt-MfQ"/>
+                            <constraint firstItem="foZ-oB-opH" firstAttribute="centerY" secondItem="gTh-ao-FZZ" secondAttribute="centerY" constant="237" id="fFe-oL-nLL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4q7-ve-KzC"/>
                     </view>
                     <navigationItem key="navigationItem" id="fLD-fn-HXy"/>
+                    <connections>
+                        <outlet property="shutterButton" destination="foZ-oB-opH" id="0Zq-VC-WdA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kx7-Y6-dLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2970" y="490"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eqJ-8U-q6J">
+            <objects>
+                <viewController id="geX-vw-AeZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qhK-8t-NN6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="v2V-H3-mmn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eVO-Mc-NdB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3967" y="490"/>
         </scene>
         <!--Home-->
         <scene sceneID="zKU-fm-TmM">
@@ -535,6 +570,7 @@
         <image name="cart" width="33" height="33"/>
         <image name="home" width="30" height="30"/>
         <image name="logo" width="341" height="341"/>
+        <image name="shutterButton" width="122" height="122"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NOE-LW-u8w"/>
