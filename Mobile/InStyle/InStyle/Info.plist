@@ -26,6 +26,8 @@
 	<string>Main</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>InStyle Wants To Access Your Library</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>InStyle Wants To Add Photo To Library</string>
 	<key>NSCameraUsageDescription</key>
 	<string>InStyle Wants To Access Your Camera</string>
 	<key>UIRequiredDeviceCapabilities</key>
