@@ -106,9 +106,7 @@ class AddPostViewController: UIViewController {
         // Call capturePhoto method by passing our photo settings
         //and a delegate implementing AVCapturePhotoCaptureDelegate
         imageOutput.capturePhoto(with: photoSettings, delegate: self)
-        
-        
-        
+ 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

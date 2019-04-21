@@ -11,6 +11,7 @@
 		150AC9AB225A388000CDBEAC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150AC9AA225A388000CDBEAC /* RegisterViewController.swift */; };
 		150AC9AD225A4CA400CDBEAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 150AC9AC225A4CA400CDBEAC /* GoogleService-Info.plist */; };
 		1513D361226CE881004DA72B /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513D360226CE881004DA72B /* ImageViewController.swift */; };
+		1513D363226CFAEB004DA72B /* AddPostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513D362226CFAEB004DA72B /* AddPostDetailsViewController.swift */; };
 		15429534226A4FDA008393B9 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15429533226A4FDA008393B9 /* AddPostViewController.swift */; };
 		154F41EA225D0FA40086C3B6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154F41E9225D0FA40086C3B6 /* MainTabBarController.swift */; };
 		1550BF37225FBC0C0067F1A9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1550BF36225FBC0C0067F1A9 /* Post.swift */; };
@@ -33,6 +34,7 @@
 		150AC9AA225A388000CDBEAC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		150AC9AC225A4CA400CDBEAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1513D360226CE881004DA72B /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		1513D362226CFAEB004DA72B /* AddPostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostDetailsViewController.swift; sourceTree = "<group>"; };
 		15429533226A4FDA008393B9 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		154F41E9225D0FA40086C3B6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		1550BF36225FBC0C0067F1A9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				1550BF412266D6960067F1A9 /* ProductDetailViewController.swift */,
 				15429533226A4FDA008393B9 /* AddPostViewController.swift */,
 				1513D360226CE881004DA72B /* ImageViewController.swift */,
+				1513D362226CFAEB004DA72B /* AddPostDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				1596E333225FAFBF006E0825 /* HomeTableViewController.swift in Sources */,
 				15AB43DD22494CEF00C633B3 /* AppDelegate.swift in Sources */,
 				1550BF422266D6960067F1A9 /* ProductDetailViewController.swift in Sources */,
+				1513D363226CFAEB004DA72B /* AddPostDetailsViewController.swift in Sources */,
 				150AC9AB225A388000CDBEAC /* RegisterViewController.swift in Sources */,
 				15429534226A4FDA008393B9 /* AddPostViewController.swift in Sources */,
 				1513D361226CE881004DA72B /* ImageViewController.swift in Sources */,

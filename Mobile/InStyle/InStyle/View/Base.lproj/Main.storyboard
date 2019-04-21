@@ -233,7 +233,7 @@
             </objects>
             <point key="canvasLocation" x="2968.8000000000002" y="489.80509745127438"/>
         </scene>
-        <!--Image View Controller-->
+        <!--Image-->
         <scene sceneID="eqJ-8U-q6J">
             <objects>
                 <viewController storyboardIdentifier="ImageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="geX-vw-AeZ" customClass="ImageViewController" customModule="InStyle" customModuleProvider="target" sceneMemberID="viewController">
@@ -254,14 +254,55 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v2V-H3-mmn"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bpR-5t-7ew"/>
+                    <navigationItem key="navigationItem" title="Image" id="bpR-5t-7ew">
+                        <barButtonItem key="rightBarButtonItem" title="Continue" id="kgu-2j-78H">
+                            <connections>
+                                <action selector="continueTapped:" destination="geX-vw-AeZ" id="Fl6-aO-z8e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="capturedImageOutput" destination="keh-Rh-bpB" id="467-IG-OTg"/>
+                        <segue destination="I53-B1-T00" kind="show" identifier="addPostDetails" id="acy-hA-tEF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVO-Mc-NdB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3965.5999999999999" y="489.80509745127438"/>
+        </scene>
+        <!--Add Post Details View Controller-->
+        <scene sceneID="LTM-VO-QdC">
+            <objects>
+                <viewController storyboardIdentifier="AddPostDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I53-B1-T00" customClass="AddPostDetailsViewController" customModule="InStyle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VPI-zR-MOL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2" translatesAutoresizingMaskIntoConstraints="NO" id="ngH-0b-lDz">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k5V-K7-z3d">
+                                <rect key="frame" x="38" y="149" width="298" height="341"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ngH-0b-lDz" firstAttribute="top" secondItem="l4R-Dw-rCL" secondAttribute="top" id="LlZ-zB-n83"/>
+                            <constraint firstItem="l4R-Dw-rCL" firstAttribute="bottom" secondItem="ngH-0b-lDz" secondAttribute="bottom" id="b04-T0-92T"/>
+                            <constraint firstItem="ngH-0b-lDz" firstAttribute="leading" secondItem="l4R-Dw-rCL" secondAttribute="leading" id="k6X-xf-c4U"/>
+                            <constraint firstItem="l4R-Dw-rCL" firstAttribute="trailing" secondItem="ngH-0b-lDz" secondAttribute="trailing" id="l4M-Iy-8e2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="l4R-Dw-rCL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mca-hj-11h"/>
+                    <connections>
+                        <outlet property="productImage" destination="k5V-K7-z3d" id="g0N-pv-ICR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bsb-Qm-N39" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4901.6000000000004" y="489.80509745127438"/>
         </scene>
         <!--Home-->
         <scene sceneID="zKU-fm-TmM">
@@ -583,6 +624,7 @@
     <resources>
         <image name="addsymbol" width="30" height="30"/>
         <image name="background1" width="213" height="378.5"/>
+        <image name="background2" width="213" height="378.5"/>
         <image name="cart" width="33" height="33"/>
         <image name="home" width="30" height="30"/>
         <image name="logo" width="341" height="341"/>
