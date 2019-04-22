@@ -1,19 +1,28 @@
 const functions = require('firebase-functions');
 const express = require('express');
+const path = require('path');
+const Busboy = require('busboy');
 var bodyParser = require('body-parser');
 var firebase = require("firebase");
 var jwt = require('jsonwebtoken');
+var uuid = require('uuid');
+var admin = require("firebase-admin");
+var serviceAccount = require("./instyle-5f93a-7e2453620e3f.json");
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    storageBucket: "instyle-5f93a.appspot.com"
+});
+
+var bucket = admin.storage().bucket();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true }));
 app.use(bodyParser.json());
 
-// Create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 var config = {
     apiKey: "AIzaSyBfkeTA-3ivv_EUOi6vTj5UP4530moiec4",
@@ -27,7 +36,7 @@ var config = {
 firebase.initializeApp(config);
 var db = firebase.firestore();
 
-app.post('/auth', urlencodedParser, function (req, res) {
+app.post('/auth', function (req, res) {
    // Prepare output in JSON format
    const promise = firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password)
 	.then(function(firebaseUser) {
@@ -62,7 +71,7 @@ app.post('/auth', urlencodedParser, function (req, res) {
 		});
 })
 
-app.post('/register', urlencodedParser, function (req, res) {
+app.post('/register', function (req, res) {
    if(req.body.user_name != null && req.body.first_name != null && req.body.last_name != null){
 	   const promise = firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password)
 		.then(function(firebaseUser) {
@@ -147,7 +156,7 @@ app.get('/userInfo', function (req, res) {
 	}
 })
 
-app.post('/addPosting', urlencodedParser, function (req, res) {
+app.post('/addPosting', function (req, res) {
 	jwt.verify(req.body.token, 'secret', function(err, decoded) {
 		if(err != null){
 			response = {
@@ -157,7 +166,6 @@ app.post('/addPosting', urlencodedParser, function (req, res) {
 			res.end(JSON.stringify(response));
 		}
 		else{
-			var sss = req.body.size;
 			var data = {
 				uid: decoded.uid,
 				product_name: req.body.product_name,
@@ -167,6 +175,8 @@ app.post('/addPosting', urlencodedParser, function (req, res) {
 				gender: req.body.gender,
 				category: req.body.category,
 				description: req.body.description,
+				sold: false,
+                timestamp: Date.now(),
 				tags: 
 				{
 					['name_' + req.body.product_name.toLowerCase()]: true,
@@ -202,6 +212,8 @@ app.get('/posting',  function (req, res) {
 	const p_price_ceiling = req.query.price_ceiling;
 	const p_price_floor = req.query.price_floor;
 	const p_result_limit = req.query.result_limit;
+	const p_sold = req.query.sold;
+    const p_buyer = req.query.buyer;
 	if(p_uid != null)
 	{
 		ref = ref.where('uid','==',p_uid);
@@ -226,6 +238,14 @@ app.get('/posting',  function (req, res) {
 	{
 		ref = ref.where('category','==',p_category);
 	}
+	if(p_sold != null)
+	{
+		ref = ref.where('sold', '==', (p_sold.toLowerCase() === 'true'));
+	}
+    if(p_buyer != null)
+    {
+        ref = ref.where('buyer', '==', p_buyer);
+    }
 	if(p_price_ceiling != null)
 	{
 		ref = ref.where('price','<=',p_price_ceiling);
@@ -248,7 +268,6 @@ app.get('/posting',  function (req, res) {
 			result = [];
 			snapshot.forEach(doc => {
 				var data = doc.data();
-				console.log(doc.id);
 				data['id'] = doc.id;
 				result.push(data);
 			});
@@ -320,6 +339,155 @@ app.get('/listing',  function (req, res) {
 		};
 		res.end(JSON.stringify(response));
 	}
+})
+
+app.post('/uploadImage', function (req, res) {
+	var busboy = new Busboy({ headers: req.headers });
+	var id;
+	var token;
+	let imageId = uuid.v1();
+	var remoteFile;
+    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+		remoteFile = 'images/' + imageId + path.extname(filename);
+		file.pipe(bucket.file(remoteFile).createWriteStream({
+                resumable  : false,
+                validation : false,
+                contentType: "auto",
+                metadata   : {
+                    'Cache-Control': 'public, max-age=31536000'}
+            }))
+            .on('error', (error) => { 
+                response = {
+					success: false,
+					message: error
+				};
+				res.end(JSON.stringify(response));
+            });
+    });
+	
+	busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
+		console.log(fieldname);
+		if(fieldname == 'id')
+		{
+			id = val;
+		}
+		else if(fieldname == 'token')
+		{
+			token = val;
+		}
+    });
+	
+    busboy.on('finish', function() {
+		jwt.verify(token, 'secret', function(err, decoded) {
+			if(err != null){
+				response = {
+					success: false,
+					message: err.message
+				};
+				res.end(JSON.stringify(response));
+			}
+			else if(id)
+			{
+				var docRef = db.collection('posting').doc(id);
+				docRef.get().then(function(doc) {
+					if (!doc.exists) {
+						response = {
+							success: false,
+							message: 'no info found'
+						};
+						res.end(JSON.stringify(response));
+					} else {
+						var imageUrl;
+						bucket.file(remoteFile).getSignedUrl({
+						  action: 'read',
+						  expires: '03-09-2491'
+						}).then(signedUrls => {
+							db.collection('posting').doc(id).set(
+								{imageUrls: firebase.firestore.FieldValue.arrayUnion(signedUrls[0])},
+								{merge: true}
+							).then(function(docRef){
+								response = {
+									success: true,
+									url: imageUrl
+								};
+								res.end(JSON.stringify(response));
+							}).catch(function(error) {
+								response = {
+									success: false,
+									message: error.message
+								};
+								res.end(JSON.stringify(response));
+							});
+						});
+					}
+				});
+			}
+			else{
+				response = {
+					success: false,
+					message: 'no id'
+				};
+				res.end(JSON.stringify(response));
+			}
+		});
+	});
+	busboy.end(req.rawBody);
+});
+
+app.post('/buy', function (req, res) {
+	jwt.verify(req.body.token, 'secret', function(err, decoded) {
+		if(err != null){
+			response = {
+				success: false,
+				message: err.message
+			};
+			res.end(JSON.stringify(response));
+		}
+		else{
+			if(req.body.id)
+			{
+				var docRef = db.collection('posting').doc(req.body.id).get().then(function(doc){
+					if (!doc.exists) {
+						response = {
+							success: false,
+							message: 'no info found'
+						};
+						res.end(JSON.stringify(response));
+					} else {
+						db.collection('posting').doc(req.body.id).set(
+							{buyer: decoded.uid,
+							 sold: true},
+							{merge: true}
+						).then(function(){
+							response = {
+								success: true
+							};
+							res.end(JSON.stringify(response));
+						}).catch(function(error) {
+							response = {
+								success: false,
+								message: error.message
+							};
+							res.end(JSON.stringify(response));
+						});
+					}
+				}).catch(function(error) {
+					response = {
+						success: false,
+						message: error.message
+					};
+					res.end(JSON.stringify(response));
+				});
+			}
+			else{
+				response = {
+					success: false,
+					message: 'Missing id'
+				};
+				res.end(JSON.stringify(response));
+			}
+		}
+	});
 })
 
 // console.log that your server is up and running
