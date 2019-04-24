@@ -15,7 +15,9 @@ target 'InStyle' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'SVProgressHUD'
-  pod 'SwiftKeychainWrapper'
+  pod 'DropDown'
+  pod 'IQKeyboardManagerSwift'
+#  pod 'SwiftKeychainWrapper'
 
   
 end

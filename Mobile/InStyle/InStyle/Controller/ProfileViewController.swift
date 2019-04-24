@@ -13,20 +13,10 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
 
   
-    @IBAction func logoutPressed(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            dismiss(animated: true, completion: nil)
-        }
-        catch {
-            print("Error signing out")
-        }
-    }
+ 
     
 }

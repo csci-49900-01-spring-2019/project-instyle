@@ -35,7 +35,7 @@ class ImageViewController: UIViewController {
         let imageName = UUID().uuidString
         let storageRef = Storage.storage().reference()
         
-        let imageRef = storageRef.child("images/\(imageName).jpeg")
+        let imageRef = storageRef.child("ios/images/\(imageName).jpeg")
         
         imageRef.putData(data, metadata: nil) {
             (metadata, error) in
@@ -69,7 +69,7 @@ class ImageViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addPostDetails" {
-            let addPostDetailsVC = segue.destination as! AddPostDetailsViewController
+            let addPostDetailsVC = segue.destination as! PostDetails1ViewController
             addPostDetailsVC.imageUrl = imageUrl
         }
     }

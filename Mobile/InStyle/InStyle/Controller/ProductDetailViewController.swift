@@ -47,6 +47,8 @@ class ProductDetailViewController: UIViewController {
         gender.text = "Gender: \(productGender)"
         size.text = "Size: \(productSize)"
         descriptionLabel.text = productDescription
+        descriptionLabel.sizeToFit()
+        
         
         Alamofire.request(productImageUrl).responseImage {
             (response) in

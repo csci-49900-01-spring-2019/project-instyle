@@ -143,7 +143,7 @@ extension AddPostViewController : AVCapturePhotoCaptureDelegate {
         
         stillImage = capturedImage
         
-        UIImageWriteToSavedPhotosAlbum(capturedImage, nil, nil, nil)
+        //UIImageWriteToSavedPhotosAlbum(capturedImage, nil, nil, nil)
         
         // Stop video capturing session (Freeze preview)
         //captureSession.stopRunning()
