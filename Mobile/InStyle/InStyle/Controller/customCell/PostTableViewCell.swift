@@ -8,19 +8,19 @@
 
 import UIKit
 
-protocol PostTableCellDelegate {
-    func buyButtonPressed(username: String,
-                          product: String,
-                          productImage: UIImage,
-                          price: String,
-                          pid: String,
-                          sold: Bool,
-                          description: String,
-                          brand: String,
-                          category: String,
-                          gender: String,
-                          size: String)
-}
+//protocol PostTableCellDelegate {
+//    func buyButtonPressed(username: String,
+//                          product: String,
+//                          productImage: UIImage,
+//                          price: String,
+//                          pid: String,
+//                          sold: Bool,
+//                          description: String,
+//                          brand: String,
+//                          category: String,
+//                          gender: String,
+//                          size: String)
+//}
 
 class PostTableViewCell: UITableViewCell {
     
@@ -32,7 +32,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet var profileImage: UIImageView!
     
     
-    var delegate: PostTableCellDelegate?
+//    var delegate: PostTableCellDelegate?
     
     var pid = ""
     var sold = false
@@ -55,17 +55,17 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func buyButtonPressed(_ sender: Any) {
-        delegate?.buyButtonPressed(username: username.text!,
-                                   product: product.text!,
-                                   productImage: productImage.image!,
-                                   price: price.text!,
-                                   pid: pid,
-                                   sold: sold,
-                                   description: productDescription,
-                                   brand: brand,
-                                   category: category,
-                                   gender: gender,
-                                   size: size)
-    }
+//    @IBAction func buyButtonPressed(_ sender: Any) {
+//        delegate?.buyButtonPressed(username: username.text!,
+//                                   product: product.text!,
+//                                   productImage: productImage.image!,
+//                                   price: price.text!,
+//                                   pid: pid,
+//                                   sold: sold,
+//                                   description: productDescription,
+//                                   brand: brand,
+//                                   category: category,
+//                                   gender: gender,
+//                                   size: size)
+//    }
 }

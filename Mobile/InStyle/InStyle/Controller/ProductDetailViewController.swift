@@ -34,6 +34,7 @@ class ProductDetailViewController: UIViewController {
     var productSize = ""
     var productImageUrl = ""
     
+    var productImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,18 +49,18 @@ class ProductDetailViewController: UIViewController {
         size.text = "Size: \(productSize)"
         descriptionLabel.text = productDescription
         descriptionLabel.sizeToFit()
+        imageView.image = productImage
         
-        
-        Alamofire.request(productImageUrl).responseImage {
-            (response) in
-            debugPrint(response)
-            if let image = response.result.value {
-                self.imageView.image = image
-            }
-            else {
-                self.imageView.image = UIImage(named: "defaultProductImage")
-            }
-        }
+//        Alamofire.request(productImageUrl).responseImage {
+//            (response) in
+//            debugPrint(response)
+//            if let image = response.result.value {
+//                self.imageView.image = image
+//            }
+//            else {
+//                self.imageView.image = UIImage(named: "defaultProductImage")
+//            }
+//        }
         
     }
     

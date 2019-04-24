@@ -12,7 +12,7 @@ import Alamofire
 import AlamofireImage
 
 
-class HomeTableViewController: UITableViewController, PostTableCellDelegate {
+class HomeTableViewController: UITableViewController{
 
  
     @IBOutlet var homeTableView: UITableView!
@@ -41,30 +41,35 @@ class HomeTableViewController: UITableViewController, PostTableCellDelegate {
                     self.username = data["user_name"] as? String
                     self.email = data["email"] as? String
                     
-                    self.db.collection("posting").whereField("uid", isEqualTo: self.currentUid!).getDocuments() {
+                    self.db.collection("posting")
+                        .whereField("uid", isEqualTo: self.currentUid!)
+                        .order(by: "timestamp", descending: true)
+                        .getDocuments {
                         (snapshot, error) in
                         if error != nil {
                             print(error!)
                         }
                         else {
+                            
                             for document in snapshot!.documents {
                                 //print("\(document.documentID) => \(document.data())")
+                                
                                 let data = document.data()
                                 let productName = data["product_name"] as? String
                                 let productPrice = data["price"] as? String
-                                let productImageUrl = data["imageUrl"] as? String
+                                let productImageUrl = data["imageUrls"] as? Array<String>
                                 let productDescription = data["description"] as? String
                                 let productBrand = data["brand"] as? String
                                 let productCategory = data["category"] as? String
                                 let productGender = data["gender"] as? String
                                 let productSize = data["size"] as? String
                                 let productSold = data["sold"] as? Bool
-                                let productPid = data["pid"] as? String
+                                let productPid = data["id"] as? String
                                 
                                 let p = Post(username: self.username,
                                              product: productName,
                                              price: productPrice,
-                                             imageUrl: productImageUrl,
+                                             imageUrl: productImageUrl?[0],
                                              description: productDescription,
                                              brand: productBrand,
                                              category: productCategory,
@@ -72,7 +77,8 @@ class HomeTableViewController: UITableViewController, PostTableCellDelegate {
                                              size: productSize,
                                              sold: productSold,
                                              pid: productPid)
-                                
+                            
+                 
                                 self.postArray.append(p)
                                
                             }
@@ -125,33 +131,27 @@ class HomeTableViewController: UITableViewController, PostTableCellDelegate {
         cell.size = post.size!
         cell.sold = post.sold!
         cell.productDescription = post.description!
+        cell.productImage.image = post.postImage
         
-        
-        if post.imageUrl == nil || post.imageUrl == "" {
-            cell.productImage.image = UIImage(named: "defaultProductImage")
-        }
-        
-        else {
+        if post.defaultImage {
             Alamofire.request(post.imageUrl!).responseImage {
                 (response) in
                 debugPrint(response)
                 if let image = response.result.value {
                     cell.productImage.image = image
+                    self.postArray[indexPath.row].setImage(image: image)
                 }
-                else {
-                    cell.productImage.image = UIImage(named: "defaultProductImage")
-                }
+              
             }
         }
         
-        cell.delegate = self
+        
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showProductDetails", sender: indexPath)
-        
-        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -169,25 +169,24 @@ class HomeTableViewController: UITableViewController, PostTableCellDelegate {
             VC.productBrand = post.brand!
             VC.productGender = post.gender!
             VC.productSize = post.size!
-            
-            
+            VC.productImage = post.postImage
         }
     }
     
-    func buyButtonPressed(username: String,
-                          product: String,
-                          productImage: UIImage,
-                          price: String,
-                          pid: String,
-                          sold: Bool,
-                          description: String,
-                          brand: String,
-                          category: String,
-                          gender: String,
-                          size: String) {
-        print(product, pid, description)
-        
-    }
+//    func buyButtonPressed(username: String,
+//                          product: String,
+//                          productImage: UIImage,
+//                          price: String,
+//                          pid: String,
+//                          sold: Bool,
+//                          description: String,
+//                          brand: String,
+//                          category: String,
+//                          gender: String,
+//                          size: String) {
+//        print(product, pid, description)
+//
+//    }
   
     func configureTableView() {
         homeTableView.rowHeight = UITableView.automaticDimension

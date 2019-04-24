@@ -32,29 +32,6 @@
                             <constraint firstAttribute="width" constant="340" id="hNS-CG-7G1"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTF-xx-CoS">
-                        <rect key="frame" x="16" y="435" width="235" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="235" id="Kdz-uE-zns"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATV-4R-IIS">
-                        <rect key="frame" x="282" y="428" width="73" height="33"/>
-                        <color key="backgroundColor" red="0.25202066519999999" green="0.78218727470000005" blue="0.092055568939999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="73" id="Zm2-Eh-b2E"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <state key="normal" title="Buy Now!">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </state>
-                        <connections>
-                            <action selector="buyButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KPF-Jc-XVo"/>
-                        </connections>
-                    </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7cT-yQ-SRL">
                         <rect key="frame" x="17" y="23" width="27" height="24"/>
                         <constraints>
@@ -68,33 +45,35 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTF-xx-CoS">
+                        <rect key="frame" x="116" y="428" width="143" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="bqY-ms-NHY" secondAttribute="trailing" constant="213" id="5QR-fj-jaW"/>
                     <constraint firstItem="dr5-sc-Q6H" firstAttribute="top" secondItem="bqY-ms-NHY" secondAttribute="bottom" constant="8" id="C0o-cS-0yz"/>
-                    <constraint firstItem="WTF-xx-CoS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="DtB-CQ-nkS"/>
                     <constraint firstItem="7cT-yQ-SRL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="Fg4-si-kbI"/>
-                    <constraint firstItem="ATV-4R-IIS" firstAttribute="leading" secondItem="WTF-xx-CoS" secondAttribute="trailing" constant="31" id="K7d-tr-B7m"/>
-                    <constraint firstItem="WTF-xx-CoS" firstAttribute="top" secondItem="sDo-4a-rwB" secondAttribute="bottom" constant="31" id="Kew-kg-5he"/>
                     <constraint firstItem="dr5-sc-Q6H" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Lty-Fa-cl5"/>
-                    <constraint firstAttribute="bottom" secondItem="WTF-xx-CoS" secondAttribute="bottom" constant="19.5" id="VG1-BS-8oC"/>
-                    <constraint firstItem="ATV-4R-IIS" firstAttribute="top" secondItem="sDo-4a-rwB" secondAttribute="bottom" constant="24" id="W49-AX-qV6"/>
+                    <constraint firstItem="WTF-xx-CoS" firstAttribute="top" secondItem="sDo-4a-rwB" secondAttribute="bottom" constant="24" id="Otr-SX-oKn"/>
                     <constraint firstItem="sDo-4a-rwB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="6" id="Xnp-6i-3Bt"/>
-                    <constraint firstAttribute="trailing" secondItem="ATV-4R-IIS" secondAttribute="trailing" constant="20" id="aHl-4u-CjC"/>
+                    <constraint firstItem="WTF-xx-CoS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="100" id="YpW-tv-RgS"/>
                     <constraint firstItem="dr5-sc-Q6H" firstAttribute="top" secondItem="7cT-yQ-SRL" secondAttribute="bottom" constant="8" id="dHj-Ta-ViH"/>
                     <constraint firstItem="bqY-ms-NHY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="dPp-1t-EYZ"/>
                     <constraint firstItem="dr5-sc-Q6H" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="fjr-5b-jBQ"/>
-                    <constraint firstAttribute="bottom" secondItem="ATV-4R-IIS" secondAttribute="bottom" constant="14.5" id="g0k-vn-WAc"/>
                     <constraint firstItem="7cT-yQ-SRL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="1" id="ibr-cZ-2S5"/>
                     <constraint firstItem="bqY-ms-NHY" firstAttribute="leading" secondItem="7cT-yQ-SRL" secondAttribute="trailing" constant="8" id="koD-DT-Ib9"/>
                     <constraint firstItem="sDo-4a-rwB" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="m2a-ZK-K5f"/>
                     <constraint firstItem="bqY-ms-NHY" firstAttribute="leading" secondItem="7cT-yQ-SRL" secondAttribute="trailing" constant="8" id="m8y-s6-1s5"/>
                     <constraint firstItem="sDo-4a-rwB" firstAttribute="top" secondItem="dr5-sc-Q6H" secondAttribute="bottom" constant="8" id="oq5-my-y7q"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="WTF-xx-CoS" secondAttribute="bottom" constant="16" id="sGJ-j6-KZa"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="WTF-xx-CoS" secondAttribute="trailing" constant="100" id="yTC-Lq-f7K"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="buyButton" destination="ATV-4R-IIS" id="haG-Ld-KtQ"/>
                 <outlet property="price" destination="WTF-xx-CoS" id="zbd-wP-GZA"/>
                 <outlet property="product" destination="dr5-sc-Q6H" id="PRp-MD-vSN"/>
                 <outlet property="productImage" destination="sDo-4a-rwB" id="GQs-X9-xgk"/>

@@ -78,7 +78,7 @@ class PostDetails2ViewController: UIViewController {
                     "price": priceTextField.text!,
                     "size" : sizeTextField.text!,
                     "description": descriptionTextField.text!,
-                    "timestamp": FieldValue.serverTimestamp()
+                    "timestamp": Date().timeIntervalSince1970
                 ])
         }
 

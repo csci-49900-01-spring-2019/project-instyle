@@ -22,6 +22,9 @@ class Post {
     var sold: Bool?
     var pid: String?
     
+    var defaultImage = true
+    var postImage = UIImage(named: "defaultProductImage")
+    
     init(username: String?,
          product: String?,
          price: String?,
@@ -45,5 +48,10 @@ class Post {
         self.size = size
         self.sold = sold
         self.pid = pid
+    }
+    
+    func setImage(image: UIImage?) {
+        self.postImage = image
+        self.defaultImage = false
     }
 }
