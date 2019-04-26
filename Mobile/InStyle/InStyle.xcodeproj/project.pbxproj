@@ -25,6 +25,7 @@
 		15AB43E422494CEF00C633B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15AB43E322494CEF00C633B3 /* Assets.xcassets */; };
 		15AB43E722494CEF00C633B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15AB43E522494CEF00C633B3 /* LaunchScreen.storyboard */; };
 		15C676592270C3D900DA953F /* PostDetails2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C676582270C3D900DA953F /* PostDetails2ViewController.swift */; };
+		15C682DC22724455005EAEF9 /* ProfileItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C682DB22724455005EAEF9 /* ProfileItemViewController.swift */; };
 		15D1CFBA225D329700EEFACE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1CFB9225D329700EEFACE /* ProfileViewController.swift */; };
 		18218E89E0BC1D0004E5D3BE /* Pods_InStyle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9120838FA475DCCAABC2BB39 /* Pods_InStyle.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		15AB43E622494CEF00C633B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15AB43E822494CEF00C633B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15C676582270C3D900DA953F /* PostDetails2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetails2ViewController.swift; sourceTree = "<group>"; };
+		15C682DB22724455005EAEF9 /* ProfileItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemViewController.swift; sourceTree = "<group>"; };
 		15D1CFB9225D329700EEFACE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6E17BA182EFA292C649B374D /* Pods-InStyle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStyle.release.xcconfig"; path = "Target Support Files/Pods-InStyle/Pods-InStyle.release.xcconfig"; sourceTree = "<group>"; };
 		9120838FA475DCCAABC2BB39 /* Pods_InStyle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InStyle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 				150AC9AA225A388000CDBEAC /* RegisterViewController.swift */,
 				154F41E9225D0FA40086C3B6 /* MainTabBarController.swift */,
 				15D1CFB9225D329700EEFACE /* ProfileViewController.swift */,
+				15C682DB22724455005EAEF9 /* ProfileItemViewController.swift */,
 				1596E332225FAFBF006E0825 /* HomeTableViewController.swift */,
 				1550BF412266D6960067F1A9 /* ProductDetailViewController.swift */,
 				15429533226A4FDA008393B9 /* AddPostViewController.swift */,
@@ -322,6 +325,7 @@
 				15D1CFBA225D329700EEFACE /* ProfileViewController.swift in Sources */,
 				150AC9A9225A383C00CDBEAC /* LoginViewController.swift in Sources */,
 				15AB43DF22494CEF00C633B3 /* WelcomeViewController.swift in Sources */,
+				15C682DC22724455005EAEF9 /* ProfileItemViewController.swift in Sources */,
 				1550BF37225FBC0C0067F1A9 /* Post.swift in Sources */,
 				154F41EA225D0FA40086C3B6 /* MainTabBarController.swift in Sources */,
 				1596E333225FAFBF006E0825 /* HomeTableViewController.swift in Sources */,
