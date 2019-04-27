@@ -287,59 +287,36 @@ app.get('/posting',  function (req, res) {
 })
 
 app.get('/listing',  function (req, res) {
-	let token = req.headers['x-access-token'] || req.headers['authorization'];
-	if (token.startsWith('Bearer ')) {
-		token = token.slice(7, token.length);
-	}
-	if(token){
-		jwt.verify(token, 'secret', function(err, decoded) {
-			if(err != null){
-				response = {
-					success: false,
-					message: err.message
-				};
-				res.end(JSON.stringify(response));
-			}
-			else{
-				let id = req.query.id;
-				if(id)
-				{
-					db.collection('posting').doc(id).get().then(function(doc) {
-						if (!doc.exists) {
-							response = {
-								success: false,
-								message: 'no info found'
-							};
-						} else {
-							response = {
-								success: true,
-								data: doc.data()
-							};
-						}
-						res.end(JSON.stringify(response));
-					}).catch(function(error) {
-						response = {
-							success: false,
-							message: error.message
-						};
-					});
-				} else{
-					response = {
-						success: false,
-						message: 'missing parameter id'
-					};
-					res.end(JSON.stringify(response));
-				}
-			}
-		});
-	} else {
-		response = {
-			success: false,
-			message: 'missing token'
-		};
-		res.end(JSON.stringify(response));
-	}
-})
+    let id = req.query.id;
+    if(id)
+    {
+        db.collection('posting').doc(id).get().then(function(doc) {
+            if (!doc.exists) {
+                response = {
+                    success: false,
+                    message: 'no info found'
+                };
+            } else {
+                response = {
+                    success: true,
+                    data: doc.data()
+                };
+            }
+            res.end(JSON.stringify(response));
+        }).catch(function(error) {
+            response = {
+                success: false,
+                message: error.message
+            };
+        });
+    } else{
+        response = {
+            success: false,
+            message: 'missing parameter id'
+        };
+        res.end(JSON.stringify(response));
+    }
+});
 
 app.post('/uploadImage', function (req, res) {
 	var busboy = new Busboy({ headers: req.headers });
