@@ -30,6 +30,7 @@ class HomeTableViewController: UITableViewController{
         super.viewDidLoad()
         
         listenToChanges()
+    
        
         //Registering PostTableViewCell.xib
         homeTableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: "PostTableViewCell")
@@ -60,7 +61,9 @@ class HomeTableViewController: UITableViewController{
         cell.product.text = post.product
         cell.brand = post.brand!
         cell.category = post.category!
-        cell.pid = post.pid!
+        if post.pid != nil{
+            cell.pid = post.pid!
+        }
         cell.gender = post.gender!
         cell.size = post.size!
         cell.sold = post.sold!
@@ -162,7 +165,7 @@ class HomeTableViewController: UITableViewController{
                     
                     self.db.collection("posting")
                         .whereField("uid", isEqualTo: self.currentUid!)
-                        .order(by: "timestamp", descending: true)
+                        .order(by: "timestamp", descending: false)
                         .getDocuments {
                             (snapshot, error) in
                             if error != nil {
@@ -220,81 +223,60 @@ class HomeTableViewController: UITableViewController{
     
     func listenToChanges() {
         
-        //retrieve current user's uid and information
-        let user = Auth.auth().currentUser
-        if let user = user {
-            
-            currentUid = user.uid
-            
-            db.collection("users").document(currentUid!).getDocument {
-                (document, error) in
-                if let document = document, document.exists {
-                    let data = document.data()!
-                    self.username = data["user_name"] as? String
-                    self.email = data["email"] as? String
-                    
-                    self.db.collection("posting")
-                        .whereField("uid", isEqualTo: self.currentUid!)
-                        .order(by: "timestamp", descending: true)
-                        .addSnapshotListener {
-                            (snapshot, error) in
-                            if error != nil {
-                                print(error!)
-                            }
-                            else {
-                                
-                                snapshot?.documentChanges.forEach  {
-                                    documentChange in
-                                    
-                                    if (documentChange.type == .added) {
-                                        let data = documentChange.document.data()
-                                        let productName = data["product_name"] as? String
-                                        let productPrice = data["price"] as? String
-                                        let productImageUrl = data["imageUrls"] as? Array<String>
-                                        let productDescription = data["description"] as? String
-                                        let productBrand = data["brand"] as? String
-                                        let productCategory = data["category"] as? String
-                                        let productGender = data["gender"] as? String
-                                        let productSize = data["size"] as? String
-                                        let productSold = data["sold"] as? Bool
-                                        let productPid = data["id"] as? String
-                                        
-                                        let p = Post(username: self.username,
-                                                     product: productName,
-                                                     price: productPrice,
-                                                     imageUrl: productImageUrl?[0],
-                                                     description: productDescription,
-                                                     brand: productBrand,
-                                                     category: productCategory,
-                                                     gender: productGender,
-                                                     size: productSize,
-                                                     sold: productSold,
-                                                     pid: productPid)
-    
-                                        if self.firstLoad {
-                                            self.postArray.append(p)
-                                        }
-                                        else{
-                                            self.postArray.insert(p, at: 0)
-                                        }
-                                        
-                                    }
-                                }
-                                
-                                self.configureTableView()
-                                self.homeTableView.reloadData()
-                                self.firstLoad = false
-                                
-                            }
-                    }
+        db.collection("posting")
+            .order(by: "timestamp", descending: true)
+            .addSnapshotListener {
+                (snapshot, error) in
+                if error != nil {
+                    print(error!)
                 }
                 else {
-                    print("Document does not exist.")
+                    snapshot?.documentChanges.forEach  {
+                        documentChange in
+                        if (documentChange.type == .added) {
+                            let data = documentChange.document.data()
+                            let productName = data["product_name"] as? String
+                            let productPrice = data["price"] as? String
+                            let productImageUrl = data["imageUrls"] as? Array<String>
+                            let productDescription = data["description"] as? String
+                            let productBrand = data["brand"] as? String
+                            let productCategory = data["category"] as? String
+                            let productGender = data["gender"] as? String
+                            let productSize = data["size"] as? String
+                            let productSold = data["sold"] as? Bool
+                            let productPid = data["id"] as? String
+                            let uid = data["uid"] as? String
+                            
+                            self.db.collection("users").document(uid!).getDocument {
+                                (document, error) in
+                                if let document = document, document.exists {
+                                    let data = document.data()
+                                    let productUsername = data?["user_name"] as? String
+                                    let p = Post(username: productUsername,
+                                                 product: productName,
+                                                 price: productPrice,
+                                                 imageUrl: productImageUrl?[0],
+                                                 description: productDescription,
+                                                 brand: productBrand,
+                                                 category: productCategory,
+                                                 gender: productGender,
+                                                 size: productSize,
+                                                 sold: productSold,
+                                                 pid: productPid)
+                                   
+                                    self.postArray.append(p)
+                                    self.configureTableView()
+                                    self.homeTableView.reloadData()
+                                }
+                                else {
+                                    print("Document does not exist")
+                                }
+
+                            }
+                        }//if documentChange == .added
+                    }//foreach
+                    
                 }
-                
             }
-            
-        }
     }
-    
 }

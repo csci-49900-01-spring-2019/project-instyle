@@ -12,8 +12,8 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.selectedIndex = 2
-        // Do any additional setup after loading the view.
+        //self.selectedIndex = 2
+        
     }
     
 
