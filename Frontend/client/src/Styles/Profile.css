@@ -1,4 +1,9 @@
-.profileWrapper{
+body{
+    background-color: rgb(218, 218, 218);
+}
+
+
+.profileInfoWrapper{
     background-color: rgb(156, 119, 119);
     color: white;
     text-align: center;

@@ -60,7 +60,7 @@ class Profile extends Component{
 	// }
    render(){
         return(
-			<div className="profileWrapper">
+			<div className="profileInfoWrapper">
 				<div className="welcome">Welcome!</div>
 
 				{/* <input className="first" id="name" disabled={true} readOnly={true} value={this.state.first_name} size="30"/>
