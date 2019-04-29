@@ -107,17 +107,30 @@ class AddItems extends Component{
                         <label className="allLabels" htmlFor="price">Price:</label>
                         <input className="allInputs" name="price" type="number" value={this.state.price}  onChange={this.handleChange.bind(this)}/>
                     </div>
+                    <label className="allLabels" >Size:</label>
                     <div className="allDIvs">
-                        <label className="allLabels" htmlFor="size">Size:</label>
-                        <input className="allInputs" name="size" type="text" value={this.state.size}  onChange={this.handleChange.bind(this)}/>
+                        <label className="allLabels" htmlFor="size">XL:</label>
+                        <input className="allInputs" name="size" type="radio" value={"XL"}  checked={this.state.size==="XL"} onChange={this.handleChange.bind(this)}/>
+                        <label className="allLabels" htmlFor="size">L:</label>
+                        <input className="allInputs" name="size" type="radio" value={"L"} checked={this.state.size==="L"} onChange={this.handleChange.bind(this)}/>
+                        <label className="allLabels" htmlFor="size">M:</label>
+                        <input className="allInputs" name="size" type="radio" value={"M"} checked={this.state.size==="M"} onChange={this.handleChange.bind(this)}/>
+                        <label className="allLabels" htmlFor="size">S:</label>
+                        <input className="allInputs" name="size" type="radio" value={"S"} checked={this.state.size==="S"} onChange={this.handleChange.bind(this)}/>
+                        <label className="allLabels" htmlFor="size">XS:</label>
+                        <input className="allInputs" name="size" type="radio" value={"XS"} checked={this.state.size==="XS"} onChange={this.handleChange.bind(this)}/>
                     </div>
                     <div className="allDIvs">
                         <label className="allLabels" htmlFor="brand">Brand:</label>
                         <input className="allInputs" name="brand" type="text" value={this.state.brand}  onChange={this.handleChange.bind(this)}/>
                     </div>
+
+                    <label className="allLabels" >Gender:</label>
                     <div className="allDIvs">
-                        <label className="allLabels" htmlFor="gender">Gender:</label>
-                        <input className="allInputs" name="gender" type="text" value={this.state.gender}  onChange={this.handleChange.bind(this)}/>
+                        <label className="allLabels" htmlFor="gender">Male:</label>
+                        <input className="allInputs" name="gender" type="radio" value={"Male"}  checked={this.state.size==="Male"} onChange={this.handleChange.bind(this)}/>
+                        <label className="allLabels" htmlFor="gender">Female:</label>
+                        <input className="allInputs" name="gender" type="radio" value={"Female"}  checked={this.state.size==="Female"} onChange={this.handleChange.bind(this)}/>
                     </div>
                     <div className="allDIvs">
                         <label className="allLabels" htmlFor="category">Category:</label>

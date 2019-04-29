@@ -11,9 +11,10 @@ class Profile extends Component{
         super(props);
         this.state = {
             uid:'',
-            email:"",
-            first_name:"",
-			last_name:"",
+			email:"",
+			name:"",
+            // first_name:"",
+			// last_name:"",
 			token:this.props.token
         }
 
@@ -36,8 +37,9 @@ class Profile extends Component{
 			.then(response => {
 
 				this.setState({
-					first_name:response.data.first_name,
-					last_name:response.data.last_name,
+					name:response.data.first_name + " " + response.data.last_name,
+					// first_name:response.data.first_name,
+					// last_name:response.data.last_name,
 					email: response.data.email
 				})
 			})
@@ -58,11 +60,19 @@ class Profile extends Component{
 	// }
    render(){
         return(
-			<div className="User-info">
-				<div>Welcome</div>
-				<input className="First" id="name" disabled={true} readOnly={true} value={this.state.first_name} size="30"/>
-				<input className="last" id="name" disabled={true} readOnly={true} value={this.state.last_name} size="30"/>
-				<input className="User-email" id="email" disabled={true} readOnly={true} value={this.state.email} size="30"/>
+			<div className="profileWrapper">
+				<div className="welcome">Welcome!</div>
+
+				{/* <input className="first" id="name" disabled={true} readOnly={true} value={this.state.first_name} size="30"/>
+				<input className="last" id="name" disabled={true} readOnly={true} value={this.state.last_name} size="30"/> */}
+				
+				<div className="userInfo">
+					<input className="info" id="userName" disabled={true} readOnly={true} value={this.state.name} size="30"/>
+				</div>
+
+				<div className="userInfo">
+					<input className="info" id="userEmail" disabled={true} readOnly={true} value={this.state.email} size="30"/>
+				</div>
 			</div>
 
         );
