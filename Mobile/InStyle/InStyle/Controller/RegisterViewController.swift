@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import SVProgressHUD
 
 
 class RegisterViewController: UIViewController {
@@ -28,11 +29,18 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerPressed(_ sender: Any) {
-        
+        SVProgressHUD.show()
         Auth.auth().createUser(withEmail: email.text!, password: password.text!) {
             (AuthDataResult, error) in
             if error != nil {
                 print(error!)
+                SVProgressHUD.dismiss()
+                let alert = UIAlertController(title: "Error", message: "Something Went Wrong", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .cancel) { (action:UIAlertAction) in
+                    print("You've pressed ok")
+                }
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
             }
             else {
                 print("Registration Successful")
@@ -45,7 +53,7 @@ class RegisterViewController: UIViewController {
                     "uid": AuthDataResult!.user.uid,
                     "products": []
                     ])
-                
+                SVProgressHUD.dismiss()
                 self.performSegue(withIdentifier: "goToTabViewController", sender: self)
             }
         }

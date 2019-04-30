@@ -67,7 +67,7 @@ class ProfileViewController: UITableViewController {
         cell.productDescription = post.description!
         cell.productImage.image = post.postImage
         
-        if post.defaultImage {
+        if post.defaultImage && post.imageUrl != nil {
             Alamofire.request(post.imageUrl!).responseImage {
                 (response) in
                 debugPrint(response)

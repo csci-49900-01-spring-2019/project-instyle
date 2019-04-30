@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class ImageViewController: UIViewController {
 
@@ -25,7 +26,7 @@ class ImageViewController: UIViewController {
     
     
     @IBAction func continueTapped(_ sender: Any) {
-        
+        SVProgressHUD.show()
         guard let image = image,
             let data = image.jpegData(compressionQuality: 1.0) else {
             print("Something went wrong converting UIImage to data")
@@ -59,7 +60,9 @@ class ImageViewController: UIViewController {
                 }
                 
                 self.imageUrl = downloadUrl.absoluteString
-                    
+                
+                SVProgressHUD.dismiss()
+                
                 self.performSegue(withIdentifier: "addPostDetails", sender: self)
             })
         }

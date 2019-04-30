@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
-
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
     
@@ -23,13 +23,23 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginPressed(_ sender: Any) {
+        SVProgressHUD.show()
+        
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) {
             (AuthDataResult, Error) in
             if Error != nil {
                 print(Error!)
+                SVProgressHUD.dismiss()
+                let alert = UIAlertController(title: "Error", message: "Incorrect Email or Password", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .cancel) { (action:UIAlertAction) in
+                    print("You've pressed ok")
+                }
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
             }
             else {
                 print("Logged in successfully")
+                SVProgressHUD.dismiss()
                 self.performSegue(withIdentifier: "goToTabViewController", sender: self)
             }
         }

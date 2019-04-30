@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import DropDown
+import SVProgressHUD
 
 class PostDetails2ViewController: UIViewController {
     
@@ -49,16 +50,18 @@ class PostDetails2ViewController: UIViewController {
     }
     
     @IBAction func finishTapped(_ sender: Any) {
-        print("imageUrl: \(imageUrl!)")
-        print("productName: \(productName!)")
-        print("brand: \(brand!)")
-        print("cat: \(category!)")
-        print("gender: \(gender)")
-        print("price: \(priceTextField.text!)")
-        print("size: \(sizeTextField.text!)")
-        print("descr: \(descriptionTextField.text!)")
         
         
+//        print("imageUrl: \(imageUrl!)")
+//        print("productName: \(productName!)")
+//        print("brand: \(brand!)")
+//        print("cat: \(category!)")
+//        print("gender: \(gender)")
+//        print("price: \(priceTextField.text!)")
+//        print("size: \(sizeTextField.text!)")
+//        print("descr: \(descriptionTextField.text!)")
+        
+        SVProgressHUD.show()
         let user = Auth.auth().currentUser
         if let currentUser = user {
             let uid = currentUser.uid
@@ -83,7 +86,7 @@ class PostDetails2ViewController: UIViewController {
         }
 
         
-     
+        SVProgressHUD.dismiss()
         navigationController?.popToRootViewController(animated: true)
         
        
