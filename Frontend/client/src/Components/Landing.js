@@ -41,7 +41,7 @@ class Landing extends Component {
         // console.log(this.state.token)
 
         const posts = this.state.data.length ?
-            (this.state.data.map(post => {
+            (this.state.data.slice(0,9).map(post => {
                 // console.log(post.imageUrls[0])
                 return (
                     <div key={post.id}>
@@ -69,7 +69,9 @@ class Landing extends Component {
                 </div>
 
                 {/*<Cards/>*/}
-                {posts}
+                <div className= "grid-container"> 
+                    {posts}
+                </div>
 
                 {this.props.token ?
                     <div>
