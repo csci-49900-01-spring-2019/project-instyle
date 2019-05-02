@@ -9,8 +9,8 @@ var uuid = require('uuid');
 var admin = require("firebase-admin");
 var serviceAccount = require("./instyle-5f93a-7e2453620e3f.json");
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    storageBucket: "instyle-5f93a.appspot.com"
+	credential: admin.credential.cert(serviceAccount),
+	storageBucket: "instyle-5f93a.appspot.com"
 });
 
 var bucket = admin.storage().bucket();
@@ -25,91 +25,91 @@ app.use(bodyParser.json());
 
 
 var config = {
-    apiKey: "AIzaSyBfkeTA-3ivv_EUOi6vTj5UP4530moiec4",
-    authDomain: "instyle-5f93a.firebaseapp.com",
-    databaseURL: "https://instyle-5f93a.firebaseio.com",
-    projectId: "instyle-5f93a",
-    storageBucket: "instyle-5f93a.appspot.com",
-    messagingSenderId: "620412495745"
-  };
-  
+	apiKey: "AIzaSyBfkeTA-3ivv_EUOi6vTj5UP4530moiec4",
+	authDomain: "instyle-5f93a.firebaseapp.com",
+	databaseURL: "https://instyle-5f93a.firebaseio.com",
+	projectId: "instyle-5f93a",
+	storageBucket: "instyle-5f93a.appspot.com",
+	messagingSenderId: "620412495745"
+};
+
 firebase.initializeApp(config);
 var db = firebase.firestore();
 
 app.post('/auth', function (req, res) {
-   // Prepare output in JSON format
-   const promise = firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password)
-	.then(function(firebaseUser) {
-		var jwtToken = jwt.sign({
-			uid: firebaseUser.user.uid
-		}, 'secret', { expiresIn: '1h' });
-		db.collection('users').doc(firebaseUser.user.uid).get().then(doc => {
-			if (!doc.exists) {
-				response = {
-					isAuth: false,
-					message: 'missing user info'
-				};
-			} else {
-				response = {
-					isAuth: true,
-					token: jwtToken,
-					uid: firebaseUser.user.uid,
-					user_name: doc.data().user_name,
-					first_name: doc.data().first_name,
-					last_name: doc.data().last_name
-				};
-			}
-			res.end(JSON.stringify(response));
+	// Prepare output in JSON format
+	const promise = firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password)
+		.then(function(firebaseUser) {
+			var jwtToken = jwt.sign({
+				uid: firebaseUser.user.uid
+			}, 'secret', { expiresIn: '1h' });
+			db.collection('users').doc(firebaseUser.user.uid).get().then(doc => {
+				if (!doc.exists) {
+					response = {
+						isAuth: false,
+						message: 'missing user info'
+					};
+				} else {
+					response = {
+						isAuth: true,
+						token: jwtToken,
+						uid: firebaseUser.user.uid,
+						user_name: doc.data().user_name,
+						first_name: doc.data().first_name,
+						last_name: doc.data().last_name
+					};
+				}
+				res.end(JSON.stringify(response));
+			})
 		})
-	})
-	.catch(function(error) {
-		response = {
-			isAuth: false,
-			message: error.message
-		};
-		res.end(JSON.stringify(response));
+		.catch(function(error) {
+			response = {
+				isAuth: false,
+				message: error.message
+			};
+			res.end(JSON.stringify(response));
 		});
 })
 
 app.post('/register', function (req, res) {
-   if(req.body.user_name != null && req.body.first_name != null && req.body.last_name != null){
-	   const promise = firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password)
-		.then(function(firebaseUser) {
-			var data = {
-				email: firebaseUser.user.email,
-				user_name: req.body.user_name,
-				first_name: req.body.first_name,
-				last_name: req.body.last_name
-			};
-			db.collection('users').doc(firebaseUser.user.uid).set(data).then(function(){
-				response = {
-					success: true,
-					uid: firebaseUser.user.uid
+	if(req.body.user_name != null && req.body.first_name != null && req.body.last_name != null){
+		const promise = firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password)
+			.then(function(firebaseUser) {
+				var data = {
+					email: firebaseUser.user.email,
+					user_name: req.body.user_name,
+					first_name: req.body.first_name,
+					last_name: req.body.last_name
 				};
-				res.end(JSON.stringify(response));
-			}).catch(function(error) {
+				db.collection('users').doc(firebaseUser.user.uid).set(data).then(function(){
+					response = {
+						success: true,
+						uid: firebaseUser.user.uid
+					};
+					res.end(JSON.stringify(response));
+				}).catch(function(error) {
+					response = {
+						success: false,
+						message: error.message
+					};
+					res.end(JSON.stringify(response));
+				});
+			})
+			.catch(function(error) {
 				response = {
 					success: false,
 					message: error.message
 				};
 				res.end(JSON.stringify(response));
 			});
-		})
-		.catch(function(error) {
-			response = {
-				success: false,
-				message: error.message
-			};
-			res.end(JSON.stringify(response));
-			});
-   }
-   else{
+	}
+	else{
 		response = {
-				success: false,
-				message: 'Info incomplete'
-			};
+			success: false,
+			message: 'Info incomplete'
+		};
 		res.end(JSON.stringify(response));
-   }
+	}
 })
 
 app.get('/userInfo', function (req, res) {
@@ -176,12 +176,12 @@ app.post('/addPosting', function (req, res) {
 				category: req.body.category,
 				description: req.body.description,
 				sold: false,
-                timestamp: Date.now(),
-				tags: 
-				{
-					['name_' + req.body.product_name.toLowerCase()]: true,
-					['brand_' + req.body.brand.toLowerCase()]: true
-				}
+				timestamp: Date.now(),
+				tags:
+					{
+						['name_' + req.body.product_name.toLowerCase()]: true,
+						['brand_' + req.body.brand.toLowerCase()]: true
+					}
 			};
 			db.collection('posting').add(data).then(function(docRef){
 				response = {
@@ -202,7 +202,7 @@ app.post('/addPosting', function (req, res) {
 
 app.get('/posting',  function (req, res) {
 	var ref = db.collection('posting');
-	
+
 	const p_uid = req.query.uid;
 	const p_name = req.query.product_name;
 	const p_gender = req.query.gender;
@@ -213,7 +213,7 @@ app.get('/posting',  function (req, res) {
 	const p_price_floor = req.query.price_floor;
 	const p_result_limit = req.query.result_limit;
 	const p_sold = req.query.sold;
-    const p_buyer = req.query.buyer;
+	const p_buyer = req.query.buyer;
 	if(p_uid != null)
 	{
 		ref = ref.where('uid','==',p_uid);
@@ -242,10 +242,10 @@ app.get('/posting',  function (req, res) {
 	{
 		ref = ref.where('sold', '==', (p_sold.toLowerCase() === 'true'));
 	}
-    if(p_buyer != null)
-    {
-        ref = ref.where('buyer', '==', p_buyer);
-    }
+	if(p_buyer != null)
+	{
+		ref = ref.where('buyer', '==', p_buyer);
+	}
 	if(p_price_ceiling != null)
 	{
 		ref = ref.where('price','<=',p_price_ceiling);
@@ -287,35 +287,35 @@ app.get('/posting',  function (req, res) {
 })
 
 app.get('/listing',  function (req, res) {
-    let id = req.query.id;
-    if(id)
-    {
-        db.collection('posting').doc(id).get().then(function(doc) {
-            if (!doc.exists) {
-                response = {
-                    success: false,
-                    message: 'no info found'
-                };
-            } else {
-                response = {
-                    success: true,
-                    data: doc.data()
-                };
-            }
-            res.end(JSON.stringify(response));
-        }).catch(function(error) {
-            response = {
-                success: false,
-                message: error.message
-            };
-        });
-    } else{
-        response = {
-            success: false,
-            message: 'missing parameter id'
-        };
-        res.end(JSON.stringify(response));
-    }
+	let id = req.query.id;
+	if(id)
+	{
+		db.collection('posting').doc(id).get().then(function(doc) {
+			if (!doc.exists) {
+				response = {
+					success: false,
+					message: 'no info found'
+				};
+			} else {
+				response = {
+					success: true,
+					data: doc.data()
+				};
+			}
+			res.end(JSON.stringify(response));
+		}).catch(function(error) {
+			response = {
+				success: false,
+				message: error.message
+			};
+		});
+	} else{
+		response = {
+			success: false,
+			message: 'missing parameter id'
+		};
+		res.end(JSON.stringify(response));
+	}
 });
 
 app.post('/uploadImage', function (req, res) {
@@ -324,24 +324,24 @@ app.post('/uploadImage', function (req, res) {
 	var token;
 	let imageId = uuid.v1();
 	var remoteFile;
-    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+	busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
 		remoteFile = 'images/' + imageId + path.extname(filename);
 		file.pipe(bucket.file(remoteFile).createWriteStream({
-                resumable  : false,
-                validation : false,
-                contentType: "auto",
-                metadata   : {
-                    'Cache-Control': 'public, max-age=31536000'}
-            }))
-            .on('error', (error) => { 
-                response = {
+			resumable  : false,
+			validation : false,
+			contentType: "auto",
+			metadata   : {
+				'Cache-Control': 'public, max-age=31536000'}
+		}))
+			.on('error', (error) => {
+				response = {
 					success: false,
 					message: error
 				};
 				res.end(JSON.stringify(response));
-            });
-    });
-	
+			});
+	});
+
 	busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
 		console.log(fieldname);
 		if(fieldname == 'id')
@@ -352,9 +352,9 @@ app.post('/uploadImage', function (req, res) {
 		{
 			token = val;
 		}
-    });
-	
-    busboy.on('finish', function() {
+	});
+
+	busboy.on('finish', function() {
 		jwt.verify(token, 'secret', function(err, decoded) {
 			if(err != null){
 				response = {
@@ -376,8 +376,8 @@ app.post('/uploadImage', function (req, res) {
 					} else {
 						var imageUrl;
 						bucket.file(remoteFile).getSignedUrl({
-						  action: 'read',
-						  expires: '03-09-2491'
+							action: 'read',
+							expires: '03-09-2491'
 						}).then(signedUrls => {
 							db.collection('posting').doc(id).set(
 								{imageUrls: firebase.firestore.FieldValue.arrayUnion(signedUrls[0])},
@@ -433,7 +433,7 @@ app.post('/buy', function (req, res) {
 					} else {
 						db.collection('posting').doc(req.body.id).set(
 							{buyer: decoded.uid,
-							 sold: true},
+								sold: true},
 							{merge: true}
 						).then(function(){
 							response = {
