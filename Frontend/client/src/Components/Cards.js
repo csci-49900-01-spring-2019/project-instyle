@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import "../Styles/Cards.css"
 import axios from "axios";
 
-import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
 
 
 class Cards extends Component {
@@ -17,104 +17,80 @@ class Cards extends Component {
             description:"",
             gender:"",
             size:"",
-            uid:"",
-            data:[]
+            id:"",
+
         }
     }
-
-    // getDetail
-    getAllItem = () =>{
-        return this.state.data.slice(0,9).map((obj) => {
-          this.setState({
-                image:obj.image,
-                brand: obj.brand,
-                price: obj.price,
-                category:obj.category,
-                gender: obj.gender,
-                product_name: obj.product_name,
-                size: obj.size,
-                uid:obj.uid
-            })
-            return <div className="cardsRows">
-                <ul>
-                    <img className="image" src={this.state.image}/>
-                    <li>Product Name: <a href="/product">{this.state.product_name}</a></li>
-                    <li>Brand: {this.state.brand}</li>
-                    <li>Price: ${this.state.price} </li>
-                    <NavLink to="/product">See More</NavLink>
-                </ul>
-        </div>
-        })
-    }
-
-
-    seeMore = () =>{
-
-    }
-
-    getItems = () => {
-        console.log("get Items")
+    getAllItems = () => {
         return this.state.data.slice(0,9).map((obj, index) => {
-            return <div className="cardsRows">
+            // console.log("id: ",obj.id)
+            if(obj.sold === false){
+            return <div className="cardsRows" key={obj.id}>
                 <ul>
-                    {/*<img src={shoes}/>*/}
                     <img className="image" src={obj.imageUrl}/>
-                    {/*<span></span>*/}
                     <li>Product Name: <a href="/product">{obj.product_name}</a></li>
                     <li>Brand: {obj.brand}</li>
                     <li>Price: ${obj.price} </li>
-                    <div onClick={this.seeMore}>See More</div>
-                    {/*<NavLink to="/product">See More</NavLink>*/}
-                    {/*<a href="/product">{obj.product_name}</a>*/}
+                    {/*<button onClick={this.getID.bind(this,obj) }>See More</button>*/}
+                    <button onClick={() => this.onClickSeeMore(obj)}>See More</button>
                 </ul>
             </div>
-            })
-        }
+            }})
+    }
 
-        componentDidMount() {
-       // console.log("In Cards")
+    onClickSeeMore = (e, obj) => {
+            e.preventDefault()
+            console.log("AAAAAAAAAAAAAAAAAAAAAAA")
+            console.log(obj.id)
+            console.log("AAAAAAAAAAAAAAAAAAAAAAA")
 
-        axios.get("/posting")
-            .then(response => {
-                // (response.json())
-                console.log("In cards: ", response.data.data)
+
+    }
+
+
+    componentDidMount() {
+        // axios.get('/posting')
+        //     .then(response => {
+        //         console.log("In cards: ", response.data.data)
+        //
+        //         this.setState({
+        //             data:response.data.data
+        //
+        //         })
+        //          // console.log("data: ",this.state.data)
+        //     })
+    }
+
+    getID(obj){
+        // evt.preventDefault()
+        console.log(obj.id)
+        this.setState({
+            id:obj.id
+        })
+        console.log("id is:",this.state.id);
+        axios({
+            method:"get",
+            url: '/listing',
+            body:{
+                    id:obj.id
+            }
+        })
+            .then(response=>{
+                console.log("in id", response)
                 this.setState({
-                    data:response.data.data
-                    // price:response.data.price,
-                    // product_name:response.data.product_name
-
+                    item:response.data
                 })
-                console.log("data: ",this.state.data)
-                //save the data in your states
             })
-
-        // console.log("out of axios of cards")
-
-
+        console.log(this.state.item)
+        console.log("out")
     }
 
-    getID = ()=>{
-
-    }
-
-    render(){
-        const allItems = this.state.data.slice(0,9).map((obj) => {
-            return <div className="cardsRows"><ul>
-                {/*<img src={shoes}/>*/}
-                 <img className="image" src={obj.imageUrl}/>
-                 {/*<span></span>*/}
-                <li>Product Name: <a href="/product">{obj.product_name}</a></li>
-                <li>Brand: {obj.brand}</li>
-                <li>Price: ${obj.price} </li>
-                <NavLink to="/product" onClick={this.getID()}>See More</NavLink>
-                {/*<a href="/product">{obj.product_name}</a>*/}
-            </ul></div>
-        });
+     render(){
         return (
             <div>
                 <div className="cardsCols" >
                     <form className="cardForm">
-                        <div>{this.getItems()}</div>
+                        <div>{this.getAllItems()}</div>
                     </form>
                 </div>
             </div>
@@ -122,5 +98,10 @@ class Cards extends Component {
     }
 }
 
-export default Cards;
+const mapStateToProps = (state) => {
+    return {
+        token:state.auth.token
+    }
+}
+// export default  connect(mapStateToProps)(Cards);
 

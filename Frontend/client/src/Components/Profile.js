@@ -21,7 +21,7 @@ class Profile extends Component{
 	
 	componentDidMount(){
 		this.fetchUserInfo();
-		// this.fetchBuyingItems;
+		this.fetchBuyingItems();
 		// this.fetchSoldItems;
 		// this.fetchMyItems
 	}
@@ -45,9 +45,15 @@ class Profile extends Component{
 
 	}
 
-	// fetchBuyingItems = () =>{
+	fetchBuyingItems = () =>{
+		// axios.get("/buy",{
+		// 	headers: { Authorization: `Bearer ${this.state.token}`,}
+		// })
+		// 	.then(response => {
+		//
+		// 	})
 
-	// }
+	}
 
 	// fetchSoldItems = () => {
 

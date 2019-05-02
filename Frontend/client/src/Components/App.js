@@ -7,6 +7,7 @@ import Landing from "./Landing";
 import Signup from "./Signup";
 import AddItems from "./AddItems";
 import Profile from "./Profile";
+import DisplayItem from "./DisplayItem";
 
 class App extends Component {
 
@@ -19,6 +20,7 @@ class App extends Component {
                     <Route exact path="/login" component = {Login} />
                     <Route exact path="/register" component = {Signup} />
                     <Route exact path="/addItem" component = {AddItems} />
+                    <Route exact path="/displayItem" component = {DisplayItem} />
                     <Route exact path="/profile" component = {Profile} /> 
                 </div>
             </Router>
