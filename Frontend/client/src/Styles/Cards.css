@@ -11,7 +11,7 @@
 /*}*/
 
 .cardsRows{
-    display: inline-flex;
+    /*display: inline-flex;*/
     background-color: #fff;
     border: grey solid 2px;
     text-align: center;
