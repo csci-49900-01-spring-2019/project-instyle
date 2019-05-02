@@ -39,7 +39,8 @@ class AddItems extends Component{
             gender:"",
             category:"",
             description:"",
-            id:""
+            id:"",
+            // sold
 
         })
     }
@@ -64,6 +65,8 @@ class AddItems extends Component{
                     });
                     // this.props.setIdInApp(response.data.id);
                      console.log("id:",this.state.id)
+                    // console.log("id:",th)
+
         //             console.log("product_name: ", this.state.product_name)
         //             console.log("price: ", this.state.price)
         //             console.log("size: ", this.state.size)
