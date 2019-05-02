@@ -5,7 +5,7 @@
     background-position: center;
     background-attachment: fixed;
     height: 100%;
-    width: 100%;
+    /* width: 100%; */
     margin: 0;
     padding: 10%;
 
@@ -16,7 +16,7 @@
     /*text-align: right;*/
     background-color:#E6DEDB ;
     color: snow;
-    text-align: right;
+    text-align: left;
     width: 350px;
     height: 100%;
     margin: 0 auto;

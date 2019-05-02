@@ -1,0 +1,52 @@
+body{
+    background-color: rgb(218, 218, 218);
+}
+
+
+.profileInfoWrapper{
+    background-color: rgb(156, 119, 119);
+    color: white;
+    text-align: center;
+
+}
+
+.welcome{
+    text-align: center;
+    font-family: 'Satisfy', cursive;
+    font-size: 50px;
+    font-weight:bold;
+}
+
+.userInfo{
+    padding: 4px;
+}
+
+.info{
+    text-align: center;
+    color: white;
+    background-color: transparent;
+    border:none;
+    font-size: 40px;
+    font-family:  "Times New Roman", Times, serif;
+    font-variant: small-caps;
+}
+
+#userEmail{
+    font-size: 20px;
+    font-variant: normal;
+}
+
+.profileHeader{
+    background-color:rgb(104, 79, 79)!important;
+    text-align: center!important;
+    padding-top: 1.5rem!important;
+    padding-bottom: 1.5rem!important;
+    display: block;
+    font-size:1.25rem;
+    font-family: 'Satisfy', cursive !important;
+}
+
+#itemDisplay{
+    font-family: 'Satisfy', cursive !important;
+    font-weight: normal !important;
+}
