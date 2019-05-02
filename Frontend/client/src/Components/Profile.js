@@ -60,9 +60,6 @@ class Profile extends Component{
 
 	}
 
-		})
-	 }
-	 
 	// fetchSoldItems = () => {
 
 	// }

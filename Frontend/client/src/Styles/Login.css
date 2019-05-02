@@ -30,7 +30,7 @@
 
 .signin-header{
     border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
-    background-color:#6bc7e9!important;
+    background-color:rgb(156, 119, 119)!important;
     text-align: center!important;
     padding-top: 1.5rem!important;
     padding-bottom: 1.5rem!important;
@@ -214,9 +214,9 @@ strong{
 
 .signin-button{
     width: 100%;
-    border-color: #33b5e5!important;
+    border-color: rgb(156, 119, 119)!important;
     background-color: transparent!important;
-    color: #33b5e5!important;
+    color: rgb(156, 119, 119)!important;
     cursor: pointer;
     padding-top: .7rem;
     padding-bottom: .7rem;  
@@ -231,12 +231,12 @@ strong{
 a{
     cursor: pointer;
     text-decoration: none;
-    color: #007bff;
+    color: rgb(156, 119, 119);
     transition: all .2s ease-in-out;
     background-color: transparent;
 }
 a:hover{
-    color: #00346b;
+    color: rgb(94, 71, 71);
 }
 
 .message-box{

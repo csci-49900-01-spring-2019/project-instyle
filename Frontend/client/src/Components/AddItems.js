@@ -119,9 +119,9 @@ class AddItems extends Component{
                     <label className="allLabels" >Gender:</label>
                     <div className="allDIvs">
                         <label className="allLabels" htmlFor="gender">Male:</label>
-                        <input className="allInputs" name="gender" type="radio" value={"M"}  checked={this.state.size==="M"} onChange={this.handleChange.bind(this)}/>
+                        <input className="allInputs" name="gender" type="radio" value="M"  checked={this.state.gender==="M"} onChange={this.handleChange.bind(this)}/>
                         <label className="allLabels" htmlFor="gender">Female:</label>
-                        <input className="allInputs" name="gender" type="radio" value={"F"}  checked={this.state.size==="F"} onChange={this.handleChange.bind(this)}/>
+                        <input className="allInputs" name="gender" type="radio" value="F"  checked={this.state.gender==="F"} onChange={this.handleChange.bind(this)}/>
                     </div>
                     <div className="allDIvs">
                         <label className="allLabels" htmlFor="category">Category:</label>
