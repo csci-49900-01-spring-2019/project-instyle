@@ -49,8 +49,16 @@ class Profile extends Component{
 
 	}
 
-	 fetchBuyingItems = () =>{
-		axios.get('/posting',{
+
+	fetchBuyingItems = () =>{
+		// axios.get("/buy",{
+		// 	headers: { Authorization: `Bearer ${this.state.token}`,}
+		// })
+		// 	.then(response => {
+		//
+		// 	})
+
+	}
 
 		})
 	 }
