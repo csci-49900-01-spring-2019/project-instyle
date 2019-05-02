@@ -54,7 +54,7 @@ class Card extends Component {
                 <div className="cardsRows" key={this.state.id}>
                     <ul>
                         <img className="image" src={this.state.imageUrl}/>
-                        <li>Product Name: <a href="/product">{this.state.product_name}</a></li>
+                        <li>Product Name:{this.state.product_name}</li>
                         <li>Brand: {this.state.brand}</li>
                         <li>Price: ${this.state.price} </li>
                         {/*<button onClick={this.getID.bind(this,obj) }>See More</button>*/}

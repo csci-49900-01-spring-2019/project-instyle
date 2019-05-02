@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
-// import "../Styles/Cards.css"
+
 import queryString from "query-string";
 import axios from "axios";
+
 import {connect} from "react-redux";
+
 import {NavLink} from "react-router-dom";
+
+import "../Styles/DisplayItem.css"
 import Button from "reactstrap/es/Button";
 
 
@@ -13,7 +17,7 @@ class DisplayItem extends Component {
         this.state = {
             // request:""
             data:[],
-            imageUrl: "",
+            imageUrl: [],
             price: "",
             product_name: "",
             brand: "",
@@ -40,7 +44,7 @@ class DisplayItem extends Component {
             .then(response =>{
                 this.setState({
                     data: response.data.data,
-                    imageUrl: response.data.data.imageUrl,
+                    imageUrl: response.data.data.imageUrls,
                     price: response.data.data.price,
                     product_name: response.data.data.product_name,
                     brand: response.data.data.brand,
@@ -77,26 +81,38 @@ class DisplayItem extends Component {
 
     render(){
         return(
-            <div>
-                <ul>
-                    <img className="image" src={this.state.imageUrl}/>
-                    <li>Product Name: <a href="/product">{this.state.product_name}</a></li>
-                    <li>Brand: {this.state.brand}</li>
-                    <li>Price: ${this.state.price} </li>
-                    <li>Gender: {this.state.gender} </li>
-                    <li>Size: {this.state.size} </li>
-                    <li>Description: {this.state.description} </li>
-
-                    {/*<button onClick={this.getID.bind(this,obj) }>See More</button>*/}
-                    {/*{this.props.token ?*/}
+            <div className="wrappingItems">
+                <ul className="wrappingList">
+                    <div>
+                        <img className="image" src={this.state.imageUrl}/>
+                    </div>
+                    <div className="eacDiv">
+                        <li className="eachList"><label className="eachLabel">Product Name:</label>{this.state.product_name}</li>
+                    </div>
+                    <div className="eacDiv">
+                        <li className="eachList"><label className="eachLabel">Brand: </label>{this.state.brand}</li>
+                    </div>
+                    <div className="eacDiv">
+                        <li className="eachList"><label className="eachLabel">Price:</label>${this.state.price} </li>
+                    </div>
+                    <div className="eacDiv">
+                       <li className="eachList"><label className="eachLabel">Gender:</label>{this.state.gender} </li>
+                    </div>
+                    <div className="eacDiv">
+                        <li className="eachList"><label className="eachLabel">Size: </label>{this.state.size} </li>
+                    </div>
+                    <div className="eacDiv">
+                         <li className="eachList"> <label className="eachLabel">Description: </label>{this.state.description}</li>
+                    </div>
+                    {this.props.token ?
                         <div>
-                            <Button className="postButton" onClick={this.handleOnClick}>BUY</Button>
+                            <Button className="buyButton" onClick={this.handleOnClick}>BUY</Button>
                         </div>
-                        {/*:*/}
-                        {/*<div>*/}
-                            {/*<NavLink to="/register" className="postButton" onClick={this.handleOnClick}>BUY</NavLink>*/}
-                        {/*</div>*/}
-                    {/*}*/}
+                        :
+                        <div>
+                            <NavLink to="/register" className="postButton" onClick={this.handleOnClick}>BUY</NavLink>
+                        </div>
+                    }
                 </ul>
             </div>
         );
