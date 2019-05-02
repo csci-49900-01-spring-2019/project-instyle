@@ -14,7 +14,9 @@
     /*display: inline-flex;*/
     background-color: #fff;
     border: grey solid 2px;
-    width: 23%;
+    text-align: center;
+    width: 60%;
+    height: 60%;
     padding: 2rem;
     margin: 10px;
     box-shadow: -1px 2px 34px -13px rgba(0,0,0,0.75);
@@ -23,9 +25,10 @@
 
 
 .cardsCols{
-    /*display: grid;*/
-    position: center;
+    display: grid;
+    /* position: center; */
     cursor: pointer;
+    text-align: center;
 }
 
 .cardsRows:hover{
@@ -45,5 +48,6 @@
 
 .image{
    margin-bottom: 9px;
+   position: relative;
 }
 

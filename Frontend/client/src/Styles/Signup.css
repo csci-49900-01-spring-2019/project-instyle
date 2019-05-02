@@ -31,7 +31,7 @@
 
 .register-header{
     border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
-    background-color:#6bc7e9!important;
+    background-color:rgb(156, 119, 119)!important;
     text-align: center!important;
     padding-top: 1.5rem!important;
     padding-bottom: 1.5rem!important;
@@ -245,8 +245,8 @@ strong{
 }
 
 .form-control-name:focus{
-    box-shadow: 0 2px 0 0 #4285f4;
-    border-bottom: #4285f4;
+    box-shadow: 0 2px 0 0 rgb(156, 119, 119);
+    border-bottom: rgb(156, 119, 119);
     background: 0 0;
     border: 0;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
@@ -293,9 +293,9 @@ strong{
 
 .register-button{
     width: 100%;
-    border-color: #33b5e5!important;
+    border-color: rgb(156, 119, 119)!important;
     background-color: transparent!important;
-    color: #33b5e5!important;
+    color: rgb(156, 119, 119)!important;
     cursor: pointer;
     padding-top: .7rem;
     padding-bottom: .7rem;  
