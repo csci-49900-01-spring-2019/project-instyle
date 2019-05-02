@@ -15,7 +15,7 @@ class Card extends Component {
     constructor(props){
         super(props)
         this.state = {
-            imageUrl:this.props.imageUrl[0],
+            imageUrl:this.props.imageUrl,
             price: this.props.price,
             product_name:this.props.product_name,
             brand:this.props.brand,
