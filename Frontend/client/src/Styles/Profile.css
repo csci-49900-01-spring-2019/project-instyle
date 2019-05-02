@@ -36,4 +36,17 @@ body{
     font-variant: normal;
 }
 
+.profileHeader{
+    background-color:rgb(104, 79, 79)!important;
+    text-align: center!important;
+    padding-top: 1.5rem!important;
+    padding-bottom: 1.5rem!important;
+    display: block;
+    font-size:1.25rem;
+    font-family: 'Satisfy', cursive !important;
+}
 
+#itemDisplay{
+    font-family: 'Satisfy', cursive !important;
+    font-weight: normal !important;
+}

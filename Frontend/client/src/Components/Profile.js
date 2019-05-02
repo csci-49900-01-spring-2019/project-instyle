@@ -15,14 +15,16 @@ class Profile extends Component{
 			name:"",
             // first_name:"",
 			// last_name:"",
-			token:this.props.token
+			token:this.props.token,
+
+
         }
 
 	}
 	
 	componentDidMount(){
 		this.fetchUserInfo();
-		// this.fetchBuyingItems;
+		this.fetchBuyingItems();
 		// this.fetchSoldItems;
 		// this.fetchMyItems
 	}
@@ -47,10 +49,12 @@ class Profile extends Component{
 
 	}
 
-	// fetchBuyingItems = () =>{
+	 fetchBuyingItems = () =>{
+		axios.get('/posting',{
 
-	// }
-
+		})
+	 }
+	 
 	// fetchSoldItems = () => {
 
 	// }
@@ -60,21 +64,35 @@ class Profile extends Component{
 	// }
    render(){
         return(
-			<div className="profileInfoWrapper">
-				<div className="welcome">Welcome!</div>
+			<div>
+				<div className="profileInfoWrapper">
+					<div className="welcome">Welcome!</div>
 
-				{/* <input className="first" id="name" disabled={true} readOnly={true} value={this.state.first_name} size="30"/>
-				<input className="last" id="name" disabled={true} readOnly={true} value={this.state.last_name} size="30"/> */}
-				
-				<div className="userInfo">
-					<input className="info" id="userName" disabled={true} readOnly={true} value={this.state.name} size="30"/>
+					{/* <input className="first" id="name" disabled={true} readOnly={true} value={this.state.first_name} size="30"/>
+					<input className="last" id="name" disabled={true} readOnly={true} value={this.state.last_name} size="30"/> */}
+					
+					<div className="userInfo">
+						<input className="info" id="userName" disabled={true} readOnly={true} value={this.state.name} size="30"/>
+					</div>
+
+					<div className="userInfo">
+						<input className="info" id="userEmail" disabled={true} readOnly={true} value={this.state.email} size="30"/>
+					</div>
 				</div>
 
-				<div className="userInfo">
-					<input className="info" id="userEmail" disabled={true} readOnly={true} value={this.state.email} size="30"/>
+				<div className="profileCardInfo">
+					<h5 className="profileHeader" ><strong id="itemDisplay">Bought Items</strong></h5>
 				</div>
+
+				<div className="profileCardInfo">
+					<h5 className="profileHeader" ><strong id="itemDisplay">Sold Items</strong></h5>
+				</div>
+
+				<div className="profileCardInfo">
+					<h5 className="profileHeader" ><strong id="itemDisplay">My Items</strong></h5>
+				</div>
+
 			</div>
-
         );
     }
 }
