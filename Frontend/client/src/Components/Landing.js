@@ -69,7 +69,9 @@ class Landing extends Component {
                 </div>
 
                 {/*<Cards/>*/}
-                {posts}
+                <div className= "grid-container"> 
+                    {posts}
+                </div>
 
                 {this.props.token ?
                     <div>
