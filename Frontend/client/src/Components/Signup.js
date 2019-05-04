@@ -33,7 +33,7 @@ class Signup extends Component{
         //console.log("email: ", this.state.email)
         evt.preventDefault()
         console.log("Signing Up")
-        axios.post("/register",{
+        axios.post("/api/register",{
             email:this.state.email,
             password:this.state.password,
             user_name:this.state.user_name,

@@ -27,7 +27,7 @@ class Login extends Component{
 
 		console.log("Signing In")
 
-		axios.post("/auth",{
+		axios.post("/api/login",{
 			email:this.state.email,
 			password:this.state.password
 		})

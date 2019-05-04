@@ -23,7 +23,7 @@ class Landing extends Component {
     }
 
     componentDidMount() {
-        axios.get('/posting')
+        axios.get('/api/posting')
             .then(response => {
                 console.log("In cards: ", response.data.data)
 
