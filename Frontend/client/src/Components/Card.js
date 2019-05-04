@@ -35,17 +35,17 @@ class Card extends Component {
         //     isShow:!state.isShow
         // }))
         // console.log(this.state.isShow)
-        return <DisplayItem
-        id={this.state.id}
-        imageUrl = {this.state.imageUrl}
-        price={this.state.price}
-        product_name = {this.state.product_name}
-        brand={this.state.brand}
-        category={this.state.category}
-        description={this.state.description}
-        gender = {this.state.gender}
-        size={this.state.size}
-        />
+        // return <DisplayItem
+        // id={this.state.id}
+        // imageUrl = {this.state.imageUrl}
+        // price={this.state.price}
+        // product_name = {this.state.product_name}
+        // brand={this.state.brand}
+        // category={this.state.category}
+        // description={this.state.description}
+        // gender = {this.state.gender}
+        // size={this.state.size}
+        // />
     }
     render(){
             console.log(this.state.isShow)

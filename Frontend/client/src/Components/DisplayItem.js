@@ -36,7 +36,7 @@ class DisplayItem extends Component {
 
         console.log("||||||" + request.ref)
         console.log("Display Item");
-        axios.get("/listing",{
+        axios.get("/api/posts",{
             params:{
                 id: request.ref
             }
@@ -83,7 +83,7 @@ class DisplayItem extends Component {
         return(
             <div className="wrappingItems">
                 <ul className="wrappingList">
-                    <div>
+                    <div className="imageDiv">
                         <img className="image" src={this.state.imageUrl}/>
                     </div>
                     <div className="eacDiv">

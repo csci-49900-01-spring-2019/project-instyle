@@ -49,3 +49,8 @@
     margin-left: 15ch;
 }
 
+.imageConstraints {
+    height: 50px;
+    width: 50px;
+}
+

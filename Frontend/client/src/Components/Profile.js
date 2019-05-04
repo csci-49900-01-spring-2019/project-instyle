@@ -33,7 +33,7 @@ class Profile extends Component{
 
 		if(this.props.token !== null){
 			console.log("Inside if statement")
-			axios.get('/userInfo',{
+			axios.get('/api/userInfo',{
 				headers: { Authorization: `Bearer ${this.state.token}`,}
 			})
 			.then(response => {
@@ -58,7 +58,7 @@ class Profile extends Component{
 		//
 		// 	})
 
-	// }
+	}
 
 
 	// fetchSoldItems = () => {
