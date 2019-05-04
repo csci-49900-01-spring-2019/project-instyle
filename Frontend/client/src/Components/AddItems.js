@@ -2,19 +2,24 @@ import React, { Component } from "react";
 
 
 import axios from "axios";
-
-
+import firebase from "../fbConfig/fbConfig"
+import uuid from "uuid/v1"
 
 import "../Styles/AddItems.css";
-// import shirts from "../assets/shirts.jpg";
+import defaultImage from "../assets/defaultImage.png";
 import {connect} from "react-redux";
 import {getToken} from "../actions/authAction";
 
+
+var storage = firebase.storage();
+var storageRef = storage.ref();
+const imgRef = storageRef.child("web/images")
 
 class AddItems extends Component{
     constructor(props){
         super(props)
         this.state = {
+            imageUrls:[],
             product_name:"",
             price:"",
             size:"",
@@ -22,8 +27,7 @@ class AddItems extends Component{
             gender:"",
             category:"",
             description:"",
-            token:"",
-            selectedFile:null
+            token:""
         }
     }
     handleChange(evt){
@@ -40,14 +44,15 @@ class AddItems extends Component{
             category:"",
             description:"",
             id:"",
+            imageUrls:""
             // sold
 
         })
     }
     handleSubmit(evt) {
-
+        evt.preventDefault();
         if (this.props.token != null) {
-            axios.post("/addPosting", {
+            axios.post("/api/posts", {
                 token:this.props.token,
                 product_name: this.state.product_name,
                 price: this.state.price,
@@ -55,50 +60,61 @@ class AddItems extends Component{
                 brand: this.state.brand,
                 gender: this.state.gender,
                 category: this.state.category,
-                description: this.state.description
+                description: this.state.description,
+                imageUrls: this.state.imageUrls
 
             })
                 .then(response => {
-                    console.log(response)
-                    this.setState({
-                        id:response.data.id
-                    });
-                    // this.props.setIdInApp(response.data.id);
-                     console.log("id:",this.state.id)
-                    // console.log("id:",th)
 
-        //             console.log("product_name: ", this.state.product_name)
-        //             console.log("price: ", this.state.price)
-        //             console.log("size: ", this.state.size)
-        //             console.log("brand: ", this.state.brand)
-        //             console.log("gender: ", this.state.gender)
-        //             console.log("category: ", this.state.category)
-        //             console.log("description: ", this.state.description)
+                    console.log(response.data.id)
+                    if (response.data.success){
+                        this.props.history.push("/profile")
+                    }
+                    else{
+                        console.log("cannot post")
+                    }
+
                 })
                 .catch(function (error) {
                     console.log("no token: "+ error.message);
                 })
         }
 
-        else{
-            console.log("No token")
-        }
-        evt.preventDefault();
-        this.reset(evt);
+
     }
 
-    fileSelectorHandler = evt =>{
-        // console.log(evt.target.files[0]);
-        this.setState({
-            selectedFile: evt.target.files[0]
-        })
+    handleUpload = (evt) =>{
+
+        const file = evt.target.files[0]
+        const filename = uuid()
+        const fileRef = imgRef.child(filename)
+
+        fileRef.put(file)
+            .then((snapshot) => {
+                fileRef.getDownloadURL()
+                    .then((url) => {
+                        console.log(`URL: ${url}`)
+                        this.setState({
+                            imageUrls: [...this.state.imageUrls, url]
+                        })
+                    })
+                    .catch(error => {
+                        console.log("Cannot get imageUrl")
+                    })
+            })
+            .catch(error => {
+                console.log("Error Uploading")
+            })
     }
 
-    fileUploadHandle = () => {
-        // axios.post("")
-    }
+
 
     render(){
+        const image = (this.state.imageUrls.length) ?
+            <img className="imageConstraints" src={this.state.imageUrls[0]}/> :
+            <img className="imageConstraints" src={defaultImage}/>
+
+
         return(
             <div className="Wrapper">
                 <form className="formWrapper" onSubmit={this.handleSubmit.bind(this)}>
@@ -136,8 +152,9 @@ class AddItems extends Component{
                     </div>
                     <div className="allDIvs">
                         <label className="allLabels" htmlFor="description">Image:</label>
-                        <input className="allInputs" type="file" onChange={this.fileSelectorHandler}/>
-                        <button onClick={this.fileUploadHandle}>Upload</button>
+                        {image}
+                        <input className="allInputs" type="file" onChange={this.handleUpload}/>
+                        {/*<button onClick={this.fileUploadHandle}>Upload</button>*/}
                     </div>
                     <div className="allDIvs">
                         <button className="submitButton" type="submit">ADD</button>
