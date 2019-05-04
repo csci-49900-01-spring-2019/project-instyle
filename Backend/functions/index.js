@@ -36,7 +36,7 @@ var config = {
 firebase.initializeApp(config);
 var db = firebase.firestore();
 
-app.post('/auth', function (req, res) {
+app.post('/api/login', function (req, res) {
 	// Prepare output in JSON format
 	const promise = firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password)
 		.then(function(firebaseUser) {
@@ -71,7 +71,7 @@ app.post('/auth', function (req, res) {
 		});
 })
 
-app.post('/register', function (req, res) {
+app.post('/api/register', function (req, res) {
 	if(req.body.user_name != null && req.body.first_name != null && req.body.last_name != null){
 		const promise = firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password)
 			.then(function(firebaseUser) {
@@ -112,7 +112,7 @@ app.post('/register', function (req, res) {
 	}
 })
 
-app.get('/userInfo', function (req, res) {
+app.get('/api/userInfo', function (req, res) {
 	let token = req.headers['x-access-token'] || req.headers['authorization'];
 	if (token.startsWith('Bearer ')) {
 		token = token.slice(7, token.length);
@@ -156,7 +156,8 @@ app.get('/userInfo', function (req, res) {
 	}
 })
 
-app.post('/addPosting', function (req, res) {
+//add a single post
+app.post('/api/posts', function (req, res) {
 	jwt.verify(req.body.token, 'secret', function(err, decoded) {
 		if(err != null){
 			response = {
@@ -166,8 +167,12 @@ app.post('/addPosting', function (req, res) {
 			res.end(JSON.stringify(response));
 		}
 		else{
+			
+			let pid = db.collection('posting').doc().id ;
+
 			var data = {
 				uid: decoded.uid,
+				id: pid,
 				product_name: req.body.product_name,
 				price: req.body.price,
 				size: req.body.size,
@@ -176,6 +181,7 @@ app.post('/addPosting', function (req, res) {
 				category: req.body.category,
 				description: req.body.description,
 				sold: false,
+				imageUrls: req.body.imageUrls,
 				timestamp: Date.now(),
 				tags:
 					{
@@ -183,24 +189,27 @@ app.post('/addPosting', function (req, res) {
 						['brand_' + req.body.brand.toLowerCase()]: true
 					}
 			};
-			db.collection('posting').add(data).then(function(docRef){
-				response = {
-					success: true,
-					id: docRef.id
-				};
-				res.end(JSON.stringify(response));
-			}).catch(function(error) {
-				response = {
-					success: false,
-					message: error.message
-				};
-				res.end(JSON.stringify(response));
-			});
+			db.collection('posting').doc(pid).set(data)
+				.then(() => {
+					response = {
+						success: true,
+						id: pid
+					};
+					res.end(JSON.stringify(response));
+			  })
+			  .catch(function(error) {
+					response = {
+						success: false,
+						message: error.message
+					};
+					res.end(JSON.stringify(response));
+					});
 		}
 	});
 })
 
-app.get('/posting',  function (req, res) {
+//get all items
+app.get('/api/posting',  function (req, res) {
 	var ref = db.collection('posting');
 
 	const p_uid = req.query.uid;
@@ -286,7 +295,9 @@ app.get('/posting',  function (req, res) {
 	});
 })
 
-app.get('/listing',  function (req, res) {
+
+//get one post with query
+app.get('/api/posts',  function (req, res) {
 	let id = req.query.id;
 	if(id)
 	{
@@ -318,12 +329,13 @@ app.get('/listing',  function (req, res) {
 	}
 });
 
-app.post('/uploadImage', function (req, res) {
+app.post('/api/uploadImage', function (req, res) {
 	var busboy = new Busboy({ headers: req.headers });
 	var id;
 	var token;
 	let imageId = uuid.v1();
 	var remoteFile;
+
 	busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
 		remoteFile = 'images/' + imageId + path.extname(filename);
 		file.pipe(bucket.file(remoteFile).createWriteStream({
@@ -410,6 +422,8 @@ app.post('/uploadImage', function (req, res) {
 	});
 	busboy.end(req.rawBody);
 });
+
+
 
 app.post('/buy', function (req, res) {
 	jwt.verify(req.body.token, 'secret', function(err, decoded) {
