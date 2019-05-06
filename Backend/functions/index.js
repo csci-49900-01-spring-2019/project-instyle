@@ -167,7 +167,7 @@ app.post('/api/posts', function (req, res) {
 			res.end(JSON.stringify(response));
 		}
 		else{
-			
+
 			let pid = db.collection('posting').doc().id ;
 
 			var data = {
@@ -204,7 +204,7 @@ app.post('/api/posts', function (req, res) {
 					};
 					res.end(JSON.stringify(response));
 					});
-		}
+		}//else
 	});
 })
 
@@ -424,7 +424,6 @@ app.post('/api/uploadImage', function (req, res) {
 });
 
 
-
 app.post('/buy', function (req, res) {
 	jwt.verify(req.body.token, 'secret', function(err, decoded) {
 		if(err != null){
@@ -479,6 +478,42 @@ app.post('/buy', function (req, res) {
 			}
 		}
 	});
+})
+
+app.get('/api/user/posts', (req, res) => {
+	let uid = req.body.uid
+	console.log(uid)
+	if (uid) {
+		db.collection("posting").where("uid", "==", uid).orderBy("timestamp", "desc").get()
+		.then(snapshot => {
+			var posts = []
+			snapshot.forEach(doc => {
+				let data = doc.data()
+				let post = {
+					id: data.id,
+					product_name: data.product_name,
+					price: data.price
+				}
+				posts.push(post);
+			})
+			
+			res.json(posts)
+		})
+		.catch(error => {
+			response = {
+				success: false,
+				message: error.message
+			};
+			res.end(JSON.stringify(response));
+		})
+	}
+	
+});
+
+
+app.get('/api/test', (req, res) => {
+	console.log('@@@@@@@@@@@@@@@@@@@@')
+	res.send("hello test")
 })
 
 // console.log that your server is up and running
