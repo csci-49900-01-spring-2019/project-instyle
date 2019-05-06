@@ -2,12 +2,11 @@
     margin-top: 90px;
     margin-bottom: 20%;
     margin-right: 20%;
-    margin-left: 20%;
+    display: inline-flex;
+    /*margin-left: 20%;*/
     /*justify-content: center;*/
     /*border: 2px solid black;*/
     /*background-color:*/
-
-
 }
 
 .imageDiv {
@@ -39,7 +38,7 @@
 .eachList{
     font-family: Rajdhani;
     font-size: 22px;
-    padding: 20px;
+    padding: 12px;
     /*text-align: left;*/
 }
 
@@ -52,4 +51,15 @@
 .image{
     width: 60%;
     height: 60%;
+}
+
+.titleList{
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration:underline;
+}
+
+.listWrapper{
+    /*border: 2px solid black;*/
+    /*display: inline-grid;*/
 }
