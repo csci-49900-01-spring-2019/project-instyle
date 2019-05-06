@@ -23,10 +23,23 @@ class Profile extends Component{
 	}
 	
 	componentDidMount(){
-		this.fetchUserInfo();
-		this.fetchBuyingItems();
+		// this.fetchUserInfo();
+		// this.fetchBuyingItems();
 		// this.fetchSoldItems;
-		// this.fetchMyItems
+		//  this.fetchMyItems
+		console.log("in profile")
+		let uid = "BxTuT1ndeXhuPUKdcUImCp6f6bi2"
+		axios.get("/api/user/posts",{
+			data:{
+				uid:uid
+			}
+		})
+			.then(response => {
+				console.log("in getting user items",response);
+			})
+			.catch(err => {
+				console.log(err);
+			})
 	}
     
     fetchUserInfo= () => {
@@ -37,14 +50,30 @@ class Profile extends Component{
 				headers: { Authorization: `Bearer ${this.state.token}`,}
 			})
 			.then(response => {
-
+				const uid  = response.data.uid
 				this.setState({
-					name:response.data.first_name + " " + response.data.last_name,
+					name: response.data.first_name + " " + response.data.last_name,
 					// first_name:response.data.first_name,
 					// last_name:response.data.last_name,
 					email: response.data.email
 				})
+
+				axios.get("/api/user/posts",{
+					data:{
+						uid:uid
+					}
+				})
+					.then(response => {
+						console.log("in getting user items",response);
+					})
+					.catch(err => {
+						console.log(err);
+					})
+
 			})
+				.catch(err =>{
+					console.log(err);
+				})
 		}
 
 	}
@@ -65,9 +94,7 @@ class Profile extends Component{
 
 	// }
 
-	// fetchMyItems = () => {
 
-	// }
    render(){
         return(
 			<div>
@@ -87,7 +114,7 @@ class Profile extends Component{
 				</div>
 
 				<div className="profileCardInfo">
-					<h5 className="profileHeader" ><strong id="itemDisplay">Bought Items</strong></h5>
+					<h5 className="profileHeader" ><strong id="itemDisplay">Purchased Items</strong></h5>
 				</div>
 
 				<div className="profileCardInfo">
