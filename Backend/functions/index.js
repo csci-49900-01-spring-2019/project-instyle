@@ -329,99 +329,99 @@ app.get('/api/posts',  function (req, res) {
 	}
 });
 
-// app.post('/api/uploadImage', function (req, res) {
-// 	var busboy = new Busboy({ headers: req.headers });
-// 	var id;
-// 	var token;
-// 	let imageId = uuid.v1();
-// 	var remoteFile;
+app.post('/api/uploadImage', function (req, res) {
+	var busboy = new Busboy({ headers: req.headers });
+	var id;
+	var token;
+	let imageId = uuid.v1();
+	var remoteFile;
 
-// 	busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-// 		remoteFile = 'images/' + imageId + path.extname(filename);
-// 		file.pipe(bucket.file(remoteFile).createWriteStream({
-// 			resumable  : false,
-// 			validation : false,
-// 			contentType: "auto",
-// 			metadata   : {
-// 				'Cache-Control': 'public, max-age=31536000'}
-// 		}))
-// 			.on('error', (error) => {
-// 				response = {
-// 					success: false,
-// 					message: error
-// 				};
-// 				res.end(JSON.stringify(response));
-// 			});
-// 	});
+	busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+		remoteFile = 'images/' + imageId + path.extname(filename);
+		file.pipe(bucket.file(remoteFile).createWriteStream({
+			resumable  : false,
+			validation : false,
+			contentType: "auto",
+			metadata   : {
+				'Cache-Control': 'public, max-age=31536000'}
+		}))
+			.on('error', (error) => {
+				response = {
+					success: false,
+					message: error
+				};
+				res.end(JSON.stringify(response));
+			});
+	});
 
-// 	busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
-// 		console.log(fieldname);
-// 		if(fieldname == 'id')
-// 		{
-// 			id = val;
-// 		}
-// 		else if(fieldname == 'token')
-// 		{
-// 			token = val;
-// 		}
-// 	});
+	busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
+		console.log(fieldname);
+		if(fieldname == 'id')
+		{
+			id = val;
+		}
+		else if(fieldname == 'token')
+		{
+			token = val;
+		}
+	});
 
-// 	busboy.on('finish', function() {
-// 		jwt.verify(token, 'secret', function(err, decoded) {
-// 			if(err != null){
-// 				response = {
-// 					success: false,
-// 					message: err.message
-// 				};
-// 				res.end(JSON.stringify(response));
-// 			}
-// 			else if(id)
-// 			{
-// 				var docRef = db.collection('posting').doc(id);
-// 				docRef.get().then(function(doc) {
-// 					if (!doc.exists) {
-// 						response = {
-// 							success: false,
-// 							message: 'no info found'
-// 						};
-// 						res.end(JSON.stringify(response));
-// 					} else {
-// 						var imageUrl;
-// 						bucket.file(remoteFile).getSignedUrl({
-// 							action: 'read',
-// 							expires: '03-09-2491'
-// 						}).then(signedUrls => {
-// 							db.collection('posting').doc(id).set(
-// 								{imageUrls: firebase.firestore.FieldValue.arrayUnion(signedUrls[0])},
-// 								{merge: true}
-// 							).then(function(docRef){
-// 								response = {
-// 									success: true,
-// 									url: imageUrl
-// 								};
-// 								res.end(JSON.stringify(response));
-// 							}).catch(function(error) {
-// 								response = {
-// 									success: false,
-// 									message: error.message
-// 								};
-// 								res.end(JSON.stringify(response));
-// 							});
-// 						});
-// 					}
-// 				});
-// 			}
-// 			else{
-// 				response = {
-// 					success: false,
-// 					message: 'no id'
-// 				};
-// 				res.end(JSON.stringify(response));
-// 			}
-// 		});
-// 	});
-// 	busboy.end(req.rawBody);
-// });
+	busboy.on('finish', function() {
+		jwt.verify(token, 'secret', function(err, decoded) {
+			if(err != null){
+				response = {
+					success: false,
+					message: err.message
+				};
+				res.end(JSON.stringify(response));
+			}
+			else if(id)
+			{
+				var docRef = db.collection('posting').doc(id);
+				docRef.get().then(function(doc) {
+					if (!doc.exists) {
+						response = {
+							success: false,
+							message: 'no info found'
+						};
+						res.end(JSON.stringify(response));
+					} else {
+						var imageUrl;
+						bucket.file(remoteFile).getSignedUrl({
+							action: 'read',
+							expires: '03-09-2491'
+						}).then(signedUrls => {
+							db.collection('posting').doc(id).set(
+								{imageUrls: firebase.firestore.FieldValue.arrayUnion(signedUrls[0])},
+								{merge: true}
+							).then(function(docRef){
+								response = {
+									success: true,
+									url: imageUrl
+								};
+								res.end(JSON.stringify(response));
+							}).catch(function(error) {
+								response = {
+									success: false,
+									message: error.message
+								};
+								res.end(JSON.stringify(response));
+							});
+						});
+					}
+				});
+			}
+			else{
+				response = {
+					success: false,
+					message: 'no id'
+				};
+				res.end(JSON.stringify(response));
+			}
+		});
+	});
+	busboy.end(req.rawBody);
+});
 
 
 app.post('/buy', function (req, res) {
@@ -510,6 +510,11 @@ app.get('/api/user/posts', (req, res) => {
 	
 });
 
+
+app.get('/api/test', (req, res) => {
+	console.log('@@@@@@@@@@@@@@@@@@@@')
+	res.send("hello test")
+})
 
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
