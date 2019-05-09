@@ -81,42 +81,46 @@ class DisplayItem extends Component {
 
     render(){
         return(
-            <div className="wrappingItems">
-                    <div className="imageDiv">
-                        <img className="image" src={this.state.imageUrl}/>
-                    </div>
-                    <div className="listWrapper">
-                        <ul className="wrappingList">
-                            <div className="eacDiv">
-                                <li className="titleList">{this.state.brand}</li>
-                            </div>
-                            <div className="eacDiv">
-                                <li className="eachList">{this.state.product_name}</li>
-                            </div>
-                            <div className="eacDiv">
-                                <li className="eachList">${this.state.price} </li>
-                            </div>
-                            <div className="eacDiv">
-                               <li className="eachList">{this.state.gender} </li>
-                            </div>
-                            <div className="eacDiv">
-                                <li className="eachList">{this.state.size} </li>
-                            </div>
-                            <div className="eacDiv">
-                                 <li className="eachList">{this.state.description}</li>
-                            </div>
-                            {this.props.token ?
-                                <div>
-                                    <Button className="buyButton" onClick={this.handleOnClick}>BUY</Button>
-                                </div>
-                                :
-                                <div>
-                                    <NavLink to="/register" className="postButton" onClick={this.handleOnClick}>BUY</NavLink>
-                                </div>
-                            }
-                        </ul>
-                    </div>
+            <div className="wrappingItems">       
+                <div className="listWrapper">
+                    <img className="image" src={this.state.imageUrl}/>
+                    <ul className="wrappingList">
+                        <div className="eacDiv">
+                            <li className="titleList">{this.state.product_name}</li>
+                        </div>
+                        <div className="eacDiv">
+                            <li className="eachList">{this.state.brand}</li>
+                        </div>
+                        <div className="eacDiv">
+                            <li className="eachList">${this.state.price} </li>
+                        </div>
+                        <div className="eacDiv">
+                            <li className="eachList">{this.state.gender} </li>
+                        </div>
+                        <div className="eacDiv">
+                            <li className="eachList">{this.state.size} </li>
+                        </div>
+                        <div className="eacDiv">
+                            <li className="eachList">{this.state.description}</li>
+                        </div>
+                    </ul>
+
+                </div>
+
+                <div className="button">
+                    {this.props.token ?
+                        <div>
+                            <Button className="buyButton" onClick={this.handleOnClick}>BUY</Button>
+                        </div>
+                        :
+                        <div>
+                            <NavLink to="/register" className="postButton" onClick={this.handleOnClick}>BUY</NavLink>
+                        </div>
+                    }
+                </div>
+
             </div>
+            
         );
     }
 

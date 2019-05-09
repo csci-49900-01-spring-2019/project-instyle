@@ -74,11 +74,11 @@ class Landing extends Component {
                 </div>
 
                 {this.props.token ?
-                    <div>
+                    <div className = "button">
                         <NavLink to="/addItem" className="postButton">POST</NavLink>
                     </div>
                 :
-                    <div>
+                    <div className = "button">
                         <NavLink to="/register" className="postButton">POST</NavLink>
                     </div>
                 }
