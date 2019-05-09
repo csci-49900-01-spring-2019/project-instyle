@@ -41,7 +41,7 @@ class Landing extends Component {
         // console.log(this.state.token)
 
         const posts = this.state.data.length ?
-            (this.state.data.slice(0,9).map(post => {
+            (this.state.data.map(post => {
                  console.log(post)
                  console.log(post.imageUrls[0])
                 return (

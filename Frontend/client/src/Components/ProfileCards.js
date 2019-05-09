@@ -11,7 +11,8 @@ class ProfileCards extends Component {
         this.state = {
             product_name:this.props.product_name,
             price:this.props.price,
-            id:this.props.id
+            id:this.props.id,
+            email:this.props.email
         }
     }
 
@@ -23,6 +24,11 @@ class ProfileCards extends Component {
                         <ul className="wrappingList">
                             <li className="listItem">Product Name:{this.state.product_name}</li>
                             <li className="listItem">Price: ${this.state.price} </li>
+                            {this.state.email ?
+                                <li className="listItem">Email:{this.state.email} </li>
+                                :
+                                <li></li>
+                            }
                             <NavLink to ={"/displayItem/?ref=" + this.state.id}>See More</NavLink>
                         </ul>
                     </form>
