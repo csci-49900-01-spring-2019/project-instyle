@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import "../Styles/Profile.css"
+
 import axios from "axios";
 import {NavLink} from "react-router-dom";
 
 import {connect} from 'react-redux'
+
+import ProfileCards from "./ProfileCards";
 
 
 class Profile extends Component{
@@ -16,33 +19,24 @@ class Profile extends Component{
             // first_name:"",
 			// last_name:"",
 			token:this.props.token,
+			product_name:"",
+			price:"",
+			data:[]
 
 
         }
 
 	}
 	
-	componentDidMount(){
-		// this.fetchUserInfo();
+	componentDidMount() {
+		this.fetchUserInfo();
 		// this.fetchBuyingItems();
 		// this.fetchSoldItems;
 		//  this.fetchMyItems
-		console.log("in profile")
-		let uid = "BxTuT1ndeXhuPUKdcUImCp6f6bi2"
-		axios.get("/api/user/posts",{
-			data:{
-				uid:uid
-			}
-		})
-			.then(response => {
-				console.log("in getting user items",response);
-			})
-			.catch(err => {
-				console.log(err);
-			})
+		// console.log("in profile")
 	}
-    
-    fetchUserInfo= () => {
+
+    fetchUserInfo = () => {
 
 		if(this.props.token !== null){
 			console.log("Inside if statement")
@@ -59,12 +53,15 @@ class Profile extends Component{
 				})
 
 				axios.get("/api/user/posts",{
-					data:{
+					params:{
 						uid:uid
 					}
 				})
 					.then(response => {
 						console.log("in getting user items",response);
+						this.setState({
+							data: response.data
+						})
 					})
 					.catch(err => {
 						console.log(err);
@@ -96,6 +93,19 @@ class Profile extends Component{
 
 
    render(){
+
+	   const userPosts = this.state.data.length ?
+		   (this.state.data.map(userPosts => {
+			   console.log(userPosts)
+			   return (
+				   <div key={userPosts.id}>
+					   <ProfileCards id = {userPosts.id}
+							 product_name = {userPosts.product_name}
+							 price = {userPosts.price}
+					   />
+				   </div>
+			   )
+		   })): <div>"No data"</div>
         return(
 			<div>
 				<div className="profileInfoWrapper">
@@ -123,6 +133,9 @@ class Profile extends Component{
 
 				<div className="profileCardInfo">
 					<h5 className="profileHeader" ><strong id="itemDisplay">My Items</strong></h5>
+				</div>
+				<div>
+					{userPosts}
 				</div>
 
 			</div>
