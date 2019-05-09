@@ -24,17 +24,11 @@ class Card extends Component {
             gender:this.props.gender,
             size:this.props.size,
             id:this.props.id,
-            isShow: false
-
         }
     }
 
-    // handleOnClick = () => {
-    //     console.log(this.state.id)
-    //
-    // }
+
     render(){
-            console.log(this.state.isShow)
         return(
             <div>
                 <div className="cardsRows" key={this.state.id}>

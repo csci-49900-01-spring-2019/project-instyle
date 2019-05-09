@@ -26,7 +26,7 @@ class Header extends Component{
             case true:
                 return <ul>
                         <li className="authButton" onClick={this.handleProfile}>Profile</li>
-                        <li><a className="authButton" href="/logout">Logout</a></li>
+                        <li><a className="authButton" href="/">Logout</a></li>
                     </ul>
             default:
                 return <ul>

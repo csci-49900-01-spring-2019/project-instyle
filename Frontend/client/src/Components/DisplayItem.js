@@ -10,14 +10,15 @@ import {NavLink} from "react-router-dom";
 import "../Styles/DisplayItem.css"
 import Button from "reactstrap/es/Button";
 
+import defaultImage from "../assets/defaultImage.png"
+
 
 class DisplayItem extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // request:""
             data:[],
-            imageUrl: [],
+            imageUrls: [],
             price: "",
             product_name: "",
             brand: "",
@@ -25,7 +26,8 @@ class DisplayItem extends Component {
             description: "",
             gender: "",
             size: "",
-            token:this.props.token
+            token:this.props.token,
+            sold:false
 
         }
 
@@ -34,24 +36,24 @@ class DisplayItem extends Component {
 
         const request= queryString.parse(this.props.location.search)
 
-        // console.log("||||||" + request.ref)
-        // console.log("Display Item");
         axios.get("/api/posts",{
             params:{
                 id: request.ref
             }
         })
             .then(response =>{
+                console.log("in display page",response)
                 this.setState({
                     data: response.data.data,
-                    imageUrl: response.data.data.imageUrls,
+                    imageUrls: response.data.data.imageUrls,
                     price: response.data.data.price,
                     product_name: response.data.data.product_name,
                     brand: response.data.data.brand,
                     category: response.data.data.category,
                     description: response.data.data.description,
                     gender: response.data.data.gender,
-                    size: response.data.data.size
+                    size: response.data.data.size,
+                    sold:response.data.data.sold
 
 
                 })
@@ -66,7 +68,7 @@ class DisplayItem extends Component {
         console.log("Access token in display Item:",this.state.token)
         axios({
             method: 'post',
-            url: '/buy',
+            url: '/api/buy',
             data:{
                 token:this.state.token,
                 id:id
@@ -74,16 +76,18 @@ class DisplayItem extends Component {
         })
             .then(response =>{
                 console.log("the display Item Response",response);
+
             })
             .catch(error => { console.log(error) })
 
     }
 
     render(){
+
         return(
             <div className="wrappingItems">
                     <div className="imageDiv">
-                        <img className="image" src={this.state.imageUrl}/>
+                        <img className="image" src={this.state.imageUrls[0] ? this.state.imageUrls[0]: defaultImage }/>
                     </div>
                     <div className="listWrapper">
                         <ul className="wrappingList">
@@ -105,14 +109,19 @@ class DisplayItem extends Component {
                             <div className="eacDiv">
                                  <li className="eachList">{this.state.description}</li>
                             </div>
-                            {this.props.token ?
+                            {this.state.sold ?
                                 <div>
-                                    <Button className="buyButton" onClick={this.handleOnClick}>BUY</Button>
+                                    <Button className="buyButton">SOLD</Button>
                                 </div>
                                 :
-                                <div>
-                                    <NavLink to="/register" className="postButton" onClick={this.handleOnClick}>BUY</NavLink>
-                                </div>
+                                this.props.token ?
+                                    <div>
+                                        <Button className="buyButton" onClick={this.handleOnClick}>BUY</Button>
+                                    </div>
+                                    :
+                                    <div>
+                                        <NavLink to="/register" className="postButton" onClick={this.handleOnClick}>BUY</NavLink>
+                                    </div>
                             }
                         </ul>
                     </div>
