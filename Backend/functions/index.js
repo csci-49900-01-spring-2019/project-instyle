@@ -8,6 +8,7 @@ var jwt = require('jsonwebtoken');
 var uuid = require('uuid');
 var admin = require("firebase-admin");
 var serviceAccount = require("./instyle-5f93a-7e2453620e3f.json");
+
 admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount),
 	storageBucket: "instyle-5f93a.appspot.com"
@@ -22,6 +23,7 @@ const port = process.env.PORT || 5000;
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true }));
 app.use(bodyParser.json());
+var jsonParser = bodyParser.json()
 
 
 var config = {
@@ -424,7 +426,7 @@ app.post('/api/uploadImage', function (req, res) {
 });
 
 
-app.post('/buy', function (req, res) {
+app.post('/api/buy', function (req, res) {
 	jwt.verify(req.body.token, 'secret', function(err, decoded) {
 		if(err != null){
 			response = {
@@ -481,8 +483,9 @@ app.post('/buy', function (req, res) {
 })
 
 app.get('/api/user/posts', (req, res) => {
-	let uid = req.body.uid
+	let uid = req.query.uid
 	console.log(uid)
+
 	if (uid) {
 		db.collection("posting").where("uid", "==", uid).orderBy("timestamp", "desc").get()
 		.then(snapshot => {
@@ -507,8 +510,96 @@ app.get('/api/user/posts', (req, res) => {
 			res.end(JSON.stringify(response));
 		})
 	}
+
+	else {
+		response = {
+			success: false,
+			message: "Cannot get all User's posts"
+		};
+		res.end(JSON.stringify(response));
+	}
 	
 });
+
+
+app.get('/api/user/purchases', (req,res) => {
+	let uid = req.query.uid
+	console.log(uid)
+
+	if (uid) {
+		db.collection("posting")
+			.where("buyer", "==", uid)
+			.where("sold", "==", true)
+			.orderBy("timestamp", "desc").get()
+
+			.then(snapshot => {
+				var posts = []
+
+				snapshot.forEach(doc => {
+					let data = doc.data()
+					let post = {
+					sellerId: data.uid,
+					id: data.id,
+					product_name: data.product_name,
+					price: data.price
+					}
+					posts.push(post)
+				})
+				
+				res.json(posts)
+			})
+			.catch(error => {
+				response = {
+					success: false,
+					message: error.message
+				};
+				res.end(JSON.stringify(response));
+			})
+	}
+
+	else {
+		response = {
+			success: false,
+			message: "Cannot get all User's purchased posts"
+		};
+		res.end(JSON.stringify(response));
+	}
+
+})
+
+
+app.get('/api/user', (req, res) => {
+	var uid = req.query.uid;
+	console.log(uid)
+
+	if(uid) {
+		db.collection('users').doc(uid).get()
+		.then(doc => {
+			if (!doc.exists) {
+				response = {
+					success: false,
+					message: 'missing user info'
+				};
+			} else {
+				response = {
+					email: doc.data().email,
+					user_name: doc.data().user_name,
+					first_name: doc.data().first_name,
+					last_name: doc.data().last_name
+				};
+			}
+			res.end(JSON.stringify(response));
+		})
+	}
+
+	else {
+		response = {
+			success: false,
+			message: "Cannot get User's info"
+		};
+		res.end(JSON.stringify(response));
+	}
+})
 
 
 app.get('/api/test', (req, res) => {
