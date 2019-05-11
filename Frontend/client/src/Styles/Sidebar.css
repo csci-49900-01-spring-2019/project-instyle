@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+
+.sidebar{
+    position: absolute;
+    width: 200px;
+    height: 1100px;
+    background-color: seashell;
+    left: -200px;
+    transition: all 500ms linear;
+}
+
+#active{
+    left: 0px !important;
+}
+.sidebar ul li a{
+    color: darkslategray;
+}
+
+.sidebar ul li{
+    list-style: none;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(100,100,100,0.3);
+    font-family: 'Satisfy', cursive;
+    font-size: large;
+}
+
+.sidebar ul{
+    padding: 0px;
+    text-align: center;
+}
+
+.toggle-btn{
+    position: absolute;
+    left: 230px;
+    top:20px;
+}
+
+.eachSpan{
+    display: block;
+    width: 30px;
+    height:5px;
+    background-color:black;
+    margin: 3px 0px;
+}
+
+.categories{
+    margin: 35px;
+    color: darkslategray;
+    text-align: center;
+    font-family: 'Satisfy', cursive;
+    font-size: 29px;
+}
+
+.gender{
+    margin: 35px;
+    color: darkslategray;
+    text-align: center;
+    font-family: 'Satisfy', cursive;
+    font-size: x-large;
+}
+
+.eachLi:hover{
+    background-color: #6bc7e9;
+    padding: 0px;
+
+}
+
+.wrappingCategories{
+    margin-left: 30px;
+    /*text-align: right!important;*/
+}
+
+.genderLi{
+    font-size: 29px !important;
+}
+

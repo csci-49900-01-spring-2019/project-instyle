@@ -1,0 +1,30 @@
+.cardsRow{
+    /*display: inline-flex;*/
+    background-color: #fff;
+    border: grey solid 2px;
+    text-align: center;
+    width:96%;
+    height: 60%;
+    padding: 2rem;
+    margin: 10px;
+    box-shadow: -1px 2px 34px -13px rgba(0,0,0,0.75);
+    /*border: 2px solid black;*/
+    /*float: left;*/
+}
+
+
+.cardsCols{
+    display: grid;
+    /* position: center; */
+    cursor: pointer;
+    text-align: center;
+}
+
+.cardsRow:hover{
+    background-color: white;
+    border:#718c00 solid 3px;
+}
+
+.listItem{
+    font-family: Rajdjani;
+}

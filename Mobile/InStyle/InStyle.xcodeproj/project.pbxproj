@@ -24,10 +24,14 @@
 		15AB43E222494CEF00C633B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15AB43E022494CEF00C633B3 /* Main.storyboard */; };
 		15AB43E422494CEF00C633B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15AB43E322494CEF00C633B3 /* Assets.xcassets */; };
 		15AB43E722494CEF00C633B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15AB43E522494CEF00C633B3 /* LaunchScreen.storyboard */; };
+<<<<<<< HEAD
 		15C676592270C3D900DA953F /* PostDetails2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C676582270C3D900DA953F /* PostDetails2ViewController.swift */; };
 		15C682DC22724455005EAEF9 /* ProfileItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C682DB22724455005EAEF9 /* ProfileItemViewController.swift */; };
 		15D1CFBA225D329700EEFACE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1CFB9225D329700EEFACE /* ProfileViewController.swift */; };
 		18218E89E0BC1D0004E5D3BE /* Pods_InStyle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9120838FA475DCCAABC2BB39 /* Pods_InStyle.framework */; };
+=======
+		15AB43F3224D46AF00C633B3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15AB43F2224D46AF00C633B3 /* Default-568h@2x.png */; };
+>>>>>>> 6067cb4550e3f1296922d76d142a506b3c0b318d
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,11 +55,15 @@
 		15AB43E322494CEF00C633B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15AB43E622494CEF00C633B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15AB43E822494CEF00C633B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		15C676582270C3D900DA953F /* PostDetails2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetails2ViewController.swift; sourceTree = "<group>"; };
 		15C682DB22724455005EAEF9 /* ProfileItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemViewController.swift; sourceTree = "<group>"; };
 		15D1CFB9225D329700EEFACE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6E17BA182EFA292C649B374D /* Pods-InStyle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InStyle.release.xcconfig"; path = "Target Support Files/Pods-InStyle/Pods-InStyle.release.xcconfig"; sourceTree = "<group>"; };
 		9120838FA475DCCAABC2BB39 /* Pods_InStyle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InStyle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		15AB43F2224D46AF00C633B3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+>>>>>>> 6067cb4550e3f1296922d76d142a506b3c0b318d
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,7 @@
 		15AB43D022494CEF00C633B3 = {
 			isa = PBXGroup;
 			children = (
+				15AB43F2224D46AF00C633B3 /* Default-568h@2x.png */,
 				15AB43DB22494CEF00C633B3 /* InStyle */,
 				15AB43DA22494CEF00C633B3 /* Products */,
 				4A50A438D3FF39E763247DE3 /* Pods */,
@@ -122,6 +131,7 @@
 		15AB43EF22494DAA00C633B3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				1550BF38225FC9C20067F1A9 /* customCell */,
 				15AB43DC22494CEF00C633B3 /* AppDelegate.swift */,
 				15AB43DE22494CEF00C633B3 /* WelcomeViewController.swift */,
@@ -136,6 +146,10 @@
 				1513D360226CE881004DA72B /* ImageViewController.swift */,
 				1513D362226CFAEB004DA72B /* PostDetails1ViewController.swift */,
 				15C676582270C3D900DA953F /* PostDetails2ViewController.swift */,
+=======
+				15AB43DC22494CEF00C633B3 /* AppDelegate.swift */,
+				15AB43DE22494CEF00C633B3 /* ViewController.swift */,
+>>>>>>> 6067cb4550e3f1296922d76d142a506b3c0b318d
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -235,8 +249,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				15AB43E722494CEF00C633B3 /* LaunchScreen.storyboard in Resources */,
+<<<<<<< HEAD
 				1550BF3C225FC9F40067F1A9 /* PostTableViewCell.xib in Resources */,
 				150AC9AD225A4CA400CDBEAC /* GoogleService-Info.plist in Resources */,
+=======
+				15AB43F3224D46AF00C633B3 /* Default-568h@2x.png in Resources */,
+>>>>>>> 6067cb4550e3f1296922d76d142a506b3c0b318d
 				15AB43E422494CEF00C633B3 /* Assets.xcassets in Resources */,
 				15AB43E222494CEF00C633B3 /* Main.storyboard in Resources */,
 			);
