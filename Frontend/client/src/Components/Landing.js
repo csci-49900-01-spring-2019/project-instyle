@@ -41,12 +41,13 @@ class Landing extends Component {
         // console.log(this.state.token)
 
         const posts = this.state.data.length ?
-            (this.state.data.slice(0,9).map(post => {
-                // console.log(post.imageUrls[0])
+            (this.state.data.map(post => {
+                 console.log(post)
+                 console.log(post.imageUrls[0])
                 return (
                     <div key={post.id}>
                         <Card id = {post.id}
-                              imageUrl = {post.imageUrls}
+                              imageUrl = {post.imageUrls[0]}
                               product_name = {post.product_name}
                               brand = {post.brand}
                               price = {post.price}

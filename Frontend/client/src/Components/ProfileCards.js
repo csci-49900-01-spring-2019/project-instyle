@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import "../Styles/Cards.css"
+import "../Styles/ProfileCards.css"
 import axios from "axios";
 
 import {NavLink} from "react-router-dom";
@@ -9,16 +9,30 @@ class ProfileCards extends Component {
     constructor(props){
         super(props)
         this.state = {
-            image:"",
-            product_name:"",
-            user_name:"",
-            email:""
+            product_name:this.props.product_name,
+            price:this.props.price,
+            id:this.props.id,
+            email:this.props.email
         }
     }
 
     render(){
         return (
-            <div>
+            <div className="cardsRow">
+                <div className="cardsCols" >
+                    <form className="cardForm">
+                        <ul className="wrappingList">
+                            <li className="listItem">Product Name:{this.state.product_name}</li>
+                            <li className="listItem">Price: ${this.state.price} </li>
+                            {this.state.email ?
+                                <li className="listItem">Email:{this.state.email} </li>
+                                :
+                                <li></li>
+                            }
+                            <NavLink to ={"/displayItem/?ref=" + this.state.id}>See More</NavLink>
+                        </ul>
+                    </form>
+                </div>
             </div>
         );
     }

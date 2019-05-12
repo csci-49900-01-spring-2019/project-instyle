@@ -602,6 +602,49 @@ app.get('/api/user', (req, res) => {
 })
 
 
+app.get('/api/user/soldItems', (req, res) => {
+	let uid = req.query.uid
+	console.log(uid)
+
+	if (uid) {
+		db.collection("posting").where("uid", "==", uid).where("sold", "==", true).get()
+		.then(snapshot => {
+			var posts = []
+			snapshot.forEach(doc => {
+				let data = doc.data()
+				let post = {
+					id: data.id,
+					product_name: data.product_name,
+					price: data.price,
+					sold: data.sold,
+					buyerId: data.buyer
+				}
+				posts.push(post);
+			})
+			
+			res.json(posts)
+		})
+		.catch(error => {
+			response = {
+				success: false,
+				message: error.message
+			};
+			res.end(JSON.stringify(response));
+		})
+	}
+
+	else {
+		response = {
+			success: false,
+			message: "Cannot get all User's posts"
+		};
+		res.end(JSON.stringify(response));
+	}
+	
+});
+
+
+
 app.get('/api/test', (req, res) => {
 	console.log('@@@@@@@@@@@@@@@@@@@@')
 	res.send("hello test")

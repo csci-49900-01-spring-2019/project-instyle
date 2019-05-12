@@ -24,31 +24,11 @@ class Card extends Component {
             gender:this.props.gender,
             size:this.props.size,
             id:this.props.id,
-            isShow: false
-
         }
     }
 
-    handleOnClick = () => {
-        console.log(this.state.id)
-        // this.setState(state=>({
-        //     isShow:!state.isShow
-        // }))
-        // console.log(this.state.isShow)
-        // return <DisplayItem
-        // id={this.state.id}
-        // imageUrl = {this.state.imageUrl}
-        // price={this.state.price}
-        // product_name = {this.state.product_name}
-        // brand={this.state.brand}
-        // category={this.state.category}
-        // description={this.state.description}
-        // gender = {this.state.gender}
-        // size={this.state.size}
-        // />
-    }
+
     render(){
-            console.log(this.state.isShow)
         return(
             <div>
                 <div className="cardsRows" key={this.state.id}>
@@ -59,7 +39,7 @@ class Card extends Component {
                         <li>Price: ${this.state.price} </li>
                         {/*<button onClick={this.getID.bind(this,obj) }>See More</button>*/}
 
-                        <NavLink to ={"/displayItem/?ref=" + this.state.id} onClick={this.handleOnClick}>See More</NavLink>
+                        <NavLink to ={"/displayItem/?ref=" + this.state.id}>See More</NavLink>
 
                     </ul>
                 </div>
