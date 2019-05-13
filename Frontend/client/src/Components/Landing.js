@@ -80,7 +80,7 @@ class Landing extends Component {
                 
                 <Sidebar/>
                 <div className="search">
-                    <input className="searchinput" name="search" type="text" value={this.state.search} onChange={this.handleSearch} placeholder={"Product Name"}/>
+                    <input className="searchinput" name="search" type="text" value={this.state.search} onChange={this.handleSearch} placeholder={"Search Product Name"}/>
                     {/*<button className="searchbutton">Search</button>*/}
                 </div>
                 {this.props.token ?
