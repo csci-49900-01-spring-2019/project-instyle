@@ -42,7 +42,7 @@ class DisplayItem extends Component {
             }
         })
             .then(response =>{
-                console.log("in display page",response)
+                // console.log("in display page",response)
                 this.setState({
                     data: response.data.data,
                     imageUrls: response.data.data.imageUrls,
@@ -57,7 +57,7 @@ class DisplayItem extends Component {
 
 
                 })
-                 console.log("response from display item",this.state.data)
+                 // console.log("response from display item",this.state.data)
              })
 
      }

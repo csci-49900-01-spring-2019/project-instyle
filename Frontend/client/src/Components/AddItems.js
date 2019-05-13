@@ -66,7 +66,7 @@ class AddItems extends Component{
             })
                 .then(response => {
 
-                    console.log(response.data.id)
+                    // console.log(response.data.id)
                     if (response.data.success){
                         this.props.history.push("/profile")
                     }

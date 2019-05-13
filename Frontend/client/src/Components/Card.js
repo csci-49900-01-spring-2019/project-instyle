@@ -29,6 +29,7 @@ class Card extends Component {
 
 
     render(){
+        // console.log("cards: ", this.state)
         return(
             <div>
                 <div className="cardsRows" key={this.state.id}>

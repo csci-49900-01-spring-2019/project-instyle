@@ -12,20 +12,26 @@ import Sidebar from "./Sidebar.js"
 import {connect} from 'react-redux';
 import axios from "axios";
 
+function searchFor(search) {
+    return function (x) {
+        return x.name.toLowerCase().includes(search.toLowerCase()) || !search;
+    }
+}
 
 class Landing extends Component {
 
     constructor(props){
         super(props)
         this.state = {
-            data:[]
+            data:[],
+            search:""
         }
     }
 
     componentDidMount() {
         axios.get('/api/posting')
             .then(response => {
-                console.log("In cards: ", response.data.data)
+                // console.log("In cards: ", response.data.data)
 
                     this.setState({
                         data:response.data.data
@@ -34,16 +40,24 @@ class Landing extends Component {
 
             })
     }
-
+    handleSearch = (event) => {
+        this.setState({
+            search: event.target.value
+        })
+    }
 
 
     render() {
         // console.log(this.state.token)
-
+        let filteredPosts = this.state.data.filter(
+            (post) => {
+                return post.product_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+            }
+        )
         const posts = this.state.data.length ?
-            (this.state.data.map(post => {
-                 console.log(post)
-                 console.log(post.imageUrls[0])
+            (filteredPosts.map(post => {
+                 // console.log(post)
+                 // console.log(post.imageUrls[0])
                 return (
                     <div key={post.id}>
                         <Card id = {post.id}
@@ -65,11 +79,10 @@ class Landing extends Component {
             <div className="landingWrapper">
                 <Sidebar/>
                 <div className="search">
-                    <input className="searchinput" name="search" type="text" />
-                    <button className="searchbutton">Search</button>
+                    <input className="searchinput" name="search" type="text" value={this.state.search} onChange={this.handleSearch} placeholder={"Product Name"}/>
+                    {/*<button className="searchbutton">Search</button>*/}
                 </div>
 
-                {/*<Cards/>*/}
                 <div className= "grid-container"> 
                     {posts}
                 </div>
