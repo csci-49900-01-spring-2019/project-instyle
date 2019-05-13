@@ -50,3 +50,11 @@ body{
     font-family: 'Satisfy', cursive !important;
     font-weight: normal !important;
 }
+
+.noItems{
+    text-align: center;
+    color: rgb(104, 79, 79)!important;
+    padding: 0rem 0rem 1rem 0rem;
+    font-weight: bold;
+
+}

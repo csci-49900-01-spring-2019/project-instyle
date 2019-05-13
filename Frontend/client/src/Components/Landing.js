@@ -73,20 +73,16 @@ class Landing extends Component {
                         />
                     </div>
                 )
-            })): <div>"No data"</div>
+            })): <div></div>
 
         return (
             <div className="landingWrapper">
+                
                 <Sidebar/>
                 <div className="search">
                     <input className="searchinput" name="search" type="text" value={this.state.search} onChange={this.handleSearch} placeholder={"Product Name"}/>
                     {/*<button className="searchbutton">Search</button>*/}
                 </div>
-
-                <div className= "grid-container"> 
-                    {posts}
-                </div>
-
                 {this.props.token ?
                     <div className = "button">
                         <NavLink to="/addItem" className="postButton">POST</NavLink>
@@ -96,6 +92,11 @@ class Landing extends Component {
                         <NavLink to="/register" className="postButton">POST</NavLink>
                     </div>
                 }
+                <div className= "grid-container"> 
+                    {posts}
+                </div>
+
+                
 
             </div>
         );

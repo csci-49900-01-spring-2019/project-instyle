@@ -180,7 +180,7 @@ class Profile extends Component{
 					   />
 				   </div>
 			   )
-		   })): <div>"No data"</div>
+		   })): <div className="noItems">No Items Purchased</div>
 
 	   const soldPosts = this.state.soldItems.length ?
 		   (this.state.soldItems.map(soldPost => {
@@ -194,7 +194,7 @@ class Profile extends Component{
 					   />
 				   </div>
 			   )
-		   })): <div>"No data"</div>
+		   })): <div className="noItems">No Items Sold</div>
 
 		const purchases = this.state.purchases.length ?
 			(this.state.purchases.map(purchase => {
@@ -208,7 +208,7 @@ class Profile extends Component{
 						/>
 					</div>
 				)
-			})): <div>"No data"</div>
+			})): <div className="noItems">No Items Posted</div>
         return(
 			<div>
 				<div className="profileInfoWrapper">
@@ -229,21 +229,21 @@ class Profile extends Component{
 				<div className="profileCardInfo">
 					<h5 className="profileHeader" ><strong id="itemDisplay">Purchased Items</strong></h5>
 				</div>
-				<div>
+				<div className="itemCards">
 					{purchases}
 				</div>
 
 				<div className="profileCardInfo">
 					<h5 className="profileHeader" ><strong id="itemDisplay">Sold Items</strong></h5>
 				</div>
-				<div>
+				<div className="itemCards">
 					{soldPosts}
 				</div>
 
 				<div className="profileCardInfo">
 					<h5 className="profileHeader" ><strong id="itemDisplay">My Items</strong></h5>
 				</div>
-				<div>
+				<div ClassName="itemCards">
 					{userPosts}
 				</div>
 
