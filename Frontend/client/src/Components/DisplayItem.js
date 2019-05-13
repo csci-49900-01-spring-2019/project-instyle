@@ -76,6 +76,7 @@ class DisplayItem extends Component {
         })
             .then(response =>{
                 console.log("the display Item Response",response);
+                this.props.history.push("/profile")
 
             })
             .catch(error => { console.log(error) })
@@ -127,7 +128,7 @@ class DisplayItem extends Component {
                             </div>
                             :
                             <div>
-                                <NavLink to="/register" className="postButton" onClick={this.handleOnClick}>BUY</NavLink>
+                                <NavLink to="/register" className="postButton">BUY</NavLink>
                             </div>
                     }
                 </div>

@@ -30,8 +30,10 @@ class SideBar extends Component {
             })
     }
 
-    GetMaleShoes(){
-            (this.state.data.map(post => {
+    getMaleShoes(){
+        let filter
+
+        this.state.data.map(post => {
                 // console.log("posts",post)
                 return post.category === "shoes"?
                     <div key={post.id}>
@@ -48,11 +50,15 @@ class SideBar extends Component {
                         />
                     </div>
                     : <div>"No data"</div>
-            }))
+        })
     }
 
     GetFemaleShoes(){
 
+    }
+
+    handleClick(){
+                alert("Hello There!")
     }
 
     toggleSidebar(){
@@ -89,7 +95,7 @@ class SideBar extends Component {
                                  <li>Pants</li>
                              </div>
                              <div className="eachLi">
-                                 <li>Shoes</li>
+                                 <li  onClick={this.handleClick.bind(this)}>>Shoes</li>
                              </div>
                          </ul>
                      </div>
