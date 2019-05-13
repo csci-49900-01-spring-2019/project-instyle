@@ -12,11 +12,6 @@ import Sidebar from "./Sidebar.js"
 import {connect} from 'react-redux';
 import axios from "axios";
 
-function searchFor(search) {
-    return function (x) {
-        return x.name.toLowerCase().includes(search.toLowerCase()) || !search;
-    }
-}
 
 class Landing extends Component {
 
@@ -49,6 +44,8 @@ class Landing extends Component {
 
     render() {
         // console.log(this.state.token)
+        // let items  = this.state.data.length ?
+
         let filteredPosts = this.state.data.filter(
             (post) => {
                 return post.product_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
@@ -77,7 +74,7 @@ class Landing extends Component {
 
         return (
             <div className="landingWrapper">
-                <Sidebar/>
+                <Sidebar />
                 <div className="search">
                     <input className="searchinput" name="search" type="text" value={this.state.search} onChange={this.handleSearch} placeholder={"Product Name"}/>
                     {/*<button className="searchbutton">Search</button>*/}

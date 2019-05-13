@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "../Styles/Sidebar.css"
 
 import axios from "axios"
-import Card from "./Landing";
+import Card from "./Card";
 import {NavLink} from "react-router-dom";
 
 class SideBar extends Component {
@@ -20,7 +20,7 @@ class SideBar extends Component {
     componentDidMount() {
         axios.get('/api/posting')
             .then(response => {
-                console.log("In Sidebar: ", response.data.data)
+                // console.log("In cards: ", response.data.data)
 
                 this.setState({
                     data:response.data.data
@@ -31,11 +31,17 @@ class SideBar extends Component {
     }
 
     getMaleShoes(){
-        let filter
+        console.log("in sidebar: ", this.state.data)
+        const category = "Shoes";
+        let filterPosts = this.state.data.filter(
+            (post) => {
+                return post.category.indexOf(category) !== -1
+            }
+        )
 
-        this.state.data.map(post => {
+        filterPosts.map(post => {
                 // console.log("posts",post)
-                return post.category === "shoes"?
+                return(
                     <div key={post.id}>
                         <Card id = {post.id}
                               imageUrl = {post.imageUrls[0]}
@@ -49,16 +55,13 @@ class SideBar extends Component {
                               uid = {post.uid}
                         />
                     </div>
-                    : <div>"No data"</div>
-        })
+                )})
+
+        console.log("filtered Post:",filterPosts);
     }
 
     GetFemaleShoes(){
 
-    }
-
-    handleClick(){
-                alert("Hello There!")
     }
 
     toggleSidebar(){
@@ -95,7 +98,7 @@ class SideBar extends Component {
                                  <li><a  href="/male/pants" >Pants</a></li>
                              </div>
                              <div className="eachLi">
-                                 <li  onClick={this.handleClick.bind(this)}>>Shoes</li>
+                                 <li  onClick={this.getMaleShoes.bind(this)}>>Shoes</li>
                              </div>
                          </ul>
                      </div>
