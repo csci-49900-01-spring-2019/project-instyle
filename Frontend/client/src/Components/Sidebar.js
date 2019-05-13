@@ -76,20 +76,20 @@ class SideBar extends Component {
                  <ul>
                      <div>
                         <div className="eachLi">
-                            <li className="genderLi"><a  href="/male">Male</a></li>
+                            <li className="genderLi">Male</li>
                         </div>
                          <ul className="wrappingCategories">
                              <div className="eachLi">
-                                 <li><a  href="/male/tshirts">T-Shirts</a></li>
+                                 <li>T-Shirts</li>
                              </div>
                              <div className="eachLi">
-                                 <li><a  href="/male/shirts">Shirts</a></li>
+                                 <li>Shirts</li>
                              </div>
                              <div className="eachLi">
-                                 <li><a  href="/male/pants" >Pants</a></li>
+                                 <li>Pants</li>
                              </div>
                              <div className="eachLi">
-                                 <li><button onClick={this.GetMaleShoes.bind(this)}>Shoes</button></li>
+                                 <li>Shoes</li>
                              </div>
                          </ul>
                      </div>
