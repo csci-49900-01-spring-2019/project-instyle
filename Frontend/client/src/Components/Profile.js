@@ -32,10 +32,6 @@ class Profile extends Component{
 	
 	componentDidMount() {
 		this.fetchUserInfo();
-		// this.fetchBuyingItems();
-		// this.fetchSoldItems;
-		//  this.fetchMyItems
-		// console.log("in profile")
 	}
 
     fetchUserInfo = () => {
@@ -76,7 +72,7 @@ class Profile extends Component{
 		})
 			.then(response => {
 				let posts = response.data
-				console.log("in getting user items", posts);
+				// console.log("in getting user items", posts);
 
 				this.setState({
 					data: posts
@@ -99,7 +95,7 @@ class Profile extends Component{
 		})
 			.then(response => {
 				let posts = response.data
-				console.log("in getting user sold items", posts);
+				// console.log("in getting user sold items", posts);
 
 				posts.forEach( post => {
 					axios.get("api/user", {
@@ -107,7 +103,7 @@ class Profile extends Component{
 							uid: post.buyerId
 						}
 					}) .then(userInfo => {
-						console.log("USERINFO: ", userInfo.data)
+						// console.log("USERINFO: ", userInfo.data)
 						let p = {
 							buyerEmail: userInfo.data.email,
 							buyerUsername: userInfo.data.user_name,
@@ -138,7 +134,7 @@ class Profile extends Component{
 		})
 			.then(response => {
 				let purchases = response.data
-				console.log("in getting user purchases items", purchases);
+				// console.log("in getting user purchases items", purchases);
 
 				purchases.forEach( post => {
 					axios.get("api/user", {
@@ -146,7 +142,7 @@ class Profile extends Component{
 							uid: post.sellerId
 						}
 					}) .then(userInfo => {
-						console.log("USERINFO: ", userInfo.data)
+						// console.log("USERINFO: ", userInfo.data)
 						let p = {
 							sellerEmail: userInfo.data.email,
 							sellerUsername: userInfo.data.user_name,
