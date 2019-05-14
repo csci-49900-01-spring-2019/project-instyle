@@ -41,7 +41,6 @@ class Signup extends Component{
             last_name:this.state.last_name
         })
             .then(response => {
-                console.log(response);
                 if(response.data.success) {
                     this.setState(
                         {
@@ -60,13 +59,6 @@ class Signup extends Component{
                         }
                     )
                 }
-                console.log("username: ", this.state.user_name)
-                console.log("email: ", this.state.email)
-                console.log("firstname: ", this.state.first_name)
-                console.log("lastname: ", this.state.last_name)
-                console.log("userName: ", this.state.user_name)
-                console.log("isAuth: ", this.state.isAuth)
-                console.log("uid: ", this.state.uid)
             }).catch(function (error) {
             console.log("Authorization failed: "+ error.message);
         })
