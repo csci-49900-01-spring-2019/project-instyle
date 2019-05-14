@@ -3,62 +3,18 @@ import React, { Component } from "react";
 import "../Styles/Sidebar.css"
 
 import axios from "axios"
-import Card from "./Landing";
-import {NavLink} from "react-router-dom";
+import Card from "./Card";
+import {Link, NavLink} from "react-router-dom";
 
 class SideBar extends Component {
     constructor(props){
         super(props)
         this.state = {
              isActive: "false",
-            data:[]
+            hasFilter:false
 
-        }
+        };
         this.toggleSidebar = this.toggleSidebar.bind(this)
-    }
-
-    componentDidMount() {
-        axios.get('/api/posting')
-            .then(response => {
-                console.log("In Sidebar: ", response.data.data)
-
-                this.setState({
-                    data:response.data.data
-
-                })
-
-            })
-    }
-
-    getMaleShoes(){
-        let filter
-
-        this.state.data.map(post => {
-                // console.log("posts",post)
-                return post.category === "shoes"?
-                    <div key={post.id}>
-                        <Card id = {post.id}
-                              imageUrl = {post.imageUrls[0]}
-                              product_name = {post.product_name}
-                              brand = {post.brand}
-                              price = {post.price}
-                              description = {post.description}
-                              gender ={post.gender}
-                              size = {post.size}
-                              sold = {post.sold}
-                              uid = {post.uid}
-                        />
-                    </div>
-                    : <div>"No data"</div>
-        })
-    }
-
-    GetFemaleShoes(){
-
-    }
-
-    handleClick(){
-                alert("Hello There!")
     }
 
     toggleSidebar(){
@@ -67,11 +23,21 @@ class SideBar extends Component {
         })
     }
 
+    setFilter = (gender,type)=>{
+        this.setState({hasFilter:true});
+        this.props.handleSetFilter(gender,type);
+    };
+
+    removeFilter = ()=>{
+        this.setState({hasFilter:false});
+        this.props.handleRemoveFilter();
+    };
+
     render() {
         return(
           <div className="globalSidebar">
-             <div className="sidebar" onClick={this.toggleSidebar} id={this.state.isActive ? 'active' : null}>
-                 <div className="toggle-btn" >
+             <div className="sidebar"  id={this.state.isActive ? 'active' : null}>
+                 <div onClick={this.toggleSidebar} className="toggle-btn" >
                      <span className="eachSpan"></span>
                      <span className="eachSpan"></span>
                      <span className="eachSpan"></span>
@@ -79,6 +45,7 @@ class SideBar extends Component {
                  <div className="classCat">
                      <h3 className="categories">Categories</h3>
                  </div>
+
                  <ul>
                      <div>
                         <div className="eachLi">
@@ -86,16 +53,24 @@ class SideBar extends Component {
                         </div>
                          <ul className="wrappingCategories">
                              <div className="eachLi">
-                                 <li>T-Shirts</li>
+                                 <li onClick={()=>this.setFilter("M","TShirts")}>
+                                         T-Shirts
+                                 </li>
                              </div>
                              <div className="eachLi">
-                                 <li>Shirts</li>
+                                 <li onClick={()=>this.setFilter("M","Shirts")}>
+                                         Shirts
+                                 </li>
                              </div>
                              <div className="eachLi">
-                                 <li>Pants</li>
+                                 <li onClick={()=>this.setFilter("M","Pants")}>
+                                         Pants
+                                 </li>
                              </div>
                              <div className="eachLi">
-                                 <li  onClick={this.handleClick.bind(this)}>>Shoes</li>
+                                 <li onClick={()=>this.setFilter("M","Shoes")}>
+                                         Shoes
+                                 </li>
                              </div>
                          </ul>
                      </div>
@@ -103,24 +78,43 @@ class SideBar extends Component {
                      <ul>
                          <div>
                          <div className="eachLi">
-                            <li className="genderLi"><a  href="/female">Female</a></li>
+                            <li className="genderLi">Female</li>
                          </div>
                          <ul className="wrappingCategories">
                              <div className="eachLi">
-                                 <li><a  href="/female/tshirts">T-Shirts</a></li>
+                                 <li onClick={()=>this.setFilter("F","TShirts")}>
+                                     T-Shirts
+                                 </li>
                              </div>
                              <div className="eachLi">
-                                 <li><a  href="/female/shirts">Shirts</a></li>
+                                 <li onClick={()=>this.setFilter("F","Shirts")}>
+                                     Shirts
+                                 </li>
                              </div>
                              <div className="eachLi">
-                                 <li><a  href="/female/pants">Pants</a></li>
+                                 <li onClick={()=>this.setFilter("F","Pants")}>
+                                     Pants
+                                 </li>
                              </div>
                              <div className="eachLi">
-                                 <li><a  href="/female/shoes">Shoes</a></li>
+                                 <li onClick={()=>this.setFilter("F","Shoes")}>
+                                     Shoes
+                                 </li>
                              </div>
                          </ul>
                          </div>
                      </ul>
+                 {this.state.hasFilter?
+                     (<ul>
+                         <ul className="wrappingCategories">
+                             <div className="eachLi">
+                                 <li>
+                                     <a onClick={()=>this.removeFilter()}>Remove Filter</a>
+                                 </li>
+                             </div>
+                         </ul>
+                     </ul>):""
+                 }
              </div>
           </div>
         );

@@ -12,19 +12,17 @@ import Sidebar from "./Sidebar.js"
 import {connect} from 'react-redux';
 import axios from "axios";
 
-function searchFor(search) {
-    return function (x) {
-        return x.name.toLowerCase().includes(search.toLowerCase()) || !search;
-    }
-}
 
 class Landing extends Component {
 
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             data:[],
-            search:""
+            search:"",
+            filterType : "",
+            filterGender : "",
+            hasFilter:false
         }
     }
 
@@ -40,24 +38,46 @@ class Landing extends Component {
 
             })
     }
+
     handleSearch = (event) => {
         this.setState({
             search: event.target.value
         })
-    }
+    };
 
+    handleSetFilter = (gender,type)=>{
+        this.setState({
+            filterType : type,
+            filterGender : gender,
+            hasFilter:true
+        })
+    };
+
+    handleRemoveFilter = ()=>{
+        this.setState({
+            filterType : "",
+            filterGender : "",
+            hasFilter:false
+        })
+    };
 
     render() {
-        // console.log(this.state.token)
         let filteredPosts = this.state.data.filter(
             (post) => {
                 return post.product_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
             }
-        )
-        const posts = this.state.data.length ?
+        );
+
+        if(this.state.hasFilter) {
+             filteredPosts = filteredPosts.filter(
+                post =>
+                    post.gender.indexOf(this.state.filterGender) !== -1 &&
+                    post.category.indexOf(this.state.filterType) !== -1
+            );
+        }
+
+        const posts = filteredPosts.length ?
             (filteredPosts.map(post => {
-                 // console.log(post)
-                 // console.log(post.imageUrls[0])
                 return (
                     <div key={post.id}>
                         <Card id = {post.id}
@@ -77,11 +97,11 @@ class Landing extends Component {
 
         return (
             <div className="landingWrapper">
-                
-                <Sidebar/>
+                <Sidebar handleSetFilter={this.handleSetFilter} handleRemoveFilter={this.handleRemoveFilter} />
                 <div className="search">
-                    <input className="searchinput" name="search" type="text" value={this.state.search} onChange={this.handleSearch} placeholder={"Search Product Name"}/>
-                    {/*<button className="searchbutton">Search</button>*/}
+
+                <input className="searchinput" name="search" type="text" value={this.state.search} onChange={this.handleSearch} placeholder={"Search Product Name"}/>
+     
                 </div>
                 {this.props.token ?
                     <div className = "button">
@@ -95,9 +115,6 @@ class Landing extends Component {
                 <div className= "grid-container"> 
                     {posts}
                 </div>
-
-                
-
             </div>
         );
     }

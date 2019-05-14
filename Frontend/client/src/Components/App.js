@@ -8,6 +8,7 @@ import Signup from "./Signup";
 import AddItems from "./AddItems";
 import Profile from "./Profile";
 import DisplayItem from "./DisplayItem";
+import FilteredPost from "./FilteredPost";
 
 class App extends Component {
 
@@ -21,7 +22,9 @@ class App extends Component {
                     <Route exact path="/register" component = {Signup} />
                     <Route exact path="/addItem" component = {AddItems} />
                     <Route exact path="/displayItem" component = {DisplayItem} />
-                    <Route exact path="/profile" component = {Profile} /> 
+                    <Route exact path="/profile" component = {Profile} />
+                    {/*<Route exact path="/filteredpost" component = {FilteredPost} />*/}
+
                 </div>
             </Router>
         );

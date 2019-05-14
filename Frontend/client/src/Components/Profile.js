@@ -37,7 +37,6 @@ class Profile extends Component{
     fetchUserInfo = () => {
 
 		if(this.props.token !== null){
-			console.log("Inside if statement")
 			axios.get('/api/userInfo',{
 				headers: { Authorization: `Bearer ${this.state.token}`,}
 			})
@@ -171,7 +170,6 @@ class Profile extends Component{
 
 	   const userPosts = this.state.data.length ?
 		   (this.state.data.map(userPosts => {
-			   console.log(userPosts)
 			   return (
 				   <div key={userPosts.id}>
 					   <ProfileCards id = {userPosts.id}
@@ -184,7 +182,6 @@ class Profile extends Component{
 
 	   const soldPosts = this.state.soldItems.length ?
 		   (this.state.soldItems.map(soldPost => {
-			   console.log("sold", soldPost)
 			   return (
 				   <div key={soldPost.id}>
 					   <ProfileCards id = {soldPost.id}
@@ -198,7 +195,6 @@ class Profile extends Component{
 
 		const purchases = this.state.purchases.length ?
 			(this.state.purchases.map(purchase => {
-				console.log("purchase ", purchase)
 				return (
 					<div key={purchase.id}>
 						<ProfileCards id = {purchase.id}

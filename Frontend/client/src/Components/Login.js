@@ -32,7 +32,6 @@ class Login extends Component{
 			password:this.state.password
 		})
 			.then(response => {
-				console.log("in login:",response);
 				if(response.data.isAuth) {
 					this.props.getToken(response.data);
 					this.setState(
@@ -54,18 +53,12 @@ class Login extends Component{
 						}
 					)
 				}
-				// console.log("isAuth: ", response.data.success)
-				// console.log("uid: ", this.state.uid)
-				  console.log("token: ", this.props.token)
 			}).catch(function (error) {
 			console.log("Authorization failed: "+ error.message);
 		})
 		// return <Redirect to="/" />
 	}
 
-	handleSignOut(){
-	// 	axios.get("/logout")
-	}
 
 	render(){
 
