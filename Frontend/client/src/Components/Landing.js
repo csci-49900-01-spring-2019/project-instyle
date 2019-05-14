@@ -99,7 +99,9 @@ class Landing extends Component {
             <div className="landingWrapper">
                 <Sidebar handleSetFilter={this.handleSetFilter} handleRemoveFilter={this.handleRemoveFilter} />
                 <div className="search">
-                    <input className="searchinput" name="search" type="text" value={this.state.search} onChange={this.handleSearch} placeholder={"Product Name"}/>
+
+                <input className="searchinput" name="search" type="text" value={this.state.search} onChange={this.handleSearch} placeholder={"Search Product Name"}/>
+     
                 </div>
                 {this.props.token ?
                     <div className = "button">
