@@ -53,7 +53,7 @@ class SideBar extends Component {
                         </div>
                          <ul className="wrappingCategories">
                              <div className="eachLi">
-                                 <li onClick={()=>this.setFilter("M","TShirts")}>
+                                 <li onClick={()=>this.setFilter("M","T-Shirts")}>
                                          T-Shirts
                                  </li>
                              </div>
@@ -82,7 +82,7 @@ class SideBar extends Component {
                          </div>
                          <ul className="wrappingCategories">
                              <div className="eachLi">
-                                 <li onClick={()=>this.setFilter("F","TShirts")}>
+                                 <li onClick={()=>this.setFilter("F","T-Shirts")}>
                                      T-Shirts
                                  </li>
                              </div>
