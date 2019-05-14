@@ -62,6 +62,7 @@
 .eachLi:hover{
     background-color: #6bc7e9;
     padding: 0px;
+    cursor: pointer;
 
 }
 

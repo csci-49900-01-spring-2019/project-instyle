@@ -42,7 +42,7 @@ class DisplayItem extends Component {
             }
         })
             .then(response =>{
-                console.log("in display page",response)
+                // console.log("in display page",response)
                 this.setState({
                     data: response.data.data,
                     imageUrls: response.data.data.imageUrls,
@@ -57,7 +57,7 @@ class DisplayItem extends Component {
 
 
                 })
-                 console.log("response from display item",this.state.data)
+                 // console.log("response from display item",this.state.data)
              })
 
      }
@@ -76,6 +76,7 @@ class DisplayItem extends Component {
         })
             .then(response =>{
                 console.log("the display Item Response",response);
+                this.props.history.push("/profile")
 
             })
             .catch(error => { console.log(error) })
@@ -86,46 +87,53 @@ class DisplayItem extends Component {
 
         return(
             <div className="wrappingItems">
-                    <div className="imageDiv">
-                        <img className="image" src={this.state.imageUrls[0] ? this.state.imageUrls[0]: defaultImage }/>
-                    </div>
-                    <div className="listWrapper">
-                        <ul className="wrappingList">
-                            <div className="eacDiv">
-                                <li className="titleList">{this.state.brand}</li>
+                <div className="listWrapper">
+                    <img className="image" src={this.state.imageUrls[0] ? this.state.imageUrls[0]: defaultImage }/>
+                    <ul className="wrappingList">
+                        <div className="eacDiv">
+                            <li className="titleList">{this.state.product_name}</li>
+                        </div>
+                        <div className="eacDiv">
+                            <lable className="iteamLable">Brand: </lable>
+                            <li className="eachList">{this.state.brand}</li>
+                        </div>
+                        <div className="eacDiv">
+                            <lable className="iteamLable">Price: </lable>
+                            <li className="eachList">${this.state.price} </li>
+                        </div>
+                        <div className="eacDiv">
+                            <lable className="iteamLable">Gender: </lable>
+                           <li className="eachList">{this.state.gender} </li>
+                        </div>
+                        <div className="eacDiv">
+                            <lable className="iteamLable">Size: </lable>
+                            <li className="eachList">{this.state.size} </li>
+                        </div>
+                        <div className="eacDiv">
+                            <lable className="iteamLable" id="descriptionLable">Description: </lable>
+                             <li className="eachList">{this.state.description}</li>
+                        </div>
+                    </ul>
+                </div>
+
+                <div className="button">
+                    {this.state.sold ?
+                        <div>
+                            <Button className="buyButton" id="sold">SOLD</Button>
+                        </div>
+                        :
+                        this.props.token ?
+                            <div>
+                                <Button className="buyButton" onClick={this.handleOnClick}>BUY</Button>
                             </div>
-                            <div className="eacDiv">
-                                <li className="eachList">{this.state.product_name}</li>
+                            :
+                            <div>
+                                <NavLink to="/register" className="postButton">BUY</NavLink>
                             </div>
-                            <div className="eacDiv">
-                                <li className="eachList">${this.state.price} </li>
-                            </div>
-                            <div className="eacDiv">
-                               <li className="eachList">{this.state.gender} </li>
-                            </div>
-                            <div className="eacDiv">
-                                <li className="eachList">{this.state.size} </li>
-                            </div>
-                            <div className="eacDiv">
-                                 <li className="eachList">{this.state.description}</li>
-                            </div>
-                            {this.state.sold ?
-                                <div>
-                                    <Button className="buyButton">SOLD</Button>
-                                </div>
-                                :
-                                this.props.token ?
-                                    <div>
-                                        <Button className="buyButton" onClick={this.handleOnClick}>BUY</Button>
-                                    </div>
-                                    :
-                                    <div>
-                                        <NavLink to="/register" className="postButton" onClick={this.handleOnClick}>BUY</NavLink>
-                                    </div>
-                            }
-                        </ul>
-                    </div>
+                    }
+                </div>
             </div>
+            
         );
     }
 

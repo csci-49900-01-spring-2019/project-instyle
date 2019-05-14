@@ -32,16 +32,11 @@ class Profile extends Component{
 	
 	componentDidMount() {
 		this.fetchUserInfo();
-		// this.fetchBuyingItems();
-		// this.fetchSoldItems;
-		//  this.fetchMyItems
-		// console.log("in profile")
 	}
 
     fetchUserInfo = () => {
 
 		if(this.props.token !== null){
-			console.log("Inside if statement")
 			axios.get('/api/userInfo',{
 				headers: { Authorization: `Bearer ${this.state.token}`,}
 			})
@@ -76,7 +71,7 @@ class Profile extends Component{
 		})
 			.then(response => {
 				let posts = response.data
-				console.log("in getting user items", posts);
+				// console.log("in getting user items", posts);
 
 				this.setState({
 					data: posts
@@ -99,7 +94,7 @@ class Profile extends Component{
 		})
 			.then(response => {
 				let posts = response.data
-				console.log("in getting user sold items", posts);
+				// console.log("in getting user sold items", posts);
 
 				posts.forEach( post => {
 					axios.get("api/user", {
@@ -107,7 +102,7 @@ class Profile extends Component{
 							uid: post.buyerId
 						}
 					}) .then(userInfo => {
-						console.log("USERINFO: ", userInfo.data)
+						// console.log("USERINFO: ", userInfo.data)
 						let p = {
 							buyerEmail: userInfo.data.email,
 							buyerUsername: userInfo.data.user_name,
@@ -138,7 +133,7 @@ class Profile extends Component{
 		})
 			.then(response => {
 				let purchases = response.data
-				console.log("in getting user purchases items", purchases);
+				// console.log("in getting user purchases items", purchases);
 
 				purchases.forEach( post => {
 					axios.get("api/user", {
@@ -146,7 +141,7 @@ class Profile extends Component{
 							uid: post.sellerId
 						}
 					}) .then(userInfo => {
-						console.log("USERINFO: ", userInfo.data)
+						// console.log("USERINFO: ", userInfo.data)
 						let p = {
 							sellerEmail: userInfo.data.email,
 							sellerUsername: userInfo.data.user_name,
@@ -175,7 +170,6 @@ class Profile extends Component{
 
 	   const userPosts = this.state.data.length ?
 		   (this.state.data.map(userPosts => {
-			   console.log(userPosts)
 			   return (
 				   <div key={userPosts.id}>
 					   <ProfileCards id = {userPosts.id}
@@ -184,11 +178,10 @@ class Profile extends Component{
 					   />
 				   </div>
 			   )
-		   })): <div>"No data"</div>
+		   })): <div className="noItems">No Items Purchased</div>
 
 	   const soldPosts = this.state.soldItems.length ?
 		   (this.state.soldItems.map(soldPost => {
-			   console.log("sold", soldPost)
 			   return (
 				   <div key={soldPost.id}>
 					   <ProfileCards id = {soldPost.id}
@@ -198,11 +191,10 @@ class Profile extends Component{
 					   />
 				   </div>
 			   )
-		   })): <div>"No data"</div>
+		   })): <div className="noItems">No Items Sold</div>
 
 		const purchases = this.state.purchases.length ?
 			(this.state.purchases.map(purchase => {
-				console.log("purchase ", purchase)
 				return (
 					<div key={purchase.id}>
 						<ProfileCards id = {purchase.id}
@@ -212,7 +204,7 @@ class Profile extends Component{
 						/>
 					</div>
 				)
-			})): <div>"No data"</div>
+			})): <div className="noItems">No Items Posted</div>
         return(
 			<div>
 				<div className="profileInfoWrapper">
@@ -233,21 +225,21 @@ class Profile extends Component{
 				<div className="profileCardInfo">
 					<h5 className="profileHeader" ><strong id="itemDisplay">Purchased Items</strong></h5>
 				</div>
-				<div>
+				<div className="itemCards">
 					{purchases}
 				</div>
 
 				<div className="profileCardInfo">
 					<h5 className="profileHeader" ><strong id="itemDisplay">Sold Items</strong></h5>
 				</div>
-				<div>
+				<div className="itemCards">
 					{soldPosts}
 				</div>
 
 				<div className="profileCardInfo">
 					<h5 className="profileHeader" ><strong id="itemDisplay">My Items</strong></h5>
 				</div>
-				<div>
+				<div ClassName="itemCards">
 					{userPosts}
 				</div>
 
