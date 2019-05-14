@@ -7,7 +7,7 @@ const initState = {
 
 }
 
-const authReducer = (state=initState ,action) =>{
+const authReducer = (state = initState, action) => {
     switch (action.type) {
         case GET_TOKEN:
             return action.payload || initState;

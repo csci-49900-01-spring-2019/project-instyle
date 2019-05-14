@@ -89,7 +89,7 @@ class Login extends Component{
 								<a className="forget-password" href="">Forget Password?</a>
 							</div>
 							Not a member? 
-							<a href="/register">  Register</a>
+							<NavLink to="/register">Register</NavLink>
 						</div>
 					</form>
 				</div>

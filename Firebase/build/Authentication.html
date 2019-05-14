@@ -1,0 +1,111 @@
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBfkeTA-3ivv_EUOi6vTj5UP4530moiec4",
+    authDomain: "instyle-5f93a.firebaseapp.com",
+    databaseURL: "https://instyle-5f93a.firebaseio.com",
+    projectId: "instyle-5f93a",
+    storageBucket: "instyle-5f93a.appspot.com",
+    messagingSenderId: "620412495745"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<html>
+<head>
+	<title>InStyle</title>
+</head>
+
+<body>
+	<center>
+		<p>InStyle</p>
+		<form>
+			<div>
+			  <input id="email" type="text" placeholder="Email">
+			</div>
+			<div>
+			  <input id="password" type="password" placeholder="Password">
+			</div>
+			<br/>
+			<div>
+			  <button id="signIn">Sign In</button>
+			  <button id="register">Register</button>
+			  <button id="signOut" style="display: none;">Sign Out</button>
+			</div>
+			<br/>
+			<div>
+			  <input id="message" type="text" disabled="true" size="30" style="border: none; background: transparent;">
+			</div>
+		</form>
+	</center>
+
+  <!--Handle page events-->
+  <script>
+	const txtEmail = document.getElementById('email');
+	const txtPassword = document.getElementById('password');
+	const txtMessage = document.getElementById('message');
+	const btnSignIn = document.getElementById('signIn');
+	const btnSignOut = document.getElementById('signOut');
+	const btnRegister = document.getElementById('register');
+	
+	btnSignIn.addEventListener('click', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		var email = txtEmail.value;
+		var password = txtPassword.value;
+		const promise = firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			txtEmail.value = "";
+			txtPassword.value = "";
+			txtMessage.value = errorMessage;
+		});
+    });
+	
+	btnRegister.addEventListener('click', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		var email = txtEmail.value;
+		var password = txtPassword.value;
+		const promise = firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			txtMessage.value = errorMessage;
+		});
+    });
+    
+    btnSignOut.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      firebase.auth().signOut();
+    });
+	
+	firebase.auth().onAuthStateChanged(function(user) {
+		if (user) {
+			// User is signed in.
+			btnSignIn.style.display = "none";
+			btnSignOut.style.display = "block";
+			var displayName = user.displayName;
+			var email = user.email;
+			var emailVerified = user.emailVerified;
+			var photoURL = user.photoURL;
+			var isAnonymous = user.isAnonymous;
+			var uid = user.uid;
+			var providerData = user.providerData;
+			txtMessage.value = "Welcome " + email + "!";
+			txtEmail.value = "";
+			txtPassword.value = "";
+		} else {
+			// User is signed out.
+			btnSignIn.style.display = "block";
+			btnSignOut.style.display = "none";
+			txtEmail.value = "";
+			txtPassword.value = "";
+			txtMessage.value = "";
+		}
+	});
+  </script>
+  
+</body>
+</html>
