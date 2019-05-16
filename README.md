@@ -10,7 +10,7 @@ We divide our tasks into three main parts: Frontend, Backend and Mobile iOS
 FrontEnd (Web client):  Jasmeet and Amal      
 BackEnd (Firebase): Lili
 Mobile (iOS client): Matthew     
-Finally, our web is host on firebase:     
+Finally, our web is hosted on firebase:     
 ```
 https://instyle-5f93a.firebaseapp.com
 ```
@@ -37,6 +37,8 @@ The application is designed in a way that is interactive and friendly for users.
 
 Landing components is the front page or the main page that user sees as our application renders. It is mainly used to call other components like header, card, sidebar. Card components is used to display brief content of a single product. It uses the “/api/posting” endpoint to get all the products data. This data is later used to render card component multiple times on the landing component. Furthermore, sidebar is designed such that its slidable, the component is used to filter the cards from categories available in application. In addition, the landing component also consists of the search bar that is used to filter the rendered items.        
 
+We used React.js and CSS for the styling and interface for the web application. The application is designed in a way so that its appealing to the eyes and easy for a user to find everything. We were able to organize the users information on items they want to sell in a presentable manner. There were some problems in positioning and displaying the components in the correct places, especially on the landing page. These problems were handled by playing around with the different CSS properties. The first page that was designed were the register/log-in components. With the register page, the users were able to submit the form even if their passwords didn’t match. To fix this problem we included a function called passwordVerify(). This function basically compares the users input in the password and the verify password sections in the form. The register button will be disabled if the inputs in both sections aren't matching. As the user types out their password in the verify password section of the from, their will be a textbox that pops up saying in “Password doesn’t match”. This textbox will disappear once both the inputs in the password and the verify password patch, which will enable the register button and allow the user to submit their information.   
+
 Furthermore, DisplayItem component is used to render a detailed information about a product. The information for each item in received using the “/api/posts” endpoint. The endpoint works only when the id of the product is passed to it. Now, to get the id from the card component that is rendering in landing we used a React tool called query string. Query string module is used to retrieve the variable value in the HTTP query string. Also, the “api/buy” endpoint is used to save the information that user has bought the item. Lastly, AddItems component is used for user to post an item. It is basically a form that asks the user to post a detailed information about the product. Once the user finishes filling the form they can post it by clicking the post button. This post button uses the “/api/posts” endpoint that is storing the items details.    
 
 
@@ -57,6 +59,7 @@ We use Firebase to handle user authentication, to store our data in a realtime d
 
 We used Firebase Functions host our RESTful API. Firebase Functions is built on top of Node.js so that made it possible to use Express, which is a Node.js web application framework. All the endpoints are written under the Express framework.  
 
+###Our Tech Stack
 ![Our Tech Stack](techstack.jpg)  
 
 # Security:
