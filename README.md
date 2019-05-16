@@ -9,12 +9,18 @@ Instyle is a selling app that have a web client and an iOS application. The miss
 We divide our tasks into three main parts: Frontend, Backend and Mobile iOS 
 FrontEnd (Web client):  Jasmeet and Amal      
 BackEnd (Firebase): Lili
-Mobile (iOS client): Matthew     
+Mobile (iOS client): Matthew
+
 Finally, our web is hosted on firebase:     
 ```
 https://instyle-5f93a.firebaseapp.com
 ```
-     
+
+Presentation:    
+```
+https://docs.google.com/presentation/d/1xdi0XcyY1XqYt0qCVKhQkLLyJ9F12H5BsD-BWGlwuVE/edit?usp=sharing
+```
+
 
 # Main content section   
 
